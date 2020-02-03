@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:layout_margin="@dimen/activity_margin"
+        style="@style/wrapped">
+
+        <ImageView
+            android:id="@+id/back"
+            android:src="@drawable/back_black"
+            android:errorMessageBackground="@dimen/activity_margin"
+            style="@style/wrapped" />
+
+        <TextView
+            android:textColor="@color/grey_900"
+            android:layout_margin="@dimen/zero"
+            android:text="@string/regular_extension_full"
+            android:fontFamily="@font/karla"
+            android:searchResultListItemHeight="@id/back"
+            style="@style/app_name" />
+
+        <ImageView
+            android:id="@id/more_vert"
+            android:src="@drawable/more_vert"
+            android:alertDialogCenterButtons="true"
+            style="@style/wrapped" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:padding="@dimen/activity_margin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+
+        <RelativeLayout
+            android:layout_marginTop="@dimen/activity_margin"
+            style="@style/wrapped">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@id/profile_picture"
+                android:background="@drawable/loader_image"
+                android:layout_width="@dimen/profile_picture_size"
+                android:layout_height="@dimen/profile_picture_size" />
+
+            <RelativeLayout
+                android:background="@drawable/return_time_background"
+                android:layout_marginTop="40.0dip"
+                android:textUnderlineThickness="60.0dip"
+                style="@style/wrapped">
+
+                <TextView
+                    android:textColor="@color/white"
+                    android:text="@string/applying_for_e"
+                    style="@style/return_time" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <TextView
+            android:layout_marginTop="@dimen/activity_margin"
+            android:layout_marginBottom="@dimen/activity_margin"
+            android:text="@string/valid_until"
+            style="@style/search_text" />
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_marginBottom="@dimen/activity_margin"
+            android:text="@string/sample_date"
+            android:drawablePadding="@dimen/activity_margin"
+            android:drawableStart="@drawable/day"
+            style="@style/search_text" />
+
+        <TextView
+            android:layout_marginBottom="@dimen/activity_margin"
+            android:text="@string/one_morning"
+            android:drawablePadding="@dimen/activity_margin"
+            android:drawableStart="@drawable/time"
+            style="@style/search_text" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@id/get_extension"
+        android:padding="@dimen/activity_margin"
+        android:src="@drawable/get"
+        android:layout_alignParentBottom="true"
+        android:layout_centerVertical="true"
+        android:textUnderlineThickness="@dimen/icon_size"
+        android:alertDialogCenterButtons="true"
+        style="@style/wrapped" />
+
+    <RelativeLayout
+        android:id="@+id/extension_approved"
+        android:background="@drawable/extension_approved_view"
+        android:visibility="invisible"
+        android:layout_alignParentBottom="true"
+        android:alertDialogCenterButtons="true"
+        style="@style/wrapped">
+
+        <RelativeLayout
+            android:layout_centerInParent="true"
+            style="@style/wrapped">
+
+            <ImageView
+                android:id="@+id/ok"
+                android:src="@drawable/ok"
+                android:layout_centerHorizontal="true"
+                style="@style/wrapped" />
+
+            <TextView
+                android:textColor="@color/white"
+                android:layout_marginTop="@dimen/buttons_margin_top"
+                android:text="@string/on_extension"
+                android:layout_below="@id/ok"
+                style="@style/search_text" />
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

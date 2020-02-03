@@ -7,8 +7,8 @@ public class Extension implements Comparable<Extension> {
     String returnDate;
     String returnTime;
 
-    /* ever used?
-    public Extension() {}*/
+
+    public Extension() {}
 
     //Builds an extension instance from a string
     public Extension(String paramString) {

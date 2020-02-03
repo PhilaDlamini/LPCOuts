@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="@dimen/icon_size"
+    android:height="@dimen/icon_size"
+    android:listItemLayout="24.0"
+    android:tabLayout="24.0">
+    <path
+        android:horizontalProgressLayout="M9,16.17L4.83,12l-1.42,1.41L9,19 21,7l-1.41,-1.41z"
+        android:progressLayout="@color/white" />
+</vector>

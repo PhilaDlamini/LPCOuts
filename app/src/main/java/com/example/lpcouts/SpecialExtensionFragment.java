@@ -4,19 +4,17 @@ import android.animation.Animator;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
 
 public class SpecialExtensionFragment extends Fragment {
   EditText address, reason, companion;
@@ -30,22 +28,23 @@ public class SpecialExtensionFragment extends Fragment {
     if (container != null)
        container.removeAllViewsInLayout();
     if ((getActivity().getResources().getConfiguration()).orientation == 1) {
-      view = inflater.inflate(2131558483, container, false);
+      view = inflater.inflate(R.layout.special_extension_fragment, container, false);
     } else {
-      view = inflater.inflate(2131558482, container, false);
+      view = inflater.inflate(R.layout.special_extension_fragmen_land, container, false);
     }
 
-    userProfilePic = (ImageView)view.findViewById(2131362091);
-    back = (ImageView)view.findViewById(2131361831);
-    moreVert = (ImageView)view.findViewById(2131361952);
-    reason = (EditText)view.findViewById(2131361992);
-    apply = (ImageView)view.findViewById(2131361827);
-    address = (EditText)view.findViewById(2131361819);
-    appSent = (ViewGroup)view.findViewById(2131361826);
-    companion = (EditText)view.findViewById(2131361852);
+    userProfilePic = (ImageView)view.findViewById(R.id.user_image);
+    back = (ImageView)view.findViewById(R.id.back);
+    moreVert = (ImageView)view.findViewById(R.id.more_vert);
+    reason = (EditText)view.findViewById(R.id.reason);
+    apply = (ImageView)view.findViewById(R.id.apply);
+    address = (EditText)view.findViewById(R.id.address);
+    appSent = (ViewGroup)view.findViewById(R.id.app_sent);
+    companion = (EditText)view.findViewById(R.id.companion);
 
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Special extensions applications");
-    specialExtensions = databaseReference.child("BLOCK " + UserData.getData("Block")).child(UserData.getData("Name"));
+    specialExtensions = databaseReference.child("BLOCK " + UserData.getData("Block"))
+            .child(UserData.getData("Name"));
     ImageSampler.assignVariables(getContext());
     ImageSampler.loadImage(this.userProfilePic);
 
@@ -57,7 +56,7 @@ public class SpecialExtensionFragment extends Fragment {
 
             if (!reason.isEmpty() && !address.isEmpty() && !companion.isEmpty()) {
               SpecialExtension specialExtension = new SpecialExtension(UserData.getData("Name"), reason, companion, address, "23:00");
-              SpecialExtensionFragment.this.specialExtensions.setValue(specialExtension)
+              specialExtensions.setValue(specialExtension)
                       .addOnSuccessListener(new OnSuccessListener<Void>() {
                     public void onSuccess(Void param2Void) {
                       Animator animator = Animations.getRevealAnimation(SpecialExtensionFragment.this.appSent);
@@ -66,7 +65,7 @@ public class SpecialExtensionFragment extends Fragment {
                             
                             public void onAnimationEnd(Animator param3Animator) {
                               Intent intent = new Intent(getContext(), UserMainActivity.class);
-                              intent.addFlags(67108864);
+                              intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                               startActivity(intent);
                             }
                             

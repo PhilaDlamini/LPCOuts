@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/coordinator_layout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white">
+
+    <RelativeLayout
+        android:id="@+id/root"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/main"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout style="@style/matched">
+
+                <TextView
+                    style="@style/app_name"
+                    android:text="@string/app_name"
+                    android:textColor="@color/grey_900" />
+
+                <ImageView
+                    android:id="@+id/more_vert"
+                    style="@style/wrapped"
+                    android:layout_margin="@dimen/activity_margin"
+                    android:alertDialogCenterButtons="true"
+                    android:src="@drawable/more_vert" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/zero"
+                android:layout_weight="@integer/bottom_nav_item_weight">
+
+                <RelativeLayout
+                    android:id="@+id/user_info"
+                    style="@style/user_fragment_background"
+                    android:layout_centerInParent="true"
+                    android:background="@color/white">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@id/profile_picture"
+                        style="@style/user_fragment_profile_pic"
+                        android:background="@drawable/loader_image" />
+
+                    <ProgressBar
+                        android:id="@+id/progress_bar"
+                        style="?android:progressBarStyleHorizontal"
+                        android:layout_width="@dimen/user_profile_picture_size"
+                        android:layout_height="@dimen/user_profile_picture_size"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="@dimen/activity_margin"
+                        android:background="@drawable/circle_shape"
+                        android:indeterminate="false"
+                        android:max="@integer/max"
+                        android:padding="@dimen/horizontal_line"
+                        android:progress="@integer/progress"
+                        android:progressDrawable="@drawable/progress_drawable" />
+
+                    <TextView
+                        android:id="@+id/name"
+                        style="@style/user_name"
+                        android:layout_below="@id/profile_picture"
+                        android:text="@string/sample_name"
+                        android:textColor="@color/grey_900" />
+
+                    <TextView
+                        android:id="@+id/block_and_room"
+                        style="@style/user_location"
+                        android:layout_below="@id/name"
+                        android:text="@string/sample_place_of_residence"
+                        android:textColor="@color/grey_900" />
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/extension_root"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/zero"
+                android:layout_weight="@integer/bottom_nav_item_weight">
+
+                <LinearLayout
+                    android:id="@+id/data_root"
+                    style="@style/wrapped"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="@dimen/activity_margin"
+                    android:orientation="vertical"
+                    android:textUnderlineThickness="@dimen/activity_margin"
+                    android:visibility="visible">
+
+                    <RelativeLayout style="@style/wrapped">
+
+                        <RelativeLayout
+                            android:id="@+id/icon_back"
+                            android:layout_width="@dimen/icons_circle_size"
+                            android:layout_height="@dimen/icons_circle_size"
+                            android:background="@drawable/icons_circle">
+
+                            <ImageView
+                                style="@style/matched"
+                                android:layout_centerInParent="true"
+                                android:src="@drawable/signed_in" />
+                        </RelativeLayout>
+
+                        <TextView
+                            android:id="@+id/transition_status"
+                            style="@style/user_name"
+                            android:layout_centerInParent="true"
+                            android:searchResultListItemHeight="@id/icon_back"
+                            android:text="@string/signed_in"
+                            android:textColor="@color/grey_900"
+                            android:textUnderlineThickness="@dimen/activity_margin" />
+                    </RelativeLayout>
+
+                    <TextView
+                        android:id="@+id/on_extension"
+                        style="@style/search_text"
+                        android:layout_marginTop="@dimen/activity_margin"
+                        android:drawableStart="@drawable/on_extension"
+                        android:drawablePadding="@dimen/activity_margin"
+                        android:text="@string/on_extension"
+                        android:textColor="@color/grey_900"
+                        android:textUnderlineThickness="@dimen/on_extension_margin_start" />
+
+                    <TextView
+                        android:id="@+id/time_left"
+                        style="@style/search_text"
+                        android:layout_marginTop="@dimen/activity_margin"
+                        android:drawableStart="@drawable/on_extension"
+                        android:drawablePadding="@dimen/activity_margin"
+                        android:text="@string/time_of_return"
+                        android:textColor="@color/grey_900"
+                        android:textUnderlineThickness="@dimen/on_extension_margin_start" />
+                </LinearLayout>
+
+                <RelativeLayout
+                    style="@style/wrapped"
+                    android:layout_alignParentBottom="true"
+                    android:layout_margin="@dimen/activity_margin"
+                    android:alertDialogCenterButtons="true"
+                    android:visibility="visible">
+
+                    <RelativeLayout
+                        android:id="@+id/sign_out"
+                        style="@style/wrapped"
+                        android:background="@drawable/outs_background"
+                        android:visibility="visible">
+
+                        <RelativeLayout
+                            style="@style/wrapped"
+                            android:background="@drawable/outs_trans" />
+
+                        <ImageView
+                            style="@style/wrapped"
+                            android:layout_centerInParent="true"
+                            android:src="@drawable/sign_out" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/sign_in"
+                        style="@style/wrapped"
+                        android:background="@drawable/outs_background"
+                        android:visibility="invisible">
+
+                        <RelativeLayout
+                            style="@style/wrapped"
+                            android:background="@drawable/outs_trans" />
+
+                        <ImageView
+                            style="@style/wrapped"
+                            android:layout_centerInParent="true"
+                            android:src="@drawable/sign_in" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/get_extension"
+                        style="@style/get_extension_button"
+                        android:layout_below="@id/sign_out"
+                        android:layout_centerInParent="true"
+                        android:layout_marginTop="@dimen/buttons_margin_top"
+                        android:background="@drawable/outs_background"
+                        android:text="@string/get_extension">
+
+                        <RelativeLayout
+                            style="@style/wrapped"
+                            android:background="@drawable/outs_trans" />
+
+                        <ImageView
+                            style="@style/wrapped"
+                            android:layout_centerInParent="true"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/other_extension" />
+                    </RelativeLayout>
+                </RelativeLayout>
+            </RelativeLayout>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/transition_occured"
+            style="@style/wrapped"
+            android:layout_alignParentBottom="true"
+            android:alertDialogButtonGroupStyle="true"
+            android:background="@drawable/signed_out"
+            android:visibility="invisible">
+
+            <LinearLayout
+                style="@style/wrapped"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:orientation="vertical">
+
+                <ImageView
+                    style="@style/wrapped"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/bulb_home" />
+
+                <TextView
+                    android:id="@+id/message_text"
+                    style="@style/search_text"
+                    android:layout_marginTop="@dimen/buttons_margin_top"
+                    android:text="@string/you_signed_out"
+                    android:textAppearanceEasyCorrectSuggestion="4"
+                    android:textColor="@color/grey_900" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/done"
+            style="@style/wrapped"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="@dimen/activity_margin"
+            android:alertDialogCenterButtons="true"
+            android:background="@drawable/outs_background"
+            android:visibility="invisible">
+
+            <RelativeLayout
+                style="@style/wrapped"
+                android:background="@drawable/outs_trans" />
+
+            <ImageView
+                style="@style/wrapped"
+                android:layout_centerInParent="true"
+                android:src="@drawable/check_teal" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/space_filler1"
+            style="@style/wrapped"
+            android:layout_centerVertical="true"
+            android:background="@drawable/space_filler"
+            android:translationX="@dimen/dimen_neg_140"
+            android:translationY="@dimen/dimen_25" />
+
+        <RelativeLayout
+            android:id="@+id/space_filler2"
+            style="@style/wrapped"
+            android:layout_centerInParent="true"
+            android:alertDialogCenterButtons="true"
+            android:background="@drawable/other_space_filller"
+            android:translationX="@dimen/dimen_180"
+            android:translationY="@dimen/dimen_neg_100" />
+    </RelativeLayout>
+</android.support.design.widget.CoordinatorLayout>

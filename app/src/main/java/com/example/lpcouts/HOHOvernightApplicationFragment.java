@@ -17,12 +17,12 @@ public class HOHOvernightApplicationFragment extends Fragment {
   
   @Nullable
   public View onCreateView(@NonNull LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, @Nullable Bundle paramBundle) {
-    View view = paramLayoutInflater.inflate(2131558458, paramViewGroup, false);
-    this.listView = (ListView)view.findViewById(2131361944);
-    this.noUsersAppliedRoot = (ViewGroup)view.findViewById(2131361961);
-    this.message = (TextView)view.findViewById(2131362064);
-    this.noUsersAppliedRoot.setVisibility(View.VISIBLE);
-    this.message.setText(getString(2131755130));
+    View view = paramLayoutInflater.inflate(R.layout.list_view_layout, paramViewGroup, false);
+    listView = (ListView)view.findViewById(R.id.list_view);
+    noUsersAppliedRoot = (ViewGroup)view.findViewById(R.id.no_users_out);
+    message = (TextView)view.findViewById(R.id.text_displayed);
+    noUsersAppliedRoot.setVisibility(View.VISIBLE);
+    message.setText(getContext().getString(R.string.no_users_applied_for_overnight));
     return view;
   }
 }

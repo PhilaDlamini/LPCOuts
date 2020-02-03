@@ -6,8 +6,6 @@ import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -21,6 +19,8 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.fragment.app.Fragment;
 
 public class HOHSignUpFragment extends Fragment {
 
@@ -45,29 +45,29 @@ public class HOHSignUpFragment extends Fragment {
 
   
   private void findViews(View paramView) {
-    cameraIcon = (RelativeLayout)paramView.findViewById(2131361984);
-    root = (RelativeLayout)paramView.findViewById(2131361999);
-    createAccount = (Button)paramView.findViewById(2131361859);
-    userProfilePic = (ImageView)paramView.findViewById(2131361987);
-    emailAccount = (EditText)paramView.findViewById(2131361886);
-    password = (EditText)paramView.findViewById(2131361978);
-    name = (EditText)paramView.findViewById(2131361956);
-    block = (EditText)paramView.findViewById(2131361835);
-    student = (LinearLayout)paramView.findViewById(2131362049);
-    hoh = (LinearLayout)paramView.findViewById(2131361917);
-    guard = (LinearLayout)paramView.findViewById(2131361912);
-    studentIcon = (ImageView)paramView.findViewById(2131362050);
-    hohIcon = (ImageView)paramView.findViewById(2131361918);
-    guardIcon = (ImageView)paramView.findViewById(2131361913);
-    studentText = (TextView)paramView.findViewById(2131362051);
-    hohText = (TextView)paramView.findViewById(2131361919);
-    guardText = (TextView)paramView.findViewById(2131361914);
+    cameraIcon = (RelativeLayout)paramView.findViewById(R.id.pick_photo);
+    root = (RelativeLayout)paramView.findViewById(R.id.root);
+    createAccount = (Button)paramView.findViewById(R.id.create_account);
+    userProfilePic = (ImageView)paramView.findViewById(R.id.profile_picture);
+    emailAccount = (EditText)paramView.findViewById(R.id.email);
+    password = (EditText)paramView.findViewById(R.id.password);
+    name = (EditText)paramView.findViewById(R.id.name);
+    block = (EditText)paramView.findViewById(R.id.block);
+    student = (LinearLayout)paramView.findViewById(R.id.student);
+    hoh = (LinearLayout)paramView.findViewById(R.id.hoh);
+    guard = (LinearLayout)paramView.findViewById(R.id.guard);
+    studentIcon = (ImageView)paramView.findViewById(R.id.student_icon);
+    hohIcon = (ImageView)paramView.findViewById(R.id.hoh_icon);
+    guardIcon = (ImageView)paramView.findViewById(R.id.guard_icon);
+    studentText = (TextView)paramView.findViewById(R.id.student_text);
+    hohText = (TextView)paramView.findViewById(R.id.hoh_text);
+    guardText = (TextView)paramView.findViewById(R.id.guard_text);
   }
   
   public void hideIcons() {
-    this.student.setVisibility(View.GONE);
-    this.guard.setVisibility(View.GONE);
-    this.createAccount.setVisibility(View.VISIBLE);
+    student.setVisibility(View.GONE);
+    guard.setVisibility(View.GONE);
+    createAccount.setVisibility(View.VISIBLE);
   }
   
   public void hideWhenType() {
@@ -75,7 +75,9 @@ public class HOHSignUpFragment extends Fragment {
     emailAccount.addTextChangedListener(new TextWatcher() {
           public void afterTextChanged(Editable param1Editable) {}
           public void beforeTextChanged(CharSequence param1CharSequence, int param1Int1, int param1Int2, int param1Int3) {}
-          public void onTextChanged(CharSequence param1CharSequence, int param1Int1, int param1Int2, int param1Int3) { HOHSignUpFragment.this.hideIcons(); }
+          public void onTextChanged(CharSequence param1CharSequence, int param1Int1, int param1Int2, int param1Int3) {
+            hideIcons();
+          }
         });
 
     password.addTextChangedListener(new TextWatcher() {
@@ -83,29 +85,35 @@ public class HOHSignUpFragment extends Fragment {
           
           public void beforeTextChanged(CharSequence param1CharSequence, int param1Int1, int param1Int2, int param1Int3) {}
           
-          public void onTextChanged(CharSequence param1CharSequence, int param1Int1, int param1Int2, int param1Int3) { HOHSignUpFragment.this.hideIcons(); }
+          public void onTextChanged(CharSequence param1CharSequence, int param1Int1, int param1Int2, int param1Int3) {
+            hideIcons();
+          }
         });
 
     block.addTextChangedListener(new TextWatcher() {
           public void afterTextChanged(Editable param1Editable) {}
           public void beforeTextChanged(CharSequence param1CharSequence, int param1Int1, int param1Int2, int param1Int3) {}
-          public void onTextChanged(CharSequence param1CharSequence, int param1Int1, int param1Int2, int param1Int3) { HOHSignUpFragment.this.hideIcons(); }
+          public void onTextChanged(CharSequence param1CharSequence, int param1Int1, int param1Int2, int param1Int3) {
+            hideIcons();
+          }
         });
 
     name.addTextChangedListener(new TextWatcher() {
           public void afterTextChanged(Editable param1Editable) {}
           public void beforeTextChanged(CharSequence param1CharSequence, int param1Int1, int param1Int2, int param1Int3) {}
-          public void onTextChanged(CharSequence param1CharSequence, int param1Int1, int param1Int2, int param1Int3) { HOHSignUpFragment.this.hideIcons(); }
+          public void onTextChanged(CharSequence param1CharSequence, int param1Int1, int param1Int2, int param1Int3) {
+            hideIcons();
+          }
         });
   }
   
   public void highlightHOH() {
-    this.studentIcon.setImageResource(2131230940);
-    this.studentText.setTextColor(getResources().getColor(2131099681));
-    this.hohIcon.setImageResource(2131230870);
-    this.hohText.setTextColor(getResources().getColor(2131099803));
-    this.guardIcon.setImageResource(2131230866);
-    this.guardText.setTextColor(getResources().getColor(2131099681));
+    studentIcon.setImageResource(R.drawable.student_outline);
+    studentText.setTextColor(getContext().getResources().getColor(R.color.black));
+    hohIcon.setImageResource(R.drawable.hoh_green);
+    hohText.setTextColor(getContext().getResources().getColor(R.color.teal_400));
+    guardIcon.setImageResource(R.drawable.guard);
+    guardText.setTextColor(getContext().getResources().getColor(R.color.black));
   }
   
   public View initializeView() {
@@ -113,9 +121,9 @@ public class HOHSignUpFragment extends Fragment {
     if (this.container != null)
       this.container.removeAllViewsInLayout(); 
     if ((getActivity().getResources().getConfiguration()).orientation == 1) {
-      view = this.inflater.inflate(2131558456, this.container, false);
+      view = this.inflater.inflate(R.layout.hoh_sign_up_fragment, container, false);
     } else {
-      view = this.inflater.inflate(2131558457, this.container, false);
+      view = this.inflater.inflate(R.layout.hoh_sign_up_fragment_land, container, false);
     } 
     findViews(view);
     highlightHOH();
@@ -135,22 +143,31 @@ public class HOHSignUpFragment extends Fragment {
 
     cameraIcon.setOnClickListener(new View.OnClickListener() {
           public void onClick(View param1View) {
-            UserData.returnToFragment("HOH sign up fragment");
-            HOHSignUpFragment.this.startActivityForResult(new Intent("android.intent.action.PICK", MediaStore.Images.Media.EXTERNAL_CONTENT_URI), 30);
-            HOHSignUpFragment.this.hideWhenType();
+            UserData.returnToFragment(FRAGMENT_NAME);
+            startActivityForResult(new Intent("android.intent.action.PICK", MediaStore.Images.Media.EXTERNAL_CONTENT_URI), PROFILE_PICTURE);
+            hideWhenType();
           }
         });
 
 
     guard.setOnClickListener(new View.OnClickListener() {
-          public void onClick(View param1View) { HOHSignUpFragment.this.iconClickListener.onGuardClick(); }
+          public void onClick(View param1View) {
+            iconClickListener.onGuardClick();
+          }
         });
+
     hoh.setOnClickListener(new View.OnClickListener() {
-          public void onClick(View param1View) { HOHSignUpFragment.this.showIcons(); }
+          public void onClick(View param1View) {
+            showIcons();
+          }
         });
+
     student.setOnClickListener(new View.OnClickListener() {
-          public void onClick(View param1View) { HOHSignUpFragment.this.iconClickListener.onStudentClick(); }
+          public void onClick(View param1View) {
+            iconClickListener.onStudentClick();
+          }
         });
+
     createAccount.setOnClickListener(new View.OnClickListener() {
           public void onClick(View param1View) {
             String emailAccount = HOHSignUpFragment.this.emailAccount.getText().toString();
@@ -159,24 +176,24 @@ public class HOHSignUpFragment extends Fragment {
 
             if (!emailAccount.isEmpty() && !password.isEmpty() && !HOHSignUpFragment.this.nameEntered.isEmpty() && !block.isEmpty()) {
               if (SignUp.isLpcEmail(emailAccount)) {
-                if (HOHSignUpFragment.this.imageUri != null) {
+                if (imageUri != null) {
                   try {
                     Integer.parseInt(block);
-                    HOHSignUpFragment.this.progress.onCreationInProgress();
-                    SignUp.assignVariables(HOHSignUpFragment.this.getContext(), HOHSignUpFragment.this.imageUri);
+                    progress.onCreationInProgress();
+                    SignUp.assignVariables(getContext(), imageUri);
                     SignUp.createAccount(new HOHAccount(HOHSignUpFragment.this.nameEntered, emailAccount, block), password, "HOH Account", HOHSignUpFragment.this.nameEntered);
                   } catch (NumberFormatException numberFormatException) {
-                    Toast.makeText(HOHSignUpFragment.getContext(), HOHSignUpFragment.this.getString(2131755059), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), getString(R.string.block_number), Toast.LENGTH_SHORT).show();
                   } 
                   return;
                 } 
-                Toast.makeText(HOHSignUpFragment.getContext(), HOHSignUpFragment.this.getString(2131755171), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), getString(R.string.select_pic), Toast.LENGTH_SHORT).show();
                 return;
               } 
-              Toast.makeText(HOHSignUpFragment.getContext(), HOHSignUpFragment.this.getString(2131755197), Toast.LENGTH_SHORT).show();
+              Toast.makeText(getContext(), getString(R.string.use_lpc_email), Toast.LENGTH_SHORT).show();
               return;
             } 
-            Toast.makeText(HOHSignUpFragment.getContext(), HOHSignUpFragment.this.getString(2131755103), Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), getString(R.string.fill_in_all_fields), Toast.LENGTH_SHORT).show();
           }
         });
     return view;
@@ -184,7 +201,7 @@ public class HOHSignUpFragment extends Fragment {
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent) {
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    if (paramInt1 == 30 && paramInt2 == -1) {
+    if (paramInt1 == PROFILE_PICTURE && paramInt2 == -1) {
       this.imageUri = paramIntent.getData();
       ImageSampler.loadFromUri(getContext(), this.imageUri, this.userProfilePic);
     } 
@@ -202,7 +219,7 @@ public class HOHSignUpFragment extends Fragment {
     String name = this.name.getText().toString();
     String block = this.block.getText().toString();
     View view = initializeView();
-    this.emailAccount.setText(email);
+    emailAccount.setText(email);
     this.password.setText(password);
     this.name.setText(name);
     this.block.setText(block);
@@ -210,17 +227,16 @@ public class HOHSignUpFragment extends Fragment {
     super.onConfigurationChanged(paramConfiguration);
   }
   
-  @Nullable
-  public View onCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, @Nullable Bundle paramBundle) {
-    this.inflater = paramLayoutInflater;
-    this.container = paramViewGroup;
+  public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle) {
+    inflater = paramLayoutInflater;
+    container = paramViewGroup;
     return initializeView();
   }
   
   public void showIcons() {
-    this.hoh.setVisibility(View.VISIBLE);
-    this.guard.setVisibility(View.VISIBLE);
-    this.student.setVisibility(View.VISIBLE);
-    this.createAccount.setVisibility(View.VISIBLE);
+    hoh.setVisibility(View.VISIBLE);
+    guard.setVisibility(View.VISIBLE);
+    student.setVisibility(View.VISIBLE);
+    createAccount.setVisibility(View.VISIBLE);
   }
 }

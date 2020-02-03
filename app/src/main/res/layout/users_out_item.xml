@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/list_item"
+    android:background="@color/white">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@id/profile_picture"
+        style="@style/users_image"
+        android:layout_centerVertical="true"
+        android:background="@drawable/loader_image"
+        android:textUnderlineThickness="@dimen/activity_margin" />
+
+    <LinearLayout
+        style="@style/wrapped"
+        android:layout_centerVertical="true"
+        android:orientation="vertical"
+        android:searchResultListItemHeight="@id/profile_picture"
+        android:textUnderlineThickness="@dimen/activity_margin">
+
+        <TextView
+            android:id="@id/name"
+            style="@style/users_out_item_text"
+            android:text="@string/sample_name" />
+
+        <TextView
+            android:id="@+id/time"
+            style="@style/users_out_item_text_date"
+            android:fontFamily="@font/karla"
+            android:text="@string/sample_date" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@id/on_extension"
+        style="@style/wrapped"
+        android:layout_centerVertical="true"
+        android:alertDialogCenterButtons="true"
+        android:errorMessageBackground="@dimen/activity_margin"
+        android:src="@drawable/on_extension"
+        android:visibility="invisible" />
+</RelativeLayout>

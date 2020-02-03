@@ -1,8 +1,6 @@
 package com.example.lpcouts;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +11,9 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.fragment.app.Fragment;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
@@ -34,16 +35,16 @@ public class HOHFragmentUsersSignedOut extends Fragment {
     ArrayList<String> arrayList = new ArrayList();
     ArrayList<Outs> arrayList1 = new ArrayList();
 
-    int i = 0;
+    int i = 0; //What does all this code below do really?
     while (!paramArrayList.isEmpty()) {
       Object object2 = new StringBuilder();
       object2.append("Size of users signed out ");
       object2.append(paramArrayList.size());
       Log.e("HOHFragment", object2.toString());
       if (!i) {
-        arrayList.add(getString(2131755194));
+        arrayList.add(getString(R.string.today));
       } else if (i == 1) {
-        arrayList.add(getString(2131755210));
+        arrayList.add(getString(R.string.yesterday));
       } else {
         arrayList.add(getDate(i));
       } 
@@ -62,10 +63,10 @@ public class HOHFragmentUsersSignedOut extends Fragment {
       } else {
         arrayList.remove(getDate(i));
         if (!i)
-          arrayList.remove(getString(2131755194)); 
+          arrayList.remove(getString(R.string.today));
         object2 = arrayList1;
         if (i == 1) {
-          arrayList.remove(getString(2131755210));
+          arrayList.remove(getString(R.string.yesterday));
           object2 = arrayList1;
         } 
       } 
@@ -107,15 +108,15 @@ public class HOHFragmentUsersSignedOut extends Fragment {
     return linkedHashMap.get(month) + " " + paramInt + ", " + year;
   }
   
-  @Nullable
-  public View onCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, @Nullable Bundle paramBundle) {
-    View view = paramLayoutInflater.inflate(2131558458, paramViewGroup, false);
+
+  public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle) {
+    View view = paramLayoutInflater.inflate(R.layout.list_view_layout, paramViewGroup, false);
 
     //Find all views
-    usersSignedOutList = (ListView)view.findViewById(2131361944);
-    parent = (ViewGroup)view.findViewById(2131361975);
-    noUsersOnExtension = (RelativeLayout)view.findViewById(2131361961);
-    noExtensions = (TextView)view.findViewById(2131362064);
+    usersSignedOutList = (ListView)view.findViewById(R.id.list_view);
+    parent = (ViewGroup)view.findViewById(R.id.parent);
+    noUsersOnExtension = (RelativeLayout)view.findViewById(R.id.no_users_out);
+    noExtensions = (TextView)view.findViewById(R.id.text_displayed);
 
     //So we know the scroll position
     usersSignedOutList.setOnScrollListener(new AbsListView.OnScrollListener() {
@@ -126,7 +127,7 @@ public class HOHFragmentUsersSignedOut extends Fragment {
             if (param1Int < mLastVisibleItem) {
               Toast.makeText(getContext(), "Scrolling downards", Toast.LENGTH_SHORT).show();
             } else if (param1Int > mLastVisibleItem) {
-              Toast.makeText(this, "Scrolling upwards", Toast.LENGTH_SHORT).show();
+              Toast.makeText(getContext(), "Scrolling upwards", Toast.LENGTH_SHORT).show();
             } 
             mLastVisibleItem = param1Int;
           }
@@ -134,11 +135,12 @@ public class HOHFragmentUsersSignedOut extends Fragment {
 
     ArrayList<Object> arrayList = getData(UserData.getUsersSignedOut());
     if (arrayList.size() != 0) {
-      this.usersSignedOutList.setAdapter((ListAdapter)new UsersOutAdapter(arrayList, getContext()));
+      usersSignedOutList.setAdapter(new UsersOutAdapter(arrayList, getContext()));
       return view;
     } 
-    this.noUsersOnExtension.setVisibility(0);
-    this.noExtensions.setText(getString(2131755132));
+
+    noUsersOnExtension.setVisibility(View.VISIBLE);
+    noExtensions.setText(getString(R.string.no_users_out));
     return view;
   }
 }

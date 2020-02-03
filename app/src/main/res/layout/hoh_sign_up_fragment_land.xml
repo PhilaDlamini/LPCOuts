@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@id/root"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/amber_700">
+
+    <LinearLayout
+        style="@style/matched"
+        android:layout_height="fill_parent"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:id="@+id/pic_root"
+            android:layout_width="@dimen/zero"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0"
+            android:background="@color/amber_700">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true">
+
+                <RelativeLayout
+                    android:id="@+id/photo"
+                    style="@style/watcher_text"
+                    android:layout_centerHorizontal="true">
+
+                    <RelativeLayout
+                        android:layout_width="@dimen/picture_ic_outer"
+                        android:layout_height="@dimen/picture_ic_outer"
+                        android:background="@drawable/question_ic_outer" />
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@id/profile_picture"
+                        android:layout_width="@dimen/picture_ic_outer"
+                        android:layout_height="@dimen/picture_ic_outer" />
+
+                    <RelativeLayout
+                        android:id="@+id/pick_photo"
+                        style="@style/wrapped"
+                        android:layout_marginTop="62.0dip"
+                        android:background="@drawable/photo_camera_background"
+                        android:textUnderlineThickness="68.0dip">
+
+                        <ImageView
+                            style="@style/wrapped"
+                            android:layout_centerInParent="true"
+                            android:src="@drawable/photo_camera" />
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <EditText
+                    android:id="@id/name"
+                    style="@style/edit_text_sign_up"
+                    android:layout_below="@id/photo"
+                    android:layout_centerHorizontal="true" />
+            </RelativeLayout>
+
+            <include layout="@layout/bottom_nav" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="@dimen/zero"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0"
+            android:background="@drawable/sign_up"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                style="@style/wrapped"
+                android:layout_centerInParent="true">
+
+                <LinearLayout
+                    android:id="@+id/phone"
+                    style="@style/matched"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/email"
+                        style="@style/edit_text"
+                        android:drawableStart="@drawable/email"
+                        android:hint="@string/email" />
+
+                    <EditText
+                        android:id="@+id/password"
+                        style="@style/edit_text"
+                        android:drawableStart="@drawable/password"
+                        android:hint="@string/password" />
+
+                    <EditText
+                        android:id="@+id/block"
+                        style="@style/edit_text"
+                        android:drawableStart="@drawable/block"
+                        android:hint="@string/residential_block" />
+                </LinearLayout>
+            </RelativeLayout>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/create_account"
+        style="@style/create_account_button"
+        android:layout_margin="@dimen/activity_margin"
+        android:text="@string/start"
+        android:visibility="invisible" />
+</RelativeLayout>

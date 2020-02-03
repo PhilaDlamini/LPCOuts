@@ -1,18 +1,9 @@
 package com.example.lpcouts;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+import androidx.annotation.NonNull;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -91,38 +82,42 @@ public class SignOut {
         userSignedOutReference.setValue(outs).addOnCompleteListener(new OnCompleteListener<Void>() {
             public void onComplete(@NonNull Task<Void> param1Task) {
                 if (param1Task.isSuccessful()) {
-                    UserData.saveStatus(context.getString(2131755180));
+                    UserData.saveStatus(context.getString(R.string.signed_out));
                     mGuardsUserSignedOutReference.setValue(outs)
                             .addOnSuccessListener(new OnSuccessListener<Void>() {
                                 public void onSuccess(Void param2Void) {
                                     if (UserData.isUserOnExtension()) {
                                         if (UserData.getData("Extension type").equals("Regular extension")) {
                                             Extension extension = new Extension(UserData.getData("Regular extension instance"));
-                                            usersOnRegularExtension.child(UserData.getData("Name")).setValue(extension).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                                public void onSuccess(Void param3Void) {
-                                                    UserData.saveStatus(context.getString(2131755180));
-                                                }
-                                            });
+                                            usersOnRegularExtension.child(UserData.getData("Name"))
+                                                    .setValue(extension)
+                                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                        public void onSuccess(Void param3Void) {
+                                                            UserData.saveStatus(context.getString(R.string.signed_out));
+                                                        }
+                                                    });
                                             return;
                                         }
                                         SpecialExtension specialExtension = new SpecialExtension(UserData.getData("Special extension instance"));
-                                        usersOnSpecialExtension.child(UserData.getData("Name")).setValue(specialExtension).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                            public void onSuccess(Void param3Void) {
-                                                UserData.saveStatus(context.getString(2131755180));
-                                            }
-                                        });
+                                        usersOnSpecialExtension.child(UserData.getData("Name"))
+                                                .setValue(specialExtension)
+                                                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                    public void onSuccess(Void param3Void) {
+                                                        UserData.saveStatus(context.getString(R.string.signed_out));
+                                                    }
+                                                });
                                     }
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
                         public void onFailure(@NonNull Exception param2Exception) {
-                            Toast.makeText(context, "Guards don't know you signed out", 0).show();
+                            Toast.makeText(context, "Guards don't know you signed out", Toast.LENGTH_SHORT).show();
                         }
                     });
                 }
             }
         }).addOnFailureListener(new OnFailureListener() {
             public void onFailure(@NonNull Exception param1Exception) {
-                Toast.makeText(context, "Failed to sign you out", 0).show();
+                Toast.makeText(context, "Failed to sign you out", Toast.LENGTH_SHORT).show();
             }
         });
     }

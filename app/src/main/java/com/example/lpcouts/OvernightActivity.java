@@ -3,12 +3,13 @@ package com.example.lpcouts;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
@@ -24,22 +25,22 @@ public class OvernightActivity extends AppCompatActivity {
 
   protected void onCreate(Bundle paramBundle) {
     super.onCreate(paramBundle);
-    setContentView(2131558432);
-    cross = (ImageView)findViewById(2131361861);
-    check = (ImageView)findViewById(2131361845);
-    tutor = (EditText)findViewById(2131362085);
-    address = (EditText)findViewById(2131361819);
-    year = (EditText)findViewById(2131362105);
-    companion = (EditText)findViewById(2131361852);
-    hostName = (EditText)findViewById(2131361923);
-    hostPhone = (EditText)findViewById(2131361922);
+    setContentView(R.layout.activity_overnight);
+    cross = (ImageView)findViewById(R.id.cross);
+    check = (ImageView)findViewById(R.id.check);
+    tutor = (EditText)findViewById(R.id.tutor);
+    address = (EditText)findViewById(R.id.address);
+    year = (EditText)findViewById(R.id.year);
+    companion = (EditText)findViewById(R.id.companion);
+    hostName = (EditText)findViewById(R.id.host_name);
+    hostPhone = (EditText)findViewById(R.id.host_mobile);
     overnightsReference = FirebaseDatabase.getInstance().getReference().child("Overnight applications");
 
     cross.setOnClickListener(new View.OnClickListener() {
           public void onClick(View param1View) {
-            Intent intent = new Intent(this.getApplicationContext(), MainActivity.class);
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            OvernightActivity.this.startActivity(intent);
+            startActivity(intent);
           }
         });
 

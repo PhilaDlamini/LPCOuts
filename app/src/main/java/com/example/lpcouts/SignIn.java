@@ -1,12 +1,8 @@
 package com.example.lpcouts;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
 import android.widget.Toast;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+import androidx.annotation.NonNull;
 import java.util.Calendar;
 import java.util.LinkedHashMap;
 
@@ -77,7 +73,7 @@ public class SignIn {
           public void onSuccess(Void param1Void) {
             UserData.onRegularExtension(false, null);
             UserData.onSpecialExtension(false, null);
-            UserData.saveStatus(context.getString(2131755179));
+            UserData.saveStatus(context.getString(R.string.signed_in));
             mUsersOnRegularExtension.setValue(null);
             mUsersOnSpecialExtension.setValue(null);
           }

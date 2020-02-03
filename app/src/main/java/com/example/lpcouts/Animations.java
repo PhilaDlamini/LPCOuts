@@ -57,7 +57,7 @@ public class Animations {
         Slide slide = new Slide(paramInt1);
         slide.setStartDelay(paramInt2);
         slide.addTarget(paramView);
-        return (Transition)slide;
+        return slide;
     }
 
     public static void revealFromBottom(View paramView) {

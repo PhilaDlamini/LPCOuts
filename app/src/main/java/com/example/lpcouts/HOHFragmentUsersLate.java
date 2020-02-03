@@ -1,16 +1,15 @@
 package com.example.lpcouts;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import androidx.fragment.app.Fragment;
+
 import java.util.ArrayList;
 
 public class HOHFragmentUsersLate extends Fragment {
@@ -22,20 +21,19 @@ public class HOHFragmentUsersLate extends Fragment {
   RelativeLayout noLateUserRoot;
   ViewGroup parent;
   
-  @Nullable
-  public View onCreateView(@NonNull LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, @Nullable Bundle paramBundle) {
-    View view = paramLayoutInflater.inflate(2131558458, paramViewGroup, false);
+  public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle) {
+    View view = paramLayoutInflater.inflate(R.layout.list_view_layout, paramViewGroup, false);
 
     //Find all the views
-    listView = (ListView)view.findViewById(2131361944);
-    parent = (ViewGroup)view.findViewById(2131361975);
-    noLateUserRoot = (RelativeLayout)view.findViewById(2131361961);
-    noLateUser = (TextView)view.findViewById(2131362064);
+    listView = (ListView)view.findViewById(R.id.list_view);
+    parent = (ViewGroup)view.findViewById(R.id.parent);
+    noLateUserRoot = (RelativeLayout)view.findViewById(R.id.no_users_out);
+    noLateUser = (TextView)view.findViewById(R.id.text_displayed);
 
     //Get all late users, together
     lateUsers = UserData.getLateUsers();
     ArrayList<Object> arrayList = new ArrayList(); //Previous generic type of String. Is that right?
-    arrayList.add(getString(2131755121));
+    arrayList.add(getContext().getString(R.string.late_students));
     arrayList.addAll(lateUsers);
 
     //If there are late users, say this and return them
@@ -45,8 +43,8 @@ public class HOHFragmentUsersLate extends Fragment {
     }
 
     //Else, show there are no late users
-    this.noLateUserRoot.setVisibility(View.VISIBLE);
-    this.noLateUser.setText(getString(2131755049));
+    noLateUserRoot.setVisibility(View.VISIBLE);
+    noLateUser.setText(getContext().getString(R.string.all_signed_in));
     return view;
   }
 }

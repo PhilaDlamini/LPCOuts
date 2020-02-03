@@ -6,8 +6,6 @@ import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -21,6 +19,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import androidx.fragment.app.Fragment;
 
 public class GuardSignUpFragment extends Fragment {
 
@@ -47,22 +46,22 @@ public class GuardSignUpFragment extends Fragment {
   private void findViews(View paramView) {
 
     //Find all the views
-    this.cameraIcon = (RelativeLayout)paramView.findViewById(2131361984);
-    this.root = (RelativeLayout)paramView.findViewById(2131361999);
-    this.createAccount = (Button)paramView.findViewById(2131361859);
-    this.userProfilePic = (ImageView)paramView.findViewById(2131362091);
-    this.emailAccount = (EditText)paramView.findViewById(2131361886);
-    this.password = (EditText)paramView.findViewById(2131361978);
-    this.name = (EditText)paramView.findViewById(2131361956);
-    this.student = (LinearLayout)paramView.findViewById(2131362049);
-    this.hoh = (LinearLayout)paramView.findViewById(2131361917);
-    this.guard = (LinearLayout)paramView.findViewById(2131361912);
-    this.studentIcon = (ImageView)paramView.findViewById(2131362050);
-    this.hohIcon = (ImageView)paramView.findViewById(2131361918);
-    this.guardIcon = (ImageView)paramView.findViewById(2131361913);
-    this.studentText = (TextView)paramView.findViewById(2131362051);
-    this.hohText = (TextView)paramView.findViewById(2131361919);
-    this.guardText = (TextView)paramView.findViewById(2131361914);
+    cameraIcon = (RelativeLayout)paramView.findViewById(R.id.pick_photo);
+    root = (RelativeLayout)paramView.findViewById(R.id.root);
+    createAccount = (Button)paramView.findViewById(R.id.create_account);
+    userProfilePic = (ImageView)paramView.findViewById(R.id.user_image);
+    emailAccount = (EditText)paramView.findViewById(R.id.email);
+    password = (EditText)paramView.findViewById(R.id.password);
+    name = (EditText)paramView.findViewById(R.id.name);
+    student = (LinearLayout)paramView.findViewById(R.id.student);
+    hoh = (LinearLayout)paramView.findViewById(R.id.hoh);
+    guard = (LinearLayout)paramView.findViewById(R.id.guard);
+    studentIcon = (ImageView)paramView.findViewById(R.id.student_icon);
+    hohIcon = (ImageView)paramView.findViewById(R.id.hoh_icon);
+    guardIcon = (ImageView)paramView.findViewById(R.id.guard_icon);
+    studentText = (TextView)paramView.findViewById(R.id.student_text);
+    hohText = (TextView)paramView.findViewById(R.id.hoh_text);
+    guardText = (TextView)paramView.findViewById(R.id.guard_text);
   }
 
   //Hide all the other icons
@@ -77,40 +76,46 @@ public class GuardSignUpFragment extends Fragment {
     this.emailAccount.addTextChangedListener(new TextWatcher() {
           public void afterTextChanged(Editable param1Editable) {}
           public void beforeTextChanged(CharSequence param1CharSequence, int param1Int1, int param1Int2, int param1Int3) {}
-          public void onTextChanged(CharSequence param1CharSequence, int param1Int1, int param1Int2, int param1Int3) { GuardSignUpFragment.this.hideIcons(); }
+          public void onTextChanged(CharSequence param1CharSequence, int param1Int1, int param1Int2, int param1Int3) {
+          hideIcons();
+          }
         });
     this.password.addTextChangedListener(new TextWatcher() {
           public void afterTextChanged(Editable param1Editable) {}
           public void beforeTextChanged(CharSequence param1CharSequence, int param1Int1, int param1Int2, int param1Int3) {}
-          public void onTextChanged(CharSequence param1CharSequence, int param1Int1, int param1Int2, int param1Int3) { GuardSignUpFragment.this.hideIcons(); }
+          public void onTextChanged(CharSequence param1CharSequence, int param1Int1, int param1Int2, int param1Int3) {
+            hideIcons();
+          }
         });
     this.name.addTextChangedListener(new TextWatcher() {
           public void afterTextChanged(Editable param1Editable) {}
           public void beforeTextChanged(CharSequence param1CharSequence, int param1Int1, int param1Int2, int param1Int3) {}
-          public void onTextChanged(CharSequence param1CharSequence, int param1Int1, int param1Int2, int param1Int3) { GuardSignUpFragment.this.hideIcons(); }
+          public void onTextChanged(CharSequence param1CharSequence, int param1Int1, int param1Int2, int param1Int3) {
+           hideIcons();
+          }
         });
   }
 
-  //Higlights the guard icon
+  //Highlights the guard icon
   public void highlightGuard() {
-    this.studentIcon.setImageResource(2131230940);
-    this.studentText.setTextColor(getResources().getColor(2131099681));
-    this.hohIcon.setImageResource(2131230869);
-    this.hohText.setTextColor(getResources().getColor(2131099681));
-    this.guardIcon.setImageResource(2131230867);
-    this.guardText.setTextColor(getResources().getColor(2131099803));
+    studentIcon.setImageResource(R.drawable.student_outline);
+    studentText.setTextColor(getResources().getColor(R.color.black));
+    hohIcon.setImageResource(R.drawable.hoh);
+    hohText.setTextColor(getResources().getColor(R.color.black));
+    guardIcon.setImageResource(R.drawable.guard_green);
+    guardText.setTextColor(getResources().getColor(R.color.teal_400));
   }
   
   public View initializeView() {
     View view;
-    if (this.container != null)
-      this.container.removeAllViewsInLayout();
+    if (container != null)
+      container.removeAllViewsInLayout();
 
     //Inflate the right view depending on orientation
     if ((getActivity().getResources().getConfiguration()).orientation == 1) {
-      view = this.inflater.inflate(2131558454, this.container, false);
+      view = inflater.inflate(R.layout.guard_sign_up_fragment, container, false);
     } else {
-      view = this.inflater.inflate(2131558455, this.container, false);
+      view = inflater.inflate(R.layout.guard_sign_up_fragment_land, container, false);
     }
 
     findViews(view);
@@ -121,7 +126,7 @@ public class GuardSignUpFragment extends Fragment {
     cameraIcon.setOnClickListener(new View.OnClickListener() {
           public void onClick(View param1View) {
             UserData.returnToFragment(FRAGMENT_NAME);
-            GuardSignUpFragment.this.startActivityForResult(new Intent("android.intent.action.PICK", MediaStore.Images.Media.EXTERNAL_CONTENT_URI), PROFILE_PICTURE);
+            startActivityForResult(new Intent("android.intent.action.PICK", MediaStore.Images.Media.EXTERNAL_CONTENT_URI), PROFILE_PICTURE);
             hideWhenType();
           }
         });
@@ -157,17 +162,17 @@ public class GuardSignUpFragment extends Fragment {
 
                   // Call the parent activity (show circular progress)
                   progress.onCreationInProgress();
-                  SignUp.assignVariables(this, GuardSignUpFragment.this.imageUri);
+                  SignUp.assignVariables(getContext(), imageUri);
                   SignUp.createAccount(new Guard(nameEntered, email), passwordEntered, "Guard Account", nameEntered);
                   return;
                 } 
-                Toast.makeText(GuardSignUpFragment.this.getContext(), GuardSignUpFragment.this.getString(2131755171), 0).show();
+                Toast.makeText(getContext(), getString(R.string.select_pic), Toast.LENGTH_SHORT).show();
                 return;
               } 
-              Toast.makeText(GuardSignUpFragment.this.getContext(), GuardSignUpFragment.this.getString(2131755197), 0).show();
+              Toast.makeText(getContext(), getString(R.string.use_lpc_email), Toast.LENGTH_SHORT).show();
               return;
             } 
-            Toast.makeText(GuardSignUpFragment.this.getContext(), GuardSignUpFragment.this.getString(2131755103), 0).show();
+            Toast.makeText(getContext(), getString(R.string.fill_in_all_fields), Toast.LENGTH_SHORT).show();
           }
         });
 
@@ -219,10 +224,9 @@ public class GuardSignUpFragment extends Fragment {
   }
 
   //Called to create the view
-  @Nullable
-  public View onCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, @Nullable Bundle paramBundle) {
-    this.inflater = paramLayoutInflater;
-    this.container = paramViewGroup;
+  public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle) {
+    inflater = paramLayoutInflater;
+    container = paramViewGroup;
     return initializeView();
   }
   

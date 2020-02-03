@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/parent"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+    <ListView
+        android:id="@+id/list_view"
+        style="@style/list_view" />
+
+    <RelativeLayout
+        android:id="@+id/no_users_out"
+        style="@style/wrapped"
+        android:layout_centerInParent="true"
+        android:visibility="invisible">
+
+        <LinearLayout
+            android:id="@+id/images"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/wrapped"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/star_border" />
+
+            <ImageView
+                style="@style/wrapped"
+                android:src="@drawable/bulb_home" />
+
+            <ImageView
+                style="@style/wrapped"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/star_border" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/text_displayed"
+            style="@style/search_text"
+            android:layout_below="@id/images"
+            android:layout_centerHorizontal="true"
+            android:text="@string/no_users_out"
+            android:textAppearanceEasyCorrectSuggestion="4" />
+    </RelativeLayout>
+</RelativeLayout>

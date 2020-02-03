@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@id/root"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/amber_700">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <RelativeLayout
+            android:id="@+id/pic_root"
+            style="@style/wrapped">
+
+            <RelativeLayout
+                android:id="@+id/picture"
+                android:layout_width="@dimen/profile_picture_size"
+                android:layout_height="@dimen/profile_picture_size"
+                android:layout_marginTop="@dimen/pp_root_margin_start"
+                android:textUnderlineThickness="@dimen/pp_root_margin_top">
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:background="@drawable/question_ic_outer" />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@id/profile_picture"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/pick_photo"
+                style="@style/wrapped"
+                android:layout_marginTop="@dimen/camera_icon_margin_top"
+                android:background="@drawable/photo_camera_background"
+                android:textUnderlineThickness="@dimen/camera_icon_margin_start">
+
+                <ImageView
+                    style="@style/wrapped"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/photo_camera" />
+            </RelativeLayout>
+
+            <EditText
+                android:id="@id/name"
+                style="@style/edit_text_sign_up"
+                android:paddingTop="@dimen/icon_size"
+                android:searchResultListItemHeight="@id/picture" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginTop="@dimen/sign_up_drawable_margin_top"
+            android:background="@drawable/sign_up"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                style="@style/wrapped"
+                android:layout_marginTop="80.0dip">
+
+                <LinearLayout
+                    android:id="@+id/phone"
+                    style="@style/matched"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/email"
+                        style="@style/edit_text"
+                        android:drawableStart="@drawable/email"
+                        android:hint="@string/email" />
+
+                    <EditText
+                        android:id="@+id/password"
+                        style="@style/edit_text"
+                        android:drawableStart="@drawable/password"
+                        android:hint="@string/password" />
+
+                    <EditText
+                        android:id="@+id/block"
+                        style="@style/edit_text"
+                        android:drawableStart="@drawable/block"
+                        android:hint="@string/residential_block" />
+
+                    <EditText
+                        android:id="@+id/room"
+                        style="@style/edit_text"
+                        android:drawableStart="@drawable/room"
+                        android:hint="@string/room" />
+                </LinearLayout>
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <include layout="@layout/bottom_nav" />
+
+        <Button
+            android:id="@+id/create_account"
+            style="@style/create_account_button"
+            android:layout_margin="@dimen/activity_margin"
+            android:text="@string/start"
+            android:visibility="invisible" />
+    </RelativeLayout>
+</RelativeLayout>

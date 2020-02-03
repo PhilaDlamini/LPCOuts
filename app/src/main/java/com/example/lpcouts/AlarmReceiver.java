@@ -9,9 +9,7 @@ import android.content.Intent;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
-import android.support.v4.app.NotificationCompat;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+import androidx.core.app.NotificationCompat;
 import java.util.ArrayList;
 
 public class AlarmReceiver extends BroadcastReceiver {
@@ -32,15 +30,15 @@ public class AlarmReceiver extends BroadcastReceiver {
 
         //If this is a reminder to sing in, when the notification reminder
         if (paramIntent.getBooleanExtra("signInReminder", false)) {
-            sendNotification(paramContext, paramContext.getString(2131755175), paramContext.getString(2131755176));
+            sendNotification(paramContext, paramContext.getString(R.string.sign_in_reminder), paramContext.getString(R.string.sign_in_reminder_message));
             return;
         }
 
         //Instantiate variables for fire base reference
-        this.mRoot = FirebaseDatabase.getInstance().getReference();
-        this.usersOnSpecialExtension = this.mRoot.child(SignOut.SPECIAL_EXTENSIONS);
-        this.usersOnRegularExtension = this.mRoot.child("Regular extensions");
-        this.specialExtensionApplications = this.mRoot.child("Special extensions applications");
+        mRoot = FirebaseDatabase.getInstance().getReference();
+        usersOnSpecialExtension = mRoot.child(SignOut.SPECIAL_EXTENSIONS);
+        usersOnRegularExtension = mRoot.child("Regular extensions");
+        specialExtensionApplications = mRoot.child("Special extensions applications");
 
         if (UserData.getData("Account type").equals("User Account")) {
             UserData.onRegularExtension(false, null); //Take them off all the extensions
@@ -52,9 +50,9 @@ public class AlarmReceiver extends BroadcastReceiver {
             //Get all users who have not signed in yet
             ArrayList<Outs> arrayList = UserData.getUsersSignedOut();
             if (arrayList.size() > 0) { //Send notification for users not signed in
-                sendNotification(paramContext, paramContext.getString(2131755121), paramContext.getString(2131755120));
+                sendNotification(paramContext, paramContext.getString(R.string.late_students), paramContext.getString(R.string.late));
             } else { //Else, tell them all users are signed in?
-                sendNotification(paramContext, paramContext.getString(2131755127), paramContext.getString(2131755128));
+                sendNotification(paramContext, paramContext.getString(R.string.no_late_comers), paramContext.getString(R.string.no_late_students_message));
             }
 
             //Save the list of all users who are signed out
@@ -62,9 +60,9 @@ public class AlarmReceiver extends BroadcastReceiver {
         }
 
         //Remove all extensions
-        this.usersOnRegularExtension.setValue(null);
-        this.specialExtensionApplications.setValue(null);
-        this.usersOnSpecialExtension.setValue(null);
+        usersOnRegularExtension.setValue(null);
+        specialExtensionApplications.setValue(null);
+        usersOnSpecialExtension.setValue(null);
     }
 
     public void sendNotification(Context paramContext, String paramString1, String paramString2) {
@@ -74,10 +72,10 @@ public class AlarmReceiver extends BroadcastReceiver {
 
         //Build the notification
         NotificationCompat.Builder builder = new NotificationCompat.Builder(paramContext, CHANNEL_ID_);
-        builder.setAutoCancel(true).setContentTitle(paramString1).setContentText(paramString2).setSound(uri).setContentIntent(pendingIntent).setStyle((NotificationCompat.Style)(new NotificationCompat.BigTextStyle()).bigText(paramString2)).setSmallIcon(2131230911);
+        builder.setAutoCancel(true).setContentTitle(paramString1).setContentText(paramString2).setSound(uri).setContentIntent(pendingIntent).setStyle(new NotificationCompat.BigTextStyle().bigText(paramString2)).setSmallIcon(R.drawable.path);
         NotificationManager notificationManager = (NotificationManager)paramContext.getSystemService(Context.NOTIFICATION_SERVICE);
         if (Build.VERSION.SDK_INT >= 26)
             notificationManager.createNotificationChannel(new NotificationChannel(CHANNEL_ID_, CHANNEL_NAME, NotificationManager.IMPORTANCE_DEFAULT));
-        notificationManager.notify(0, builder.build());
+        notificationManager.notify(CHANNEL_ID, builder.build());
     }
 }

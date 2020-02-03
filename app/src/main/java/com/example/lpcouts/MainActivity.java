@@ -5,16 +5,13 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -26,8 +23,8 @@ public class MainActivity extends AppCompatActivity {
     public void assignVariables() {
         UserData.assignSharedPreferences(getApplicationContext());
         this.firebaseAuth = FirebaseAuth.getInstance();
-        this.verification = (ViewGroup)findViewById(2131362095);
-        this.verify = (Button)findViewById(2131362096);
+        this.verification = (ViewGroup)findViewById(R.id.verification);
+        this.verify = (Button)findViewById(R.id.verify);
     }
 
     public void loadUserInfo() {
@@ -40,13 +37,12 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(getApplicationContext(), HOHMainActivity.class));
             return;
         }
-        getSupportFragmentManager().beginTransaction().replace(2131361906, new GuardMainFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new GuardMainFragment()).commit();
     }
 
     protected void onCreate(Bundle paramBundle) {
         super.onCreate(paramBundle);
-        setContentView(2131558431);
-        getWindow().getDecorView().setSystemUiVisibility(8192);
+        setContentView(R.layout.activity_main);
         assignVariables();
         refresh();
         this.verify.setOnClickListener(new View.OnClickListener() {
@@ -74,14 +70,14 @@ public class MainActivity extends AppCompatActivity {
                             public void onSuccess(Void param2Void) { UserData.linkSent(true); }
                         }).addOnFailureListener(new OnFailureListener() {
                             public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(UserData.context, this.getString(2131755102) + e, 0).show();
+                                Toast.makeText(UserData.context, this.getString(R.string.failed_to_send_link) + e, Toast.LENGTH_SHORT).show();
                             }
                         });
-                    MainActivity.this.verification.setVisibility(0);
+                    MainActivity.this.verification.setVisibility(View.VISIBLE);
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(this, this.getString(2131755089) + e, 0).show();
+                    Toast.makeText(this, this.getString(R.string.error) + e, Toast.LENGTH_SHORT).show();
                 }
             });
             return;
@@ -101,6 +97,6 @@ public class MainActivity extends AppCompatActivity {
 
         if (calendar2.before(calendar1))
             calendar2.add(Calendar.DAY_OF_MONTH, 1);
-        ((AlarmManager) context.getSystemService("alarm")).set(AlarmManager.RTC_WAKEUP, calendar2.getTimeInMillis(), pendingIntent);
+        ((AlarmManager) this.getSystemService(Context.ALARM_SERVICE)).set(AlarmManager.RTC_WAKEUP, calendar2.getTimeInMillis(), pendingIntent);
     }
 }

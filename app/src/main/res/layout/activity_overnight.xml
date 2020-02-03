@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/amber_700"
+    android:orientation="vertical"
+    android:padding="@dimen/activity_margin">
+
+    <RelativeLayout style="@style/matched">
+
+        <ImageView
+            android:id="@+id/cross"
+            style="@style/wrapped"
+            android:src="@drawable/cross" />
+
+        <ImageView
+            android:id="@+id/check"
+            style="@style/wrapped"
+            android:alertDialogCenterButtons="true"
+            android:src="@drawable/small_check" />
+    </RelativeLayout>
+
+    <LinearLayout
+        style="@style/matched"
+        android:layout_marginTop="@dimen/overnight_inputs_margin_top"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/overnight_title"
+            android:text="@string/you" />
+
+        <LinearLayout
+            style="@style/matched"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/tutor"
+                style="@style/weighted_overnight_input_field"
+                android:drawableStart="@drawable/tutor"
+                android:errorMessageBackground="@dimen/activity_margin"
+                android:hint="@string/tutor" />
+
+            <EditText
+                android:id="@+id/year"
+                style="@style/weighted_overnight_input_field"
+                android:drawableStart="@drawable/year"
+                android:hint="@string/year" />
+        </LinearLayout>
+
+        <TextView
+            style="@style/overnight_title"
+            android:text="@string/destination" />
+
+        <EditText
+            android:id="@+id/companion"
+            style="@style/overnight_input_field"
+            android:drawableStart="@drawable/companion"
+            android:hint="@string/accompanied_by" />
+
+        <EditText
+            android:id="@+id/address"
+            style="@style/overnight_input_field"
+            android:drawableStart="@drawable/address"
+            android:hint="@string/address" />
+
+        <TextView
+            style="@style/overnight_title"
+            android:text="@string/invited_by" />
+
+        <LinearLayout
+            style="@style/matched"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/host_name"
+                style="@style/weighted_overnight_input_field"
+                android:drawableStart="@drawable/name_black"
+                android:errorMessageBackground="@dimen/activity_margin"
+                android:hint="@string/name" />
+
+            <EditText
+                android:id="@+id/host_mobile"
+                style="@style/weighted_overnight_input_field"
+                android:drawableStart="@drawable/phone"
+                android:hint="@string/mobile" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

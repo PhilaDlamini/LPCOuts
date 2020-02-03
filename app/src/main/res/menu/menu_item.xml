@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:id="@+id/navigation">
+        <item
+            android:id="@+id/outs"
+            android:icon="@drawable/sign_out"
+            android:title="@string/outs" />
+        <item
+            android:id="@+id/extensions"
+            android:icon="@drawable/extension"
+            android:title="@string/extension_full" />
+    </group>
+    <group android:id="@+id/controls">
+        <item
+            android:id="@+id/settings"
+            android:icon="@drawable/settings"
+            android:title="@string/settings" />
+    </group>
+</menu>

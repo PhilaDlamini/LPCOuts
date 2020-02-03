@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white"
+    android:fitsSystemWindows="true">
+
+    <LinearLayout
+        android:id="@+id/special_extension"
+        style="@style/matched"
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/zero"
+            android:layout_weight="1.15"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                style="@style/wrapped"
+                android:layout_margin="@dimen/activity_margin">
+
+                <ImageView
+                    android:id="@+id/back"
+                    style="@style/wrapped"
+                    android:errorMessageBackground="@dimen/activity_margin"
+                    android:src="@drawable/back_black" />
+
+                <TextView
+                    style="@style/app_name"
+                    android:layout_margin="@dimen/zero"
+                    android:fontFamily="@font/karla"
+                    android:searchResultListItemHeight="@id/back"
+                    android:text="@string/special_extension_full"
+                    android:textColor="@color/grey_900" />
+
+                <ImageView
+                    android:id="@id/more_vert"
+                    style="@style/wrapped"
+                    android:alertDialogCenterButtons="true"
+                    android:src="@drawable/more_vert" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                style="@style/wrapped"
+                android:layout_marginTop="@dimen/activity_margin"
+                android:textUnderlineThickness="@dimen/activity_margin">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@id/user_image"
+                    android:layout_width="@dimen/profile_picture_size"
+                    android:layout_height="@dimen/profile_picture_size"
+                    android:background="@drawable/loader_image" />
+
+                <RelativeLayout
+                    style="@style/wrapped"
+                    android:layout_marginTop="40.0dip"
+                    android:background="@drawable/return_time_background"
+                    android:textUnderlineThickness="60.0dip">
+
+                    <TextView
+                        style="@style/return_time"
+                        android:text="@string/applying_for_e"
+                        android:textColor="@color/white" />
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <TextView
+                style="@style/search_text"
+                android:layout_marginTop="@dimen/activity_margin"
+                android:text="@string/return_time"
+                android:textUnderlineThickness="@dimen/activity_margin" />
+
+            <TextView
+                style="@style/search_text"
+                android:layout_marginTop="@dimen/activity_margin"
+                android:layout_marginBottom="@dimen/activity_margin"
+                android:drawableStart="@drawable/day"
+                android:drawablePadding="@dimen/activity_margin"
+                android:text="@string/sample_date"
+                android:textUnderlineThickness="@dimen/activity_margin" />
+
+            <TextView
+                style="@style/search_text"
+                android:layout_marginBottom="@dimen/activity_margin"
+                android:drawableStart="@drawable/time"
+                android:drawablePadding="@dimen/activity_margin"
+                android:text="@string/sample_return_time"
+                android:textUnderlineThickness="@dimen/activity_margin" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/zero"
+            android:layout_weight="@integer/bottom_nav_item_weight"
+            android:background="@color/yellow_500"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/reason"
+                style="@style/overnight_input_field"
+                android:layout_marginTop="40.0dip"
+                android:drawableStart="@drawable/reason"
+                android:hint="@string/reason" />
+
+            <EditText
+                android:id="@+id/address"
+                style="@style/overnight_input_field"
+                android:layout_below="@id/reason"
+                android:drawableStart="@drawable/address"
+                android:hint="@string/address" />
+
+            <EditText
+                android:id="@+id/companion"
+                style="@style/overnight_input_field"
+                android:layout_below="@id/address"
+                android:drawableStart="@drawable/companion"
+                android:hint="@string/accompanied_by"
+                android:textColor="#ff515144" />
+
+            <ImageView
+                android:id="@+id/apply"
+                style="@style/wrapped"
+                android:layout_alignParentBottom="true"
+                android:alertDialogCenterButtons="true"
+                android:padding="@dimen/activity_margin"
+                android:src="@drawable/get" />
+
+            <RelativeLayout
+                android:id="@+id/app_sent"
+                style="@style/wrapped"
+                android:layout_alignParentBottom="true"
+                android:alertDialogCenterButtons="true"
+                android:background="@drawable/extension_app_sent"
+                android:visibility="invisible">
+
+                <RelativeLayout
+                    style="@style/wrapped"
+                    android:layout_centerInParent="true">
+
+                    <ImageView
+                        android:id="@+id/ok"
+                        style="@style/wrapped"
+                        android:layout_centerHorizontal="true"
+                        android:src="@drawable/ok" />
+
+                    <TextView
+                        style="@style/search_text"
+                        android:layout_below="@id/ok"
+                        android:layout_marginTop="@dimen/buttons_margin_top"
+                        android:text="@string/applied_for_extension"
+                        android:textColor="@color/white" />
+                </RelativeLayout>
+            </RelativeLayout>
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

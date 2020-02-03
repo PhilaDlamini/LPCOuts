@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:id="@+id/user_data"
+        style="@style/matched"
+        android:paddingTop="@dimen/activity_margin"
+        android:textUnderlineThickness="@dimen/activity_margin">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@id/user_image"
+            style="@style/users_image"
+            android:background="@drawable/loader_image"
+            android:errorMessageBackground="@dimen/activity_margin" />
+
+        <LinearLayout
+            style="@style/wrapped"
+            android:layout_gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/user_name"
+                style="@style/users_out_item_text"
+                android:text="@string/sample_user" />
+
+            <TextView
+                android:id="@+id/small_text"
+                style="@style/users_out_item_text_date"
+                android:text="@string/sample_return_time" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/extension_data"
+        style="@style/matched"
+        android:layout_below="@id/user_data"
+        android:orientation="vertical"
+        android:padding="8.0dip"
+        android:textUnderlineThickness="32.0dip">
+
+        <LinearLayout
+            style="@style/matched"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/wrapped"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/on_extension" />
+
+            <TextView
+                android:id="@+id/data_1"
+                style="@style/search_text"
+                android:layout_gravity="center_vertical"
+                android:text="@string/sample_address"
+                android:textUnderlineThickness="@dimen/extensions_view_margin" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/matched"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/wrapped"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/on_extension" />
+
+            <TextView
+                android:id="@+id/data_2"
+                style="@style/search_text"
+                android:layout_gravity="center_vertical"
+                android:text="@string/sample_host"
+                android:textUnderlineThickness="@dimen/extensions_view_margin" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/matched"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/wrapped"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/on_extension" />
+
+            <TextView
+                android:id="@+id/data_3"
+                style="@style/search_text"
+                android:layout_gravity="center_vertical"
+                android:text="@string/sample_number"
+                android:textUnderlineThickness="@dimen/extensions_view_margin" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/data_4_root"
+            style="@style/matched"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/wrapped"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/on_extension" />
+
+            <TextView
+                android:id="@+id/data_4"
+                style="@style/search_text"
+                android:layout_gravity="center_vertical"
+                android:text="@string/sample_companion"
+                android:textUnderlineThickness="@dimen/extensions_view_margin" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/approve"
+        style="@style/button_text"
+        android:layout_below="@id/extension_data"
+        android:alertDialogCenterButtons="true"
+        android:fontFamily="@font/raleway_bold"
+        android:text="@string/approve" />
+
+    <TextView
+        android:id="@+id/dis_approve"
+        style="@style/button_text"
+        android:layout_below="@id/extension_data"
+        android:errorMessageAboveBackground="@id/approve"
+        android:fontFamily="@font/raleway_bold"
+        android:text="@string/dis_approve" />
+
+    <View
+        style="@style/line"
+        android:layout_below="@id/approve"
+        android:layout_marginTop="@dimen/activity_margin"
+        android:errorMessageBackground="@dimen/activity_margin"
+        android:textUnderlineThickness="@dimen/activity_margin" />
+</RelativeLayout>

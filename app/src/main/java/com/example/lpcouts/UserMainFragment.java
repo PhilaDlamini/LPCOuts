@@ -17,12 +17,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.design.widget.CoordinatorLayout;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.NotificationCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,6 +27,13 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import androidx.core.app.NotificationCompat;
+import androidx.fragment.app.Fragment;
+
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -67,9 +68,9 @@ public class UserMainFragment extends Fragment {
 
 
     public static void showSnackView(Context paramContext, ViewGroup paramViewGroup, String paramString) {
-        Snackbar snackbar = Snackbar.make(paramViewGroup, paramString, 0);
-        TextView textView = (TextView) snackbar.getView().findViewById(2131362032);
-        textView.setCompoundDrawablesWithIntrinsicBounds(2131230878, 0, 0, 0);
+        Snackbar snackbar = Snackbar.make(paramViewGroup, paramString, Snackbar.LENGTH_LONG);
+        TextView textView = (TextView) snackbar.getView().findViewById(R.id.snackbar_text);
+        textView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.info, 0, 0, 0);
         textView.setTypeface(Typeface.createFromAsset(paramContext.getAssets(), "fonts/Raleway-Light.ttf"));
         textView.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
         textView.setCompoundDrawablePadding(16);
@@ -83,7 +84,7 @@ public class UserMainFragment extends Fragment {
     }
 
     public String getTime() {
-        return UserData.isUserOnExtension() ? getReturnTime() : (UserExtensionActivity.isTheWeekend() ? getString(2131755206) : getString(2131755205));
+        return UserData.isUserOnExtension() ? getReturnTime() : (UserExtensionActivity.isTheWeekend() ? getString(R.string.weekend_return_time) : getString(R.string.weekday_return_time));
     }
 
     public View initializeView() {
@@ -91,33 +92,34 @@ public class UserMainFragment extends Fragment {
         if (this.container != null)
             this.container.removeAllViewsInLayout();
         if ((getActivity().getResources().getConfiguration()).orientation == 1) {
-            view = this.inflater.inflate(2131558485, this.container, false);
+            view = this.inflater.inflate(R.layout.user_fragment, this.container, false);
         } else {
-            view = this.inflater.inflate(2131558486, this.container, false);
+            view = this.inflater.inflate(R.layout.user_fragment_land, this.container, false);
         }
-        getActivity().getWindow().setStatusBarColor(getResources().getColor(2131099810));
-        profilePicImage = (ImageView) view.findViewById(2131361987);
-        dataRoot = (ViewGroup) view.findViewById(2131361870);
-        transition = (ViewGroup) view.findViewById(2131362080);
-        name = (TextView) view.findViewById(2131361956);
-        blockAndRoom = (TextView) view.findViewById(2131361836);
-        root = (ViewGroup) view.findViewById(2131361999);
-        signIn = (ViewGroup) view.findViewById(2131362027);
-        signOut = (ViewGroup) view.findViewById(2131362028);
-        main = (ViewGroup) view.findViewById(2131361945);
-        getExtension = (RelativeLayout) view.findViewById(2131361907);
-        timeLeft = (TextView) view.findViewById(2131362070);
-        onExtension = (TextView) view.findViewById(2131361969);
-        transitionStatusText = (TextView) view.findViewById(2131362083);
-        extensions = (ViewGroup) view.findViewById(2131361899);
-        progressBar = (ProgressBar) view.findViewById(2131361988);
-        coordinatorLayout = (CoordinatorLayout) view.findViewById(2131361858);
-        extensionRoot = (ViewGroup) view.findViewById(2131361898);
-        done = (ViewGroup) view.findViewById(2131361883);
-        messageText = (TextView) view.findViewById(2131361949);
-        spaceFiller1 = (ViewGroup) view.findViewById(2131362035);
-        spaceFiller2 = (ViewGroup) view.findViewById(2131362036);
-        moreVert = (ImageView) view.findViewById(2131361952);
+        getActivity().getWindow().setStatusBarColor(getResources().getColor(R.color.white));
+
+        profilePicImage = (ImageView) view.findViewById(R.id.profile_picture);
+        dataRoot = (ViewGroup) view.findViewById(R.id.data_root);
+        transition = (ViewGroup) view.findViewById(R.id.transition_occured);
+        name = (TextView) view.findViewById(R.id.name);
+        blockAndRoom = (TextView) view.findViewById(R.id.block_and_room);
+        root = (ViewGroup) view.findViewById(R.id.root);
+        signIn = (ViewGroup) view.findViewById(R.id.sign_in);
+        signOut = (ViewGroup) view.findViewById(R.id.sign_out);
+        main = (ViewGroup) view.findViewById(R.id.main);
+        getExtension = (RelativeLayout) view.findViewById(R.id.get_extension);
+        timeLeft = (TextView) view.findViewById(R.id.time_left);
+        onExtension = (TextView) view.findViewById(R.id.on_extension);
+        transitionStatusText = (TextView) view.findViewById(R.id.transition_status);
+        extensions = (ViewGroup) view.findViewById(R.id.extensions);
+        progressBar = (ProgressBar) view.findViewById(R.id.progress_bar);
+        coordinatorLayout = (CoordinatorLayout) view.findViewById(R.id.coordinator_layout);
+        extensionRoot = (ViewGroup) view.findViewById(R.id.extension_root);
+        done = (ViewGroup) view.findViewById(R.id.done);
+        messageText = (TextView) view.findViewById(R.id.message_text);
+        spaceFiller1 = (ViewGroup) view.findViewById(R.id.space_filler1);
+        spaceFiller2 = (ViewGroup) view.findViewById(R.id.space_filler2);
+        moreVert = (ImageView) view.findViewById(R.id.more_vert);
         picRoot = FirebaseStorage.getInstance().getReference();
 
         handler = new Handler() {
@@ -125,10 +127,10 @@ public class UserMainFragment extends Fragment {
                 int i = param1Message.arg1;
                 UserMainFragment.this.progressBar.setProgress(i);
                 if (i == 60) {
-                    if (UserData.getData("Status").equals(getString(2131755179))) {
-                        messageText.setText(getString(2131755214));
+                    if (UserData.getData("Status").equals(getString(R.string.signed_in))) {
+                        messageText.setText(getString(R.string.you_signed_in));
                     } else {
-                        messageText.setText(getString(2131755215));
+                        messageText.setText(getString(R.string.you_signed_out));
                     }
                     spaceFiller1.setVisibility(View.INVISIBLE);
                     spaceFiller2.setVisibility(View.INVISIBLE);
@@ -143,40 +145,41 @@ public class UserMainFragment extends Fragment {
         UserData.assignSharedPreferences(getContext());
         name.setText(UserData.getData("Name"));
         TextView textView = blockAndRoom;
-        textView.setText(getString(2131755154) + " " + UserData.getData("Block") + "/" + UserData.getData("Room"));
+        textView.setText(getString(R.string.residential_block) + " " + UserData.getData("Block") + "/" + UserData.getData("Room"));
         listenForDataChanges();
         ImageSampler.assignVariables(getContext());
         ImageSampler.loadImage(profilePicImage);
 
-        if (UserData.getData("Status").equals(getString(2131755179))) {
-            transitionStatusText.setText(getString(2131755179));
+        if (UserData.getData("Status").equals(getString(R.string.signed_in))) {
+            transitionStatusText.setText(getString(R.string.signed_in));
 
             if (UserData.isUserOnExtension()) {
                 textView = this.onExtension;
-                textView.setText(getString(2131755135) + "\n" + getReturnTime());
+                textView.setText(getString(R.string.on_extension) + "\n" + getReturnTime());
             } else {
-                this.onExtension.setText(getString(2131755126));
+                this.onExtension.setText(getString(R.string.no_extension));
             }
-            this.signIn.setVisibility(View.INVISIBLE);
-            this.timeLeft.setVisibility(View.INVISIBLE);
-            this.signOut.setVisibility(View.VISIBLE);
-            this.getExtension.setVisibility(View.VISIBLE);
+
+            signIn.setVisibility(View.INVISIBLE);
+            timeLeft.setVisibility(View.INVISIBLE);
+            signOut.setVisibility(View.VISIBLE);
+            getExtension.setVisibility(View.VISIBLE);
         } else {
-            this.getExtension.setVisibility(View.INVISIBLE);
-            this.signOut.setVisibility(View.INVISIBLE);
-            this.signIn.setVisibility(View.VISIBLE);
-            this.transitionStatusText.setText(getString(2131755180));
-            this.onExtension.setVisibility(View.VISIBLE);
+            getExtension.setVisibility(View.INVISIBLE);
+            signOut.setVisibility(View.INVISIBLE);
+            signIn.setVisibility(View.VISIBLE);
+            transitionStatusText.setText(getString(R.string.signed_out));
+            onExtension.setVisibility(View.VISIBLE);
 
             if (UserData.isUserOnExtension()) {
-                onExtension.setText(getString(2131755135) + "\n" + getReturnTime());
+                onExtension.setText(getString(R.string.on_extension) + "\n" + getReturnTime());
             } else {
-                this.onExtension.setText(getString(2131755126));
+                this.onExtension.setText(getString(R.string.no_extension));
             }
             if (SignIn.isLate()) {
-                this.timeLeft.setText(getString(2131755212));
+                this.timeLeft.setText(getString(R.string.you_are_late));
             } else {
-                timeLeft.setText(getString(2131755190) + "\n" + getTime());
+                timeLeft.setText(getString(R.string.time_of_return) + "\n" + getTime());
             }
         }
 
@@ -200,10 +203,10 @@ public class UserMainFragment extends Fragment {
                         startActivity(intent);
                         return;
                     }
-                    UserMainFragment.showSnackView(getContext(), UserMainFragment.this.coordinatorLayout, this.getString(2131755050));
+                    UserMainFragment.showSnackView(getContext(), UserMainFragment.this.coordinatorLayout, getContext().getString(R.string.already_on_extension));
                     return;
                 }
-                UserMainFragment.showSnackView(getContext(), UserMainFragment.this.coordinatorLayout, getString(2131755092));
+                UserMainFragment.showSnackView(getContext(), UserMainFragment.this.coordinatorLayout, getString(R.string.extension_application_not_allowed));
             }
         });
         this.signOut.setOnClickListener(new View.OnClickListener() {
@@ -211,11 +214,11 @@ public class UserMainFragment extends Fragment {
                 SignOut.assign(getContext());
                 if (SignOut.canSignOut()) {
                     SignOut.signOut();
-                    Animations.slideButtonsOut(param1View, view.findViewById(2131361907), UserMainFragment.this.root);
+                    Animations.slideButtonsOut(param1View, view.findViewById(R.id.get_extension), UserMainFragment.this.root);
                     thread.start();
                     return;
                 }
-                UserMainFragment.showSnackView(getContext(), coordinatorLayout, getString(2131755177));
+                UserMainFragment.showSnackView(getContext(), coordinatorLayout, getString(R.string.sign_out_not_allowed));
             }
         });
         this.signIn.setOnClickListener(new View.OnClickListener() {
@@ -224,7 +227,7 @@ public class UserMainFragment extends Fragment {
                 if (!SignIn.isLate()) {
                     SignIn.signIn();
                     thread.start();
-                    Animations.slideButtonsOut(param1View, view.findViewById(2131362028), root);
+                    Animations.slideButtonsOut(param1View, view.findViewById(R.id.sign_out), root);
                     return;
                 }
                 showAlertDialog(dialogView);
@@ -234,27 +237,28 @@ public class UserMainFragment extends Fragment {
     }
 
     public void listenForDataChanges() {
-        final DatabaseReference disApprovedExtensions = FirebaseDatabase.getInstance().getReference();
-        final DatabaseReference approvedExtensions = databaseReference2.child("Approved special extensions");
-        databaseReference1 = databaseReference1.child("BLOCK " + UserData.getData("Block"));
-        databaseReference2 = databaseReference2.child("DisApproved special extensions");
-        databaseReference2 = databaseReference2.child("BLOCK " + UserData.getData("Block"));
+        final DatabaseReference disApprovedExtensions = FirebaseDatabase.getInstance().getReference()
+                .child("BLOCK " + UserData.getData("Block"))
+                .child("DisApproved special extensions");
+        final DatabaseReference approvedExtensions = FirebaseDatabase.getInstance().getReference()
+                .child("Approved special extensions")
+                .child("BLOCK " + UserData.getData("Block"));
 
         Intent intent = new Intent(getContext(), UserMainActivity.class);
 
         final PendingIntent pendingIntent = PendingIntent.getActivity(getContext(), 0, intent, 0);
         final Uri soundUri = RingtoneManager.getDefaultUri(2);
-        final NotificationManager nm = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
+        final NotificationManager nm = (NotificationManager) getContext().getSystemService(Context.NOTIFICATION_SERVICE);
         final NotificationCompat.Builder builder = new NotificationCompat.Builder(this.context, "LPC Outs channel id");
         if (Build.VERSION.SDK_INT >= 26)
             notificationManager.createNotificationChannel(
                     new NotificationChannel("LPC Outs channel id", "LPC OUts channel name", NotificationManager.IMPORTANCE_DEFAULT));
-        final String extensionDisApprovedMessage = getString(2131755099);
-        final String extensionApprovedMessage = getString(2131755095);
-        final String extensionDisApprovedTitle = getString(2131755098);
-        final String extensionApprovedTitle = getString(2131755093);
+        final String extensionDisApprovedMessage = getString(R.string.extension_not_approved_message);
+        final String extensionApprovedMessage = getString(R.string.extension_approved_message);
+        final String extensionDisApprovedTitle = getString(R.string.extension_not_approved);
+        final String extensionApprovedTitle = getString(R.string.extension_approved);
 
-        databaseReference2.addValueEventListener(new ValueEventListener() {
+        disApprovedExtensions.addValueEventListener(new ValueEventListener() {
             public void onCancelled(@NonNull DatabaseError param1DatabaseError) {
             }
 
@@ -264,16 +268,18 @@ public class UserMainFragment extends Fragment {
                     if ((((DataSnapshot) iterator.next())
                             .getValue(SpecialExtension.class))
                             .getName().equals(UserData.getData("Name"))) {
+
                         Toast.makeText(UserMainFragment.this.context, "Your extension was disapproved", Toast.LENGTH_SHORT).show();
                         UserData.onSpecialExtension(false, null);
                         disApprovedExtensions.child(UserData.getData("Name")).setValue(null);
+
                         builder.setAutoCancel(true)
                                 .setContentTitle(extensionDisApprovedTitle)
                                 .setContentText(extensionDisApprovedMessage)
                                 .setSound(soundUri)
                                 .setContentIntent(pendingIntent
                                 ).setStyle(new NotificationCompat.BigTextStyle()).bigText(extensionDisApprovedMessage)
-                                .setSmallIcon(2131230911);
+                                .setSmallIcon(R.drawable.path);
                         nm.notify(0, builder.build());
 
                         return;
@@ -282,7 +288,7 @@ public class UserMainFragment extends Fragment {
             }
         });
 
-        databaseReference1.addValueEventListener(new ValueEventListener() {
+        approvedExtensions.addValueEventListener(new ValueEventListener() {
             public void onCancelled(@NonNull DatabaseError param1DatabaseError) {
             }
 
@@ -292,7 +298,7 @@ public class UserMainFragment extends Fragment {
                     SpecialExtension specialExtension = ((DataSnapshot) iterator.next()).getValue(SpecialExtension.class);
                     if (specialExtension.getName().equals(UserData.getData("Name"))) {
                         UserData.onSpecialExtension(true, specialExtension);
-                        Toast.makeText(getContext(), getString(2131755093), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), getString(R.string.extension_approved), Toast.LENGTH_SHORT).show();
                         approvedExtensions.child(UserData.getData("Name")).setValue(null);
                         builder.setAutoCancel(true)
                                 .setContentTitle(extensionApprovedTitle)
@@ -300,7 +306,7 @@ public class UserMainFragment extends Fragment {
                                 .setSound(soundUri)
                                 .setContentIntent(pendingIntent)
                                 .setStyle(new NotificationCompat.BigTextStyle()).bigText(extensionApprovedMessage)
-                                .setSmallIcon(2131230911);
+                                .setSmallIcon(R.drawable.path);
                         nm.notify(0, builder.build());
                         return;
                     }
@@ -316,34 +322,35 @@ public class UserMainFragment extends Fragment {
 
     @Nullable
     public View onCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, @Nullable Bundle paramBundle) {
-        this.inflater = paramLayoutInflater;
-        this.container = paramViewGroup;
+        inflater = paramLayoutInflater;
+        container = paramViewGroup;
         View view = initializeView();
-        this.dialogView = paramLayoutInflater.inflate(2131558481, paramViewGroup, false);
+        dialogView = paramLayoutInflater.inflate(R.layout.signed_in_late, paramViewGroup, false);
         return view;
     }
 
     public void remindUser() {
         Intent intent = new Intent(getContext(), AlarmReceiver.class);
         intent.putExtra("signInReminder", true);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(getContext(), 2, intent, 134217728);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(getContext(), 2, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         Date date = new Date();
         Calendar calendar1 = Calendar.getInstance();
         Calendar calendar2 = Calendar.getInstance();
         calendar1.setTime(date);
         calendar2.setTime(date);
-        calendar2.set(11, 6); //Figured out what the 11, 12 and 5 is?
-        calendar2.set(12, 1);
+        calendar2.set(Calendar.HOUR_OF_DAY, 6); //Figured out what the 11, 12 and 5 is? (hour of day / minute)
+        calendar2.set(Calendar.MINUTE, 1);
         if (calendar2.before(calendar1))
-            calendar2.add(5, 1);
-        (getContext().getSystemService(Context.ALARM_SERVICE)).set(AlarmManager.RTC_WAKEUP, calendar2.getTimeInMillis(), pendingIntent);
+            calendar2.add(Calendar.DAY_OF_MONTH, 1); //The right 5?
+
+        getContext().getSystemService(Context.ALARM_SERVICE).set(AlarmManager.RTC_WAKEUP, calendar2.getTimeInMillis(), pendingIntent);
     }
 
     public void showAlertDialog(View paramView) {
-        final CheckBox remindUser = dialogView.findViewById(2131361993);
+        final CheckBox remindUser = dialogView.findViewById(R.id.remind_me);
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setView(paramView);
-        builder.setPositiveButton(getString(2131755134), new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(getString(R.string.ok), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface param1DialogInterface, int param1Int) {
                 if (remindUser.isChecked())
                     remindUser();

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <size
+        android:width="@dimen/go_button_width"
+        android:height="@dimen/go_button_height" />
+    <corners android:radius="@dimen/sign_up_drawable_radius" />
+    <solid android:color="@color/light_blue_500" />
+</shape>

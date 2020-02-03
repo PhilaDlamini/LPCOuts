@@ -3,12 +3,7 @@ package com.example.lpcouts;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.NavigationView;
-import android.support.design.widget.TabLayout;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.v4.widget.DrawerLayout;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,6 +12,10 @@ import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.viewpager.widget.ViewPager;
+import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.tabs.TabLayout;
 
 public class HOHExtensionsActivity extends AppCompatActivity {
 
@@ -31,11 +30,11 @@ public class HOHExtensionsActivity extends AppCompatActivity {
   //Shows the pop up
   public static void showPopUpView(final Context context, View paramView) {
     PopupMenu popupMenu = new PopupMenu(context, paramView);
-    popupMenu.getMenuInflater().inflate(2131623937, popupMenu.getMenu());
+    popupMenu.getMenuInflater().inflate(R.menu.settings_menu, popupMenu.getMenu());
     popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
           public boolean onMenuItemClick(MenuItem param1MenuItem) {
-            if (param1MenuItem.getItemId() == 2131362022)
-              Toast.makeText(context, context.getString(2131755133), Toast.LENGTH_SHORT).show();
+            if (param1MenuItem.getItemId() == R.id.settings)
+              Toast.makeText(context, context.getString(R.string.not_complete), Toast.LENGTH_SHORT).show();
             return true;
           }
         });
@@ -44,50 +43,47 @@ public class HOHExtensionsActivity extends AppCompatActivity {
   
   protected void onCreate(Bundle paramBundle) {
     super.onCreate(paramBundle);
-    setContentView(2131558429);
+    setContentView(R.layout.activity_hohextensions);
 
     //Find all the views
-    this.drawerLayout = (DrawerLayout)findViewById(2131361884);
-    this.navigationView = (NavigationView)findViewById(2131361959);
-    this.viewPager = (ViewPager)findViewById(2131362098);
-    this.tabLayout = (TabLayout)findViewById(2131362055);
-    this.hamburger = (ImageView)findViewById(2131361915);
-    this.moreVert = (ImageView)findViewById(2131361952);
-    NavigationView navigationView1 = this.navigationView;
-    View view = navigationView1.getHeaderView(0);
-    this.hohName = (TextView)view.findViewById(2131361956);
-    this.blockSupervising = (TextView)view.findViewById(2131361835);
-    this.userProfilePic = (ImageView)view.findViewById(2131361987);
+    drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
+    navigationView = (NavigationView)findViewById(R.id.navigation_menu);
+    viewPager = (ViewPager)findViewById(R.id.view_pager);
+    tabLayout = (TabLayout)findViewById(R.id.tab_layout);
+    hamburger = (ImageView)findViewById(R.id.hamburger);
+    moreVert = (ImageView)findViewById(R.id.more_vert);
+    View view = navigationView.getHeaderView(0);
+    hohName = (TextView)view.findViewById(R.id.name);
+    blockSupervising = (TextView)view.findViewById(R.id.block);
+    userProfilePic = (ImageView)view.findViewById(R.id.profile_picture);
 
     //Upload the profile picture
     ImageSampler.assignVariables(getApplicationContext());
-    ImageSampler.loadImage(this.userProfilePic);
+    ImageSampler.loadImage(userProfilePic);
 
     //Display the right data for the hoh
     hohName.setText(UserData.getData("Name"));
-
-    TextView textView = this.blockSupervising;
-    textView.setText( getString(2131755154) + " " + UserData.getData("Block"));
+    blockSupervising.setText( getString(R.string.residential_block) + " " + UserData.getData("Block"));
     getWindow().getDecorView().setSystemUiVisibility(8192);  //?
 
     //When a navigation item is clicked
     navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-      public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+      public boolean onNavigationItemSelected(MenuItem menuItem) {
 
         switch (menuItem.getItemId()) {
 
-          case 2131361971:
+          case R.id.outs:
             //Send user to the HOHMainActivity
             Intent intent = new Intent(getApplicationContext(), HOHMainActivity.class);
             startActivity(intent);
             break;
 
-          case 2131361899:
+          case R.id.extensions:
             //Tell them they are here
             Toast.makeText( HOHExtensionsActivity.this, "You are already here", 0).show();
             break;
 
-          case 2131361856:
+          case R.id.controls:
             Toast.makeText(HOHExtensionsActivity.this, "Service not available right now", 0).show();
             break;
 
@@ -103,13 +99,13 @@ public class HOHExtensionsActivity extends AppCompatActivity {
 
     //Set up view pager
     setUpViewPager();
-    tabLayout.setupWithViewPager(this.viewPager);
+    tabLayout.setupWithViewPager(viewPager);
 
     //What does this do? //#############
     int i = 0;
-    while (i < this.tabLayout.getTabCount()) {
-      textView = (TextView)LayoutInflater.from((Context)this).inflate(2131558436, null);
-      this.tabLayout.getTabAt(i).setCustomView((View)textView);
+    while (i < tabLayout.getTabCount()) {
+      TextView textView = (TextView)LayoutInflater.from(this).inflate(R.layout.custom_tab, null);
+      tabLayout.getTabAt(i).setCustomView(textView);
       i++;
     }
     //#############
@@ -118,7 +114,7 @@ public class HOHExtensionsActivity extends AppCompatActivity {
     //Onclick listeners for the navigation buttons
     hamburger.setOnClickListener(new View.OnClickListener() {
           public void onClick(View param1View) {
-            HOHExtensionsActivity.this.drawerLayout.openDrawer(8388611);
+            drawerLayout.openDrawer(Gravity.LEFT);
           }
         });
 
@@ -130,11 +126,11 @@ public class HOHExtensionsActivity extends AppCompatActivity {
   }
 
   //Sets up view pager for the tab appLayout
-  public void setUpViewPager() {
+  public void setUpViewPager() { //Change Fragment extensions.
     PagerAdapter pagerAdapter = new PagerAdapter(getSupportFragmentManager());
-    pagerAdapter.addFragment(new HOHSpecialExtensionApplicationFragment(), getString(2131755097));
-    pagerAdapter.addFragment(new HOHOvernightApplicationFragment(), getString(2131755139));
-    viewPager.setAdapter((PagerAdapter)pagerAdapter);
+    pagerAdapter.addFragment(new HOHSpecialExtensionApplicationFragment(), getString(R.string.extension_full));
+    pagerAdapter.addFragment(new HOHOvernightApplicationFragment(), getString(R.string.overnight));
+    viewPager.setAdapter(pagerAdapter);
   }
 }
 

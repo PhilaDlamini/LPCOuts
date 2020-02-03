@@ -1,21 +1,13 @@
 package com.example.lpcouts;
 
 import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
-import android.content.Context;
 import android.content.Intent;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.NavigationView;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.NotificationCompat;
-import android.support.v4.app.NotificationManagerCompat;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -26,16 +18,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.viewpager.widget.ViewPager;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.tabs.TabLayout;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class HOHMainActivity extends AppCompatActivity {
 
@@ -62,12 +52,12 @@ public class HOHMainActivity extends AppCompatActivity {
             .child("BLOCK " + UserData.getData("Block"));
 
     mUsersSignedOut.addValueEventListener(new ValueEventListener() {
-          public void onCancelled(@NonNull DatabaseError param1DatabaseError) {
-            Toast.makeText(HOHMainActivity.getApplicationContext(), "Database error reading data change " + param1DatabaseError,
+          public void onCancelled(DatabaseError param1DatabaseError) {
+            Toast.makeText(getApplicationContext(), "Database error reading data change " + param1DatabaseError,
                     Toast.LENGTH_SHORT).show();
           }
           
-          public void onDataChange(@NonNull DataSnapshot param1DataSnapshot) {
+          public void onDataChange(dataSnapshot param1DataSnapshot) {
             ArrayList<Outs> arrayList = new ArrayList();
 
             Iterator<DataSnapshot> iterator = param1DataSnapshot.getChildren().iterator();
@@ -82,9 +72,9 @@ public class HOHMainActivity extends AppCompatActivity {
         });
 
     specialExtensionsApplications.addValueEventListener(new ValueEventListener() {
-          public void onCancelled(@NonNull DatabaseError param1DatabaseError) {}
+          public void onCancelled(DatabaseError param1DatabaseError) {}
           
-          public void onDataChange(@NonNull DataSnapshot param1DataSnapshot) {
+          public void onDataChange(DataSnapshot param1DataSnapshot) {
             boolean bool = false;
             ArrayList<SpecialExtension> arrayList = new ArrayList();
             Iterator<DataSnapshot> iterator = param1DataSnapshot.getChildren().iterator();
@@ -95,14 +85,14 @@ public class HOHMainActivity extends AppCompatActivity {
             UserData.assignSharedPreferences(HOHMainActivity.this);
             UserData.saveUsersAppliedForSpecialExtension(arrayList);
             if (bool)
-              HOHMainActivity.this.notifyUser("Extension application", "A user just applied for an extension"); 
+              notifyUser("Extension application", "A user just applied for an extension");
           }
         });
 
     specialExtensions.addValueEventListener(new ValueEventListener() {
-          public void onCancelled(@NonNull DatabaseError param1DatabaseError) {}
+          public void onCancelled(DatabaseError param1DatabaseError) {}
           
-          public void onDataChange(@NonNull DataSnapshot param1DataSnapshot) {
+          public void onDataChange(DataSnapshot param1DataSnapshot) {
             ArrayList<SpecialExtension> arrayList = new ArrayList();
             Iterator<DataSnapshot> iterator = param1DataSnapshot.getChildren().iterator();
             while (iterator.hasNext())
@@ -113,9 +103,9 @@ public class HOHMainActivity extends AppCompatActivity {
         });
 
     regularExtensions.addValueEventListener(new ValueEventListener() {
-          public void onCancelled(@NonNull DatabaseError param1DatabaseError) {}
+          public void onCancelled(DatabaseError param1DatabaseError) {}
           
-          public void onDataChange(@NonNull DataSnapshot param1DataSnapshot) {
+          public void onDataChange(DataSnapshot param1DataSnapshot) {
             ArrayList<Extension> arrayList = new ArrayList();
             Iterator<DataSnapshot> iterator = param1DataSnapshot.getChildren().iterator();
             while (iterator.hasNext())
@@ -130,7 +120,7 @@ public class HOHMainActivity extends AppCompatActivity {
     PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, new Intent(this, HOHExtensionsActivity.class), 0);
     Uri uri = RingtoneManager.getDefaultUri(2);
     if (Build.VERSION.SDK_INT >= 26)
-      (new NotificationChannel("LPC Outs Channel ID", "LPC Outs channel", 3)).setDescription("Sends notifications"); 
+      (new NotificationChannel("LPC Outs Channel ID", "LPC Outs channel", NotificationManager.IMPORTANCE_DEFAULT)).setDescription("Sends notifications");
 
     NotificationCompat.Builder builder = (new NotificationCompat.Builder(this))
             .setAutoCancel(true)
@@ -138,8 +128,8 @@ public class HOHMainActivity extends AppCompatActivity {
             .setContentText(paramString2)
             .setSound(uri)
             .setContentIntent(pendingIntent)
-            .setStyle(new NotificationCompat.BigTextStyle())
-            .bigText(paramString2)
+            .setStyle(new NotificationCompat.BigTextStyle()
+            .bigText(paramString2))
             .setSmallIcon(2131230911);
 
     NotificationManagerCompat.from(this)
@@ -148,50 +138,51 @@ public class HOHMainActivity extends AppCompatActivity {
   
   protected void onCreate(Bundle paramBundle) {
     super.onCreate(paramBundle);
-    setContentView(2131558430);
+    setContentView(R.layout.activity_hohmain);
 
-    drawerLayout = (DrawerLayout)findViewById(2131361884);
-    viewPager = (ViewPager)findViewById(2131362098);
-    smallProfile = (ImageView)findViewById(2131362094);
-    tabLayout = (TabLayout)findViewById(2131362055);
-    navigationView = (NavigationView)findViewById(2131361959);
+    drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
+    viewPager = (ViewPager)findViewById(R.id.view_pager);
+    smallProfile = (ImageView)findViewById(R.id.user_profile_pic);
+    tabLayout = (TabLayout)findViewById(R.id.tab_layout);
+    navigationView = (NavigationView)findViewById(R.id.navigation_menu);
     View view = navigationView.getHeaderView(0);
-    imageView = (ImageView)view.findViewById(2131361987);
-    hohName = (TextView)view.findViewById(2131361956);
-    blockSupervising = (TextView)view.findViewById(2131361835);
+    imageView = (ImageView)view.findViewById(R.id.profile_picture);
+    hohName = (TextView)view.findViewById(R.id.name);
+    blockSupervising = (TextView)view.findViewById(R.id.block);
 
     getWindow().getDecorView().setSystemUiVisibility(8192);
+
     ImageSampler.assignVariables(getApplicationContext());
     ImageSampler.loadImage(smallProfile);
     ImageSampler.loadImage(imageView);
     hohName.setText(UserData.getData("Name"));
     TextView textView = blockSupervising;
     StringBuilder stringBuilder = new StringBuilder();
-    textView.setText(getString(2131755154) + " " + UserData.getData("Block"));
-    tabLayout.setupWithViewPager(viewPager);
+    textView.setText(getString(R.string.residential_block) + " " + UserData.getData("Block"));
+    tabLayout.setupWithViewPager(viewPager); //What?!!!
     setUpViewPager();
 
-    for (int i = 0; i < this.tabLayout.getTabCount(); i++) {
-      textView = LayoutInflater.from(this).inflate(2131558436, null);
+    for (int i = 0; i < tabLayout.getTabCount(); i++) {
+      textView = (TextView) LayoutInflater.from(this).inflate(R.layout.custom_tab, null);
       tabLayout.getTabAt(i).setCustomView(textView);
     } 
     this.navigationView.getMenu().getItem(0).setChecked(true);
     listenForDataChanges();
 
     this.navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-          public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+          public boolean onNavigationItemSelected(MenuItem menuItem) {
 
             switch (menuItem.getItemId()) {
 
-              case 2131362022:
+              case R.id.settings:
                 Toast.makeText(HOHMainActivity.this, "Option not available yet", 0).show();
                 break;
 
-              case 2131361971:
+              case R.id.outs:
                 Toast.makeText(HOHMainActivity.this, "You are already in this activity", 0).show();
                 break;
 
-              case 2131361899:
+              case R.string.extensions:
                 Intent intent = new Intent(HOHMainActivity.this.getApplicationContext(), HOHExtensionsActivity.class);
                 HOHMainActivity.this.startActivity(intent);
                 break;
@@ -204,9 +195,9 @@ public class HOHMainActivity extends AppCompatActivity {
   
   public void setUpViewPager() {
     PagerAdapter pagerAdapter = new PagerAdapter(getSupportFragmentManager());
-    pagerAdapter.addFragment(new HOHFragmentUsersSignedOut(), getString(2131755137));
-    pagerAdapter.addFragment(new HOHFragmentUsersOnExtension(), getString(2131755199));
-    pagerAdapter.addFragment(new HOHFragmentUsersLate(), getString(2131755198));
+    pagerAdapter.addFragment(new HOHFragmentUsersSignedOut(), getString(R.string.out));
+    pagerAdapter.addFragment(new HOHFragmentUsersOnExtension(), getString(R.string.users_on_extension));
+    pagerAdapter.addFragment(new HOHFragmentUsersLate(), getString(R.string.users_late));
     viewPager.setAdapter(pagerAdapter);
   }
 }

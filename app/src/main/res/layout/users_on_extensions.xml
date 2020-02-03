@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:paddingTop="@dimen/activity_margin"
+    android:textAppearanceAutoCorrectionSuggestion="@dimen/activity_margin"
+    android:textUnderlineColor="@dimen/activity_margin">
+
+    <RelativeLayout
+        android:id="@id/user_info"
+        style="@style/matched">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@id/profile_picture"
+            style="@style/users_image"
+            android:background="@drawable/loader_image" />
+
+        <LinearLayout
+            android:id="@+id/user_data"
+            style="@style/wrapped"
+            android:layout_centerVertical="true"
+            android:orientation="vertical"
+            android:searchResultListItemHeight="@id/profile_picture"
+            android:textUnderlineThickness="@dimen/activity_margin">
+
+            <TextView
+                android:id="@id/name"
+                style="@style/users_out_item_text"
+                android:text="@string/sample_name" />
+
+            <TextView
+                android:id="@+id/return_time"
+                style="@style/users_out_item_text_date"
+                android:text="@string/sample_return_time" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@id/data_root"
+        style="@style/matched"
+        android:layout_below="@id/user_info"
+        android:layout_marginTop="@dimen/activity_margin"
+        android:textUnderlineThickness="@dimen/icon_size">
+
+        <ImageView
+            style="@style/wrapped"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/on_extension" />
+
+        <TextView
+            android:id="@+id/reason"
+            style="@style/search_text"
+            android:textSize="@dimen/extension_size"
+            android:textUnderlineThickness="@dimen/data_text_ms" />
+    </LinearLayout>
+</RelativeLayout>

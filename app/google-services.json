@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "742044115296",
+    "firebase_url": "https://lpcouts-230a3.firebaseio.com",
+    "project_id": "lpcouts-230a3",
+    "storage_bucket": "lpcouts-230a3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:742044115296:android:6b872fb1e0a2f576dbfe05",
+        "android_client_info": {
+          "package_name": "com.example.lpcouts"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "742044115296-lknba58jlf140h56jkruiifr9r7hk678.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.lpcouts",
+            "certificate_hash": "3d27236de98fcabd02b6636ff9ef9119c5b5ca9d"
+          }
+        },
+        {
+          "client_id": "742044115296-ljb4spo7m72to79ujkfj610i09pje7m3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAnCXsgCzqHI3oAUubzdjRaFkvHp_sRJ5o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "742044115296-ljb4spo7m72to79ujkfj610i09pje7m3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

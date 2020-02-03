@@ -1,14 +1,14 @@
 package com.example.lpcouts;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
 
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import java.util.ArrayList;
 
 public class PagerAdapter extends FragmentPagerAdapter {
   ArrayList<String> mFragmentTitles = new ArrayList<String>();
-  ArrayList<Fragment> mFragments = new ArrayList<Fragment>();
+  ArrayList<Fragment> mFragments = new ArrayList<>();
   
   public PagerAdapter(FragmentManager paramFragmentManager) {
     super(paramFragmentManager);
@@ -20,15 +20,15 @@ public class PagerAdapter extends FragmentPagerAdapter {
   }
   
   public int getCount() {
-    return this.mFragments.size();
+    return mFragments.size();
   }
   
   public Fragment getItem(int paramInt) {
-    return this.mFragments.get(paramInt);
+    return mFragments.get(paramInt);
   }
   
   @Nullable
   public CharSequence getPageTitle(int paramInt) {
-    return this.mFragmentTitles.get(paramInt);
+    return mFragmentTitles.get(paramInt);
   }
 }

@@ -5,6 +5,8 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
@@ -19,7 +21,6 @@ import java.util.Iterator;
 
 public class SignUp {
     public static final String GUARDACCOUNTS = "Guard Accounts";
-    public static final String GUARD_ACCOUNT = "Guard Account";
     public static final String HOHACCOUNTS = "HOH Accounts";
     public static final String HOH_ACCOUNT = "HOH Account";
     private static final String LPC_EMAIL = "lpcuwc.edu.hk";
@@ -34,7 +35,7 @@ public class SignUp {
 
     public static void assignVariables(Context paramContext, Uri paramUri) {
         context = paramContext;
-        usersDatabaseReference = FirebaseDatabase.getInstance().getReference().child("Users");
+        usersDatabaseReference = FirebaseDatabase.getInstance().getReference().child(USERS);
         firebaseAuth = FirebaseAuth.getInstance();
         imageUri = paramUri;
     }
@@ -49,22 +50,22 @@ public class SignUp {
                             }
                         }).addOnFailureListener(new OnFailureListener() {
                             public void onFailure(@NonNull Exception param2Exception) {
-                                Toast.makeText(context, context.getString(2131755089) + " " + param2Exception.getMessage() , Toast.LENGTH_SHORT).show();
+                                Toast.makeText(context, context.getString(R.string.error) + " " + param2Exception.getMessage() , Toast.LENGTH_SHORT).show();
                             }
                         });
                     }
                 }).addOnFailureListener(new OnFailureListener() {
             public void onFailure(@NonNull Exception e) {
                 if (e instanceof FirebaseAuthWeakPasswordException) {
-                    Toast.makeText(context, context.getString(2131755186), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, context.getString(R.string.stronger_password), Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (e instanceof FirebaseAuthInvalidCredentialsException) {
-                    Toast.makeText(context, context.getString(2131755118), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, context.getString(R.string.incorrect_email), Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (e instanceof FirebaseAuthUserCollisionException) {
-                    Toast.makeText(context, context.getString(2131755088), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, context.getString(R.string.email_in_use), Toast.LENGTH_SHORT).show();
                     return;
                 }
                 Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
@@ -73,16 +74,16 @@ public class SignUp {
     }
 
     public static boolean isLpcEmail(String paramString) {
-        return paramString.split("@")[1].toLowerCase().trim().equals("lpcuwc.edu.hk");
+        return paramString.split("@")[1].toLowerCase().trim().equals(LPC_EMAIL);
     }
 
     public static void saveData(final Uri imageUri, User user, final String accountType, final String nameEntered) {
-        if (accountType.equals("User Account")) {
-            usersDatabaseReference = FirebaseDatabase.getInstance().getReference().child("Users");
-        } else if (accountType.equals("HOH Account")) {
-            usersDatabaseReference = FirebaseDatabase.getInstance().getReference().child("HOH Accounts");
+        if (accountType.equals(USER_ACCOUNT)) {
+            usersDatabaseReference = FirebaseDatabase.getInstance().getReference().child(USERS);
+        } else if (accountType.equals(HOH_ACCOUNT)) {
+            usersDatabaseReference = FirebaseDatabase.getInstance().getReference().child(HOHACCOUNTS);
         } else {
-            usersDatabaseReference = FirebaseDatabase.getInstance().getReference().child("Guard Accounts");
+            usersDatabaseReference = FirebaseDatabase.getInstance().getReference().child(GUARDACCOUNTS);
         }
         specificUser = usersDatabaseReference.child(user.getFullName());
         usersDatabaseReference.addValueEventListener(new ValueEventListener() {
@@ -100,7 +101,7 @@ public class SignUp {
                         UserData.saveUserName(user.getFullName());
                         UserData.saveAccountType(accountType);
                         UserData.saveRoom(user.getRoom());
-                        UserData.saveStatus(context.getString(2131755179));
+                        UserData.saveStatus(context.getString(R.string.signed_in));
                         return;
                     }
                 }
@@ -113,7 +114,7 @@ public class SignUp {
             }
         }).addOnFailureListener(new OnFailureListener() {
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(context, context.getString(2131755089) + "" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, context.getString(R.string.error) + "" + e.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }

@@ -4,15 +4,17 @@ import android.animation.Animator;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
 import java.util.Calendar;
 import java.util.LinkedHashMap;
 
@@ -43,18 +45,18 @@ public class RegularExtensionFragment extends Fragment {
   
   public void onAttach(Context paramContext) {
     super.onAttach(paramContext);
-    this.callback = (onGetExtensionClicked)paramContext;
+    callback = (onGetExtensionClicked)paramContext;
   }
   
   @Nullable
   public View onCreateView(@NonNull LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, @Nullable Bundle paramBundle) {
-    View view = paramLayoutInflater.inflate(2131558477, paramViewGroup, false);
-    this.back = (ImageView)view.findViewById(2131361831);
-    this.moreVert = (ImageView)view.findViewById(2131361952);
-    this.getExtension = (ImageView)view.findViewById(2131361907);
-    this.returnDate = (TextView)view.findViewById(2131361871);
-    this.pic = (ImageView)view.findViewById(2131361987);
-    this.extensionsApproved = (ViewGroup)view.findViewById(2131361896);
+    View view = paramLayoutInflater.inflate(R.layout.regular_extension_fragment, paramViewGroup, false);
+    this.back = (ImageView)view.findViewById(R.id.back);
+    this.moreVert = (ImageView)view.findViewById(R.id.more_vert);
+    this.getExtension = (ImageView)view.findViewById(R.id.get_extension);
+    this.returnDate = (TextView)view.findViewById(R.id.date);
+    this.pic = (ImageView)view.findViewById(R.id.profile_picture);
+    this.extensionsApproved = (ViewGroup)view.findViewById(R.id.extension_approved);
     this.returnDate.setText(getReturnDate());
 
     ImageSampler.assignVariables(getContext());
@@ -62,14 +64,14 @@ public class RegularExtensionFragment extends Fragment {
 
     this.back.setOnClickListener(new View.OnClickListener() {
           public void onClick(View param1View) {
-            Intent intent = new Intent(this.getContext(), UserMainActivity.class);
-            this.startActivity(intent);
+            Intent intent = new Intent(getContext(), UserMainActivity.class);
+            startActivity(intent);
           }
         });
 
     this.moreVert.setOnClickListener(new View.OnClickListener() {
           public void onClick(View param1View) {
-            HOHExtensionsActivity.showPopUpView(this.getContext(), moreVert);
+            HOHExtensionsActivity.showPopUpView(getContext(), moreVert);
           }
         });
 
@@ -85,8 +87,8 @@ public class RegularExtensionFragment extends Fragment {
                     
                     public void onAnimationEnd(Animator param2Animator) {
                       Intent intent = new Intent(RegularExtensionFragment.this.getContext(), UserMainActivity.class);
-                      intent.addFlags(67108864);
-                      RegularExtensionFragment.this.startActivity(intent);
+                      intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                      startActivity(intent);
                     }
                     
                     public void onAnimationRepeat(Animator param2Animator) {}
@@ -97,13 +99,13 @@ public class RegularExtensionFragment extends Fragment {
               RegularExtensionFragment.this.extensionsApproved.setVisibility(View.VISIBLE);
               return;
             } 
-            Toast.makeText(this.getContext(), "Cannot get an extension at this point", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "Cannot get an extension at this point", Toast.LENGTH_SHORT).show();
           }
         });
     return view;
   }
   
-  static interface onGetExtensionClicked {
-    void onGetExtensionClicked();
+   interface onGetExtensionClicked {
+    void getExtensionClicked();
   }
 }

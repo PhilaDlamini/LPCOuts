@@ -1,7 +1,6 @@
 package com.example.lpcouts;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +8,9 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import androidx.fragment.app.Fragment;
+
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -21,32 +23,32 @@ public class HOHFragmentUsersOnExtension extends Fragment {
   RelativeLayout noUsersOnExtension;
   
   public void addListViewData() {
-    this.mData = new ArrayList();
+    mData = new ArrayList();
 
     if (UserExtensionActivity.isTheWeekend()) {
 
       //Find users on regular extension
-      mData.add(getString(2131755151));
+      mData.add(getContext().getString(R.string.regular_extension));
       ArrayList<Extension> usersOnRegularExtension = UserData.getUsersOnRegularExtension();
 
       if (usersOnRegularExtension.size() != 0) {
         Collections.sort(usersOnRegularExtension);
-        this.mData.addAll(usersOnRegularExtension);
+        mData.addAll(usersOnRegularExtension);
       } else {
-        this.mData.remove(getString(2131755151));
+        mData.remove(getString(R.string.regular_extension));
       } 
     } else {
 
       //It's not the weekend. Check for special extension
       ArrayList<SpecialExtension> usersOnSpecialExtention = new ArrayList();
-      this.mData.add(getString(2131755182));
+      mData.add(getString(R.string.special_extension));
       usersOnSpecialExtention.addAll(UserData.getUsersOnSpecialExtension());
 
       if (usersOnSpecialExtention.size() != 0) {
         Collections.sort(usersOnSpecialExtention);
-        this.mData.addAll(usersOnSpecialExtention);
+        mData.addAll(usersOnSpecialExtention);
       } else {
-        this.mData.remove(getString(2131755182));
+        mData.remove(getString(R.string.special_extension));
       } 
     }
 
@@ -57,15 +59,15 @@ public class HOHFragmentUsersOnExtension extends Fragment {
       return;
     }
 
-    this.noUsersOnExtension.setVisibility(View.VISIBLE);
-    this.noExtensions.setText(getString(2131755131));
+    noUsersOnExtension.setVisibility(View.VISIBLE);
+    noExtensions.setText(getString(R.string.no_users_on_extension));
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle) {
-    View view = paramLayoutInflater.inflate(2131558458, paramViewGroup, false);
-    this.noUsersOnExtension = (RelativeLayout)view.findViewById(2131361961);
-    this.listView = (ListView)view.findViewById(2131361944);
-    this.noExtensions = (TextView)view.findViewById(2131362064);
+    View view = paramLayoutInflater.inflate(R.layout.no_users_on_extension, paramViewGroup, false);
+    noUsersOnExtension = (RelativeLayout)view.findViewById(R.id.no_users_out);
+    listView = (ListView)view.findViewById(R.id.list_view);
+    noExtensions = (TextView)view.findViewById(R.id.text_displayed);
     addListViewData();
     return view;
   }

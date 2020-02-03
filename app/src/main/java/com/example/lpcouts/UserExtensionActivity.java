@@ -1,10 +1,9 @@
 package com.example.lpcouts;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import androidx.appcompat.app.AppCompatActivity;
 import java.util.Calendar;
 
 public class UserExtensionActivity extends AppCompatActivity implements RegularExtensionFragment.onGetExtensionClicked {
@@ -19,20 +18,19 @@ public class UserExtensionActivity extends AppCompatActivity implements RegularE
   
   protected void onCreate(Bundle paramBundle) {
     super.onCreate(paramBundle);
-    setContentView(2131558428);
-    tcontaier = findViewById(2131361853);
-    getWindow().getDecorView().setSystemUiVisibility(8192);
+    setContentView(R.layout.activity_extension);
+    contaier = findViewById(R.id.container);
 
     if (isTheWeekend()) {
-      getSupportFragmentManager().beginTransaction().add(2131361853, new RegularExtensionFragment()).commit();
+      getSupportFragmentManager().beginTransaction().add(R.id.container, new RegularExtensionFragment()).commit();
       return;
     } 
-    getSupportFragmentManager().beginTransaction().add(2131361853, new SpecialExtensionFragment()).commit();
+    getSupportFragmentManager().beginTransaction().add(R.id.container, new SpecialExtensionFragment()).commit();
   }
   
-  public void onGetExtensionClicked() {
+  public void getExtensionClicked() {
     Intent intent = new Intent(this, MainActivity.class);
-    intent.addFlags(67108864);
+    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
     startActivity(intent);
   }
 }

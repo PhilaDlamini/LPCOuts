@@ -2,14 +2,13 @@ package com.example.lpcouts;
 
 public class Outs implements Comparable<Outs> {
   private String block;
-  
   private String date;
-  
   private String name;
-  
   private String time;
   
-  public Outs() {}
+  public Outs() {
+
+  }
   
   public Outs(String paramString) {
     String[] arrayOfString = paramString.split(";");
@@ -19,22 +18,22 @@ public class Outs implements Comparable<Outs> {
     this.date = arrayOfString[3];
   }
   
-  public Outs(String paramString1, String paramString2, String paramString3, String paramString4) {
-    this.name = paramString1;
-    this.block = paramString2;
-    this.date = paramString4;
-    this.time = paramString3;
+  public Outs(String name, String block, String time, String date) {
+    this.name = name;
+    this.block = block;
+    this.date = date;
+    this.time = time;
   }
   
-  public int compareTo(Outs paramOuts) { return this.name.compareTo(paramOuts.getName()); }
+  public int compareTo(Outs paramOuts) { return name.compareTo(paramOuts.getName()); }
   
-  public String getBlock() { return this.block; }
+  public String getBlock() { return block; }
   
-  public String getDate() { return this.date; }
+  public String getDate() { return date; }
   
-  public String getName() { return this.name; }
+  public String getName() { return name; }
   
-  public String getTime() { return this.time; }
+  public String getTime() { return time; }
   
   public String toString() {
     return name + ";" + block + ";" + time + ";" + date + ";null";

@@ -1,15 +1,14 @@
 package com.example.lpcouts;
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 public class SignUpActivity extends AppCompatActivity implements IconClickListener, CreationInProgress {
   private final int PHOTO_PERMISSIONS = 2;
@@ -23,28 +22,28 @@ public class SignUpActivity extends AppCompatActivity implements IconClickListen
   
   protected void onCreate(Bundle paramBundle) {
     super.onCreate(paramBundle);
-    setContentView(2131558433);
+    setContentView(R.layout.activity_sign_up);
 
-    creationInProgress = (ViewGroup)findViewById(2131361860);
-    container = (ViewGroup)findViewById(2131361906);
-    backToCreate = (ImageView)findViewById(2131361832);
-    errorRoot = (ViewGroup)findViewById(2131361891);
-    settingUp = (ViewGroup)findViewById(2131362021);
+    creationInProgress = (ViewGroup)findViewById(R.id.creation_in_progress);
+    container = (ViewGroup)findViewById(R.id.fragment_container);
+    backToCreate = (ImageView)findViewById(R.id.back_to_creation);
+    errorRoot = (ViewGroup)findViewById(R.id.error_root);
+    settingUp = (ViewGroup)findViewById(R.id.setting_up);
     context = getApplicationContext();
-    getWindow().setStatusBarColor(getResources().getColor(2131099676));
+    getWindow().setStatusBarColor(getResources().getColor(R.color.amber_700));
 
     if (UserData.shouldReturn()) {
       String str = UserData.getData("Fragment");
       if (str.equals("Guard sign up fragment")) {
-        getSupportFragmentManager().beginTransaction().add(2131361906, new GuardSignUpFragment()).commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, new GuardSignUpFragment()).commit();
         UserData.resetFragments();
       } 
       if (str.equals("HOH sign up fragment")) {
-        getSupportFragmentManager().beginTransaction().add(2131361906, new HOHSignUpFragment()).commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, new HOHSignUpFragment()).commit();
         UserData.resetFragments();
       } 
     } else {
-      getSupportFragmentManager().beginTransaction().add(2131361906, new UserSignUpFragment()).commit();
+      getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, new UserSignUpFragment()).commit();
     } 
     if (!havePermission())
       ActivityCompat.requestPermissions(this, new String[] { "android.permission.READ_EXTERNAL_STORAGE", "android.permission.WRITE_EXTERNAL_STORAGE" }, 2);
@@ -65,21 +64,21 @@ public class SignUpActivity extends AppCompatActivity implements IconClickListen
   }
   
   public void onGuardClick() {
-    getSupportFragmentManager().beginTransaction().replace(2131361906, new GuardSignUpFragment()).commit();
+    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new GuardSignUpFragment()).commit();
   }
   
   public void onHOHClick() {
-    getSupportFragmentManager().beginTransaction().replace(2131361906, new HOHSignUpFragment()).commit();
+    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HOHSignUpFragment()).commit();
   }
   
   public void onRequestPermissionsResult(int paramInt, @NonNull String[] paramArrayOfString, @NonNull int[] paramArrayOfint) {
-    if (paramInt != 2)
+    if (paramInt != PHOTO_PERMISSIONS)
       return; 
     if (paramArrayOfint.length > 0 && paramArrayOfint[0] == 0)
       paramInt = paramArrayOfint[1]; 
   }
   
   public void onStudentClick() {
-    getSupportFragmentManager().beginTransaction().replace(2131361906, new UserSignUpFragment()).commit();
+    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new UserSignUpFragment()).commit();
   }
 }

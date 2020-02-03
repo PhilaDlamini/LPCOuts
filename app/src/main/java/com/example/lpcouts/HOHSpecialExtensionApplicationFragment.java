@@ -1,15 +1,17 @@
 package com.example.lpcouts;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
 import java.util.ArrayList;
 
 public class HOHSpecialExtensionApplicationFragment extends Fragment {
@@ -18,22 +20,21 @@ public class HOHSpecialExtensionApplicationFragment extends Fragment {
   TextView message;
   ViewGroup noUsersAppliedRoot;
   
-  @Nullable
   public View onCreateView(@NonNull LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, @Nullable Bundle paramBundle) {
-    View view = paramLayoutInflater.inflate(2131558458, paramViewGroup, false);
-    this.listView = (ListView)view.findViewById(2131361944);
-    this.noUsersAppliedRoot = (ViewGroup)view.findViewById(2131361961);
-    this.message = (TextView)view.findViewById(2131362064);
+    View view = paramLayoutInflater.inflate(R.layout.list_view_layout, paramViewGroup, false);
+    listView = (ListView)view.findViewById(R.id.list_view);
+    noUsersAppliedRoot = (ViewGroup)view.findViewById(R.id.no_users_out);
+    message = (TextView)view.findViewById(R.id.text_displayed);
 
     ArrayList<SpecialExtension> usersAppliedForSpecialExtension = UserData.getUsersAppliedForSpecialExtension();
 
     if (usersAppliedForSpecialExtension.size() > 0) {
-      listView.setAdapter(new SpecialExtensionApplicationAdapter(getContext(), list));
+      listView.setAdapter(new SpecialExtensionApplicationAdapter(getContext(), usersAppliedForSpecialExtension)); //Previously said list (changed to special extension thingy)
       return view;
     }
 
     noUsersAppliedRoot.setVisibility(View.VISIBLE);
-    message.setText(getString(2131755129));
+    message.setText(getString(R.string.no_users_applied_for_extension));
     return view;
   }
 }

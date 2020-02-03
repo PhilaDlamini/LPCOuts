@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <LinearLayout
+        style="@style/matched"
+        android:layout_height="@dimen/bottom_navigation_height"
+        android:layout_alignParentBottom="true">
+
+        <LinearLayout
+            android:id="@+id/student"
+            style="@style/weighted_view"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/student_icon"
+                style="@style/bottom_nav_icon"
+                android:src="@drawable/student_outline_green" />
+
+            <TextView
+                android:id="@+id/student_text"
+                style="@style/bottom_nav_text"
+                android:baselineAligned="false"
+                android:text="@string/student"
+                android:textColor="@color/teal_400" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/hoh"
+            style="@style/weighted_view"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/hoh_icon"
+                style="@style/bottom_nav_icon"
+                android:src="@drawable/hoh" />
+
+            <TextView
+                android:id="@+id/hoh_text"
+                style="@style/bottom_nav_text"
+                android:text="@string/hoh" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/guard"
+            style="@style/weighted_view"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/guard_icon"
+                style="@style/bottom_nav_icon"
+                android:src="@drawable/guard" />
+
+            <TextView
+                android:id="@+id/guard_text"
+                style="@style/bottom_nav_text"
+                android:text="@string/guard" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

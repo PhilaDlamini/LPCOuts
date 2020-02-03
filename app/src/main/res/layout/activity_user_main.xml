@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white">
+
+    <FrameLayout
+        android:id="@+id/container"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" />
+
+    <RelativeLayout
+        android:id="@+id/not_connected"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:visibility="invisible">
+
+        <RelativeLayout style="@style/matched">
+
+            <TextView
+                style="@style/app_name"
+                android:text="@string/app_name"
+                android:textColor="@color/grey_900" />
+
+            <ImageView
+                style="@style/wrapped"
+                android:layout_margin="@dimen/activity_margin"
+                android:alertDialogCenterButtons="true"
+                android:src="@drawable/more_vert" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/no_users_out"
+            style="@style/wrapped"
+            android:layout_centerInParent="true">
+
+            <LinearLayout
+                android:id="@+id/images"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:orientation="horizontal">
+
+                <ImageView
+                    style="@style/wrapped"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/star_border" />
+
+                <ImageView
+                    android:layout_width="@dimen/large_icons"
+                    android:layout_height="@dimen/large_icons"
+                    android:src="@drawable/wifi_offline" />
+
+                <ImageView
+                    style="@style/wrapped"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/star_border" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/text_displayed"
+                style="@style/search_text"
+                android:layout_below="@id/images"
+                android:layout_centerHorizontal="true"
+                android:text="@string/you_are_offline"
+                android:textAppearanceEasyCorrectSuggestion="4" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/wrong_wifi"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:visibility="invisible">
+
+        <RelativeLayout style="@style/matched">
+
+            <TextView
+                style="@style/app_name"
+                android:text="@string/app_name"
+                android:textColor="@color/grey_900" />
+
+            <ImageView
+                style="@style/wrapped"
+                android:layout_margin="@dimen/activity_margin"
+                android:alertDialogCenterButtons="true"
+                android:src="@drawable/more_vert" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            style="@style/wrapped"
+            android:layout_centerInParent="true">
+
+            <LinearLayout
+                android:id="@+id/icons"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:orientation="horizontal">
+
+                <ImageView
+                    style="@style/wrapped"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/star_border" />
+
+                <ImageView
+                    android:layout_width="@dimen/large_icons"
+                    android:layout_height="@dimen/large_icons"
+                    android:src="@drawable/wifi_lock" />
+
+                <ImageView
+                    style="@style/wrapped"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/star_border" />
+            </LinearLayout>
+
+            <TextView
+                style="@style/search_text"
+                android:layout_below="@id/icons"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/activity_margin"
+                android:text="@string/wrong_wifi"
+                android:textAppearanceEasyCorrectSuggestion="4" />
+        </RelativeLayout>
+    </RelativeLayout>
+</android.support.constraint.ConstraintLayout>

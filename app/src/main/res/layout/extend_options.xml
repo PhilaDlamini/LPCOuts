@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/amber_700">
+
+    <RelativeLayout
+        android:id="@+id/extensions"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_centerInParent="true">
+
+        <ImageView
+            android:id="@+id/back"
+            style="@style/wrapped"
+            android:layout_margin="@dimen/activity_margin"
+            android:src="@drawable/back" />
+
+        <RelativeLayout
+            style="@style/wrapped"
+            android:layout_centerInParent="true">
+
+            <RelativeLayout
+                android:id="@+id/extension"
+                style="@style/wrapped"
+                android:layout_margin="@dimen/activity_margin"
+                android:background="@drawable/user_fragment_icon_background">
+
+                <LinearLayout
+                    style="@style/wrapped"
+                    android:layout_centerInParent="true"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        style="@style/wrapped"
+                        android:layout_gravity="center_horizontal"
+                        android:src="@drawable/extension" />
+
+                    <TextView
+                        style="@style/paragraph"
+                        android:text="@string/extension" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/overnight"
+                style="@style/wrapped"
+                android:layout_below="@id/extension"
+                android:layout_margin="@dimen/activity_margin"
+                android:background="@drawable/user_fragment_icon_background">
+
+                <LinearLayout
+                    style="@style/wrapped"
+                    android:layout_centerInParent="true"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="@dimen/icon_size"
+                        android:layout_height="@dimen/icon_size"
+                        android:layout_gravity="center_horizontal"
+                        android:src="@drawable/overnight" />
+
+                    <TextView
+                        style="@style/paragraph"
+                        android:layout_gravity="center_horizontal"
+                        android:text="@string/overnight" />
+                </LinearLayout>
+            </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

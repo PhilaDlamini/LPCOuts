@@ -1,3 +1,267 @@
-<resources>
-    <string name="app_name">LPCOuts</string>
+<?xml version="1.0" encoding="UTF-8"?>
+
+    <resources>
+
+    <string name="accompanied_by">Companion</string>
+
+    <string name="address">Address</string>
+
+    <string name="all_signed_in">"No students came back late"</string>
+
+    <string name="already_on_extension">You have an extension already!</string>
+
+    <string name="app_name">LPC Outs</string>
+
+    <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
+
+    <string name="applications">Applications</string>
+
+    <string name="applied_for_extension">Applied for extension</string>
+
+    <string name="apply">Apply</string>
+
+    <string name="applying_for_e">E</string>
+
+    <string name="approve">Approve</string>
+
+    <string name="block_and_room_number">Enter only the number for room and block fields</string>
+
+    <string name="block_number">Enter only the number for the block field</string>
+
+    <string name="create_account">Create account</string>
+
+    <string name="day">Day</string>
+
+    <string name="destination">Destination</string>
+
+    <string name="dis_approve">Deny</string>
+
+    <string name="dot">●</string>
+
+    <string name="email">Email</string>
+
+    <string name="email_in_use">This email is in use. Exit and try again</string>
+
+    <string name="error">Error:</string>
+
+    <string name="expires">Expires</string>
+
+    <string name="extension">Ext.</string>
+
+    <string name="extension_application_not_allowed">Extension applications closed</string>
+
+    <string name="extension_approved">Extension approved</string>
+
+    <string name="extension_approved_by_HOH">Your extension was approved</string>
+
+    <string name="extension_approved_message">Your extension was approved</string>
+
+    <string name="extension_disapproved_by_HOH">Your extension was not approved. However, you can still sign out</string>
+
+    <string name="extension_full">Extension</string>
+
+    <string name="extension_not_approved">Extension not approved</string>
+
+    <string name="extension_not_approved_message">Your extension was not approved. However, you can still sign out</string>
+
+    <string name="fab_transformation_scrim_behavior">android.support.design.transformation.FabTransformationScrimBehavior</string>
+
+    <string name="fab_transformation_sheet_behavior">android.support.design.transformation.FabTransformationSheetBehavior</string>
+
+    <string name="failed_to_send_link">Failed to send verification link</string>
+
+    <string name="fill_in_all_fields">All fields required</string>
+
+    <string name="guard">Guard</string>
+
+    <string name="guard_not_available">"This part of the app is still being modified. Stay tuned!"</string>
+
+    <string name="hoh">HOH</string>
+
+    <string name="host_family_address">Address</string>
+
+    <string name="host_family_phone">Phone</string>
+
+    <string name="hours_left">hours</string>
+
+    <string name="incorrect_email">Incorrect email format. Exit and try again</string>
+
+    <string name="invited_by">Invited by</string>
+
+    <string name="late">Late!</string>
+
+    <string name="late_students">Late students</string>
+
+    <string name="late_students_message">Some students came back late to campus</string>
+
+    <string name="mobile">Mobile</string>
+
+    <string name="name">Name</string>
+
+    <string name="no_extension">No extension</string>
+
+    <string name="no_late_comers">No latecomers</string>
+
+    <string name="no_late_students_message">All students signed back in</string>
+
+    <string name="no_users_applied_for_extension">"No applications for extensions were found"</string>
+
+    <string name="no_users_applied_for_overnight">"No applications for overnights were found"</string>
+
+    <string name="no_users_on_extension">No students on extension</string>
+
+    <string name="no_users_out">No students signed out</string>
+
+    <string name="not_complete">Service not yet available</string>
+
+    <string name="ok">Ok</string>
+
+    <string name="on_extension">Extension until</string>
+
+    <string name="one_morning">01:00 am</string>
+
+    <string name="out">Out</string>
+
+    <string name="outs">Outs</string>
+
+    <string name="overnight">Overnight</string>
+
+    <string name="password">Password</string>
+
+    <string name="pic_transition">Pic transition</string>
+
+    <string name="proceed_in">Sign in</string>
+
+    <string name="proceed_out">Leave school</string>
+
+    <string name="reason">Reason</string>
+
+    <string name="regular_extension">Regular</string>
+
+    <string name="regular_extension_full">Regular extension</string>
+
+    <string name="remind_me">Remind me</string>
+
+    <string name="residential_block">Block</string>
+
+    <string name="return_at">Return at</string>
+
+    <string name="return_by">Return by</string>
+
+    <string name="return_time">Return time</string>
+
+    <string name="room">Room</string>
+
+    <string name="sampl_block">Block 2</string>
+
+    <string name="sample_address">Ma On Shan, New Territories, Hong Kong</string>
+
+    <string name="sample_companion">Simon Snow</string>
+
+    <string name="sample_date">Dec 12, 2018</string>
+
+    <string name="sample_host">Delpha</string>
+
+    <string name="sample_name">Phila Dlamini</string>
+
+    <string name="sample_number">+27661474654</string>
+
+    <string name="sample_place_of_residence">Block 2/303</string>
+
+    <string name="sample_return_time">23:00</string>
+
+    <string name="sample_user">Justin</string>
+
+    <string name="search">Search</string>
+
+    <string name="select_pic">Select profile picture</string>
+
+    <string name="setting_up">Setting you up</string>
+
+    <string name="settings">Settings</string>
+
+    <string name="showing_late_students">Showing students who came back late yesterday</string>
+
+    <string name="sign_in_reminder">Sign in reminder</string>
+
+    <string name="sign_in_reminder_message">You were not signed in yesterday. Remember to sign back in</string>
+
+    <string name="sign_out_not_allowed">Signing out closed</string>
+
+    <string name="sign_up">Sign up</string>
+
+    <string name="signed_in">Signed in</string>
+
+    <string name="signed_out">Signed out</string>
+
+    <string name="special_ext_return_time">23:00 today</string>
+
+    <string name="special_extension">Special</string>
+
+    <string name="special_extension_full">Special extension</string>
+
+    <string name="start">Start</string>
+
+    <string name="stronger_password">Weak password. Exit and try again</string>
+
+    <string name="student">Student</string>
+
+    <string name="supervising_block">Block</string>
+
+    <string name="time_left">Time left</string>
+
+    <string name="time_of_return">Return at</string>
+
+    <string name="title_activity_main">MainActivity</string>
+
+    <string name="title_activity_overnight">Overnight</string>
+
+    <string name="title_activity_sign_up">SignUpActivity</string>
+
+    <string name="today">Today</string>
+
+    <string name="transition_not_saved">"Sign in closed! You Head of House will be notified you are still out Go to room and try signing in in the morning"</string>
+
+    <string name="tutor">Tutor</string>
+
+    <string name="use_lpc_email">Use your LPC email</string>
+
+    <string name="users_late">Late</string>
+
+    <string name="users_on_extension">Extensions</string>
+
+    <string name="users_still_out">Students who came back late</string>
+
+    <string name="valid_until">Valid until</string>
+
+    <string name="verification">Verification</string>
+
+    <string name="verification_needed">"To ensure your security, we need you to verify your email Open your emails and click on the link sent or the button below to add an account"</string>
+
+    <string name="verify">Verify</string>
+
+    <string name="weekday_return_time">21:00</string>
+
+    <string name="weekend_return_time">23:00</string>
+
+    <string name="with">With</string>
+
+    <string name="wrong_wifi">"LPC Outs runs on LPC STUDENT Switch to this network"</string>
+
+    <string name="year">Year</string>
+
+    <string name="yesterday">Yesterday</string>
+
+    <string name="you">You</string>
+
+    <string name="you_are_late">You are late!</string>
+
+    <string name="you_are_offline">You are offline</string>
+
+    <string name="you_signed_in">"You signed back in Welcome back!"</string>
+
+    <string name="you_signed_out">"You just signed out Enjoy!"</string>
+
+    <string name="zero_closed">None (closed)</string>
+
 </resources>

@@ -26,7 +26,7 @@ public class SaveImage extends AsyncTask<byte[], Void, Void> {
       UserData.savePicPath(file.getPath());
       Log.e("SaveImage", "Image saved");
       Toast.makeText(this.context, "Image saved", Toast.LENGTH_SHORT).show();
-      this.context.startActivity(new Intent(this.context, MainActivity.class));
+      context.startActivity(new Intent(this.context, MainActivity.class));
     } catch (Exception exception) {
       Log.e("SaveImage", "Error saving image", exception);
     } 

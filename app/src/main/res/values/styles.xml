@@ -1,11 +1,480 @@
-<resources>
+<?xml version="1.0" encoding="UTF-8"?>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-    </style>
+    <resources>
+
+ <style parent="@style/Theme.AppCompat.Light.NoActionBar" name="AppTheme">
+
+    <item name="android:fastScrollThumbDrawable">@drawable/scroller_style</item>
+
+    <item name="colorAccent">@color/colorAccent</item>
+
+    <item name="colorPrimary">@color/colorPrimary</item>
+
+    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+
+</style>
+
+
+    <style parent="@style/paragraph_white" name="app_name">
+
+    <item name="android:textSize">@dimen/app_name_size</item>
+
+    <item name="android:layout_margin">@dimen/activity_margin</item>
+
+    <item name="android:fontFamily">@font/raleway_bold</item>
+
+</style>
+
+
+    <style parent="@style/wrapped" name="bottom_nav_icon">
+
+    <item name="android:gravity">start</item>
+
+    <item name="android:layout_height">@dimen/divider_height</item>
+
+    <item name="android:layout_weight">@integer/bottom_nav_item_weight</item>
+
+</style>
+
+
+    <style parent="@style/paragraph" name="bottom_nav_text">
+
+    <item name="android:textSize">@dimen/bottom_nav_text_size</item>
+
+    <item name="android:gravity">start</item>
+
+    <item name="android:layout_height">@dimen/divider_height</item>
+
+    <item name="android:layout_margin">@dimen/divider_height</item>
+
+    <item name="android:layout_weight">@integer/bottom_nav_item_weight</item>
+
+</style>
+
+
+    <style parent="@style/paragraph" name="button_text">
+
+    <item name="android:textSize">@dimen/button_text_size</item>
+
+    <item name="android:fontFamily">@font/raleway_bold</item>
+
+    <item name="android:errorMessageBackground">@dimen/activity_margin</item>
+
+</style>
+
+
+    <style parent="@style/wrapped" name="create_account_button">
+
+    <item name="android:background">@drawable/start_background</item>
+
+    <item name="android:layout_margin">@dimen/activity_margin</item>
+
+    <item name="android:layout_alignParentBottom">true</item>
+
+    <item name="android:alertDialogCenterButtons">true</item>
+
+</style>
+
+
+    <style parent="@style/wrapped" name="dot">
+
+    <item name="android:textSize">@dimen/dot_size</item>
+
+    <item name="android:textColor">@color/white</item>
+
+    <item name="android:layout_width">wrap_content</item>
+
+    <item name="android:layout_height">wrap_content</item>
+
+    <item name="android:text">@string/dot</item>
+
+    <item name="android:textUnderlineThickness">@dimen/dot_margin</item>
+
+</style>
+
+
+    <style parent="@style/matched" name="edit_text">
+
+    <item name="android:textColor">@color/default_text_color</item>
+
+    <item name="android:background">@color/white</item>
+
+    <item name="android:paddingTop">4.0dip</item>
+
+    <item name="android:paddingBottom">4.0dip</item>
+
+    <item name="android:layout_margin">@dimen/activity_margin</item>
+
+    <item name="android:drawablePadding">@dimen/activity_margin</item>
+
+    <item name="android:fontFamily">@font/karla</item>
+
+    <item name="android:textUnderlineThickness">@dimen/icon_size</item>
+
+</style>
+
+
+    <style parent="@style/wrapped" name="edit_text_sign_up">
+
+    <item name="android:textSize">21.0sp</item>
+
+    <item name="android:textColor">@color/white</item>
+
+    <item name="android:textColorHint">@color/white</item>
+
+    <item name="android:layout_gravity">center_vertical</item>
+
+    <item name="android:background">@color/amber_700</item>
+
+    <item name="android:layout_margin">@dimen/activity_margin</item>
+
+    <item name="android:hint">@string/name</item>
+
+    <item name="android:layout_centerVertical">true</item>
+
+    <item name="android:textCursorDrawable">@null</item>
+
+    <item name="android:fontFamily">@font/karla</item>
+
+</style>
+
+
+    <style parent="@style/wrapped" name="get_extension_button">
+
+    <item name="android:textColor">@color/white</item>
+
+    <item name="android:background">@drawable/get_extension</item>
+
+    <item name="android:fontFamily">@font/karla</item>
+
+</style>
+
+
+    <style parent="@style/paragraph" name="headline_text">
+
+    <item name="android:textSize">@dimen/headline_text_size</item>
+
+    <item name="android:fontFamily">@font/karla</item>
+
+</style>
+
+
+    <style parent="@style/matched" name="input_fields">
+
+    <item name="android:textStyle">normal</item>
+
+</style>
+
+
+    <style parent="@style/paragraph" name="large_bold">
+
+    <item name="android:textSize">@dimen/user_name_text_size</item>
+
+    <item name="android:textStyle">bold</item>
+
+    <item name="android:textColor">@color/black</item>
+
+    <item name="android:layout_centerHorizontal">true</item>
+
+    <item name="android:fontFamily">@font/karla</item>
+
+</style>
+
+
+    <style parent="@style/matched" name="line">
+
+    <item name="android:background">@color/gray_500</item>
+
+    <item name="android:layout_height">@dimen/horizontal_line</item>
+
+    <item name="android:alpha">0.5</item>
+
+</style>
+
+
+    <style parent="@style/matched" name="list_item">
+
+    <item name="android:layout_height">@dimen/list_item_height</item>
+
+</style>
+
+
+    <style name="list_view">
+
+    <item name="android:scrollbars">none</item>
+
+    <item name="android:layout_width">fill_parent</item>
+
+    <item name="android:layout_height">fill_parent</item>
+
+    <item name="android:divider">@null</item>
+
+    <item name="android:dividerHeight">@dimen/divider_height</item>
+
+</style>
+
+
+    <style name="matched">
+
+    <item name="android:layout_width">fill_parent</item>
+
+    <item name="android:layout_height">wrap_content</item>
+
+</style>
+
+
+    <style parent="@style/input_fields" name="overnight_input_field">
+
+    <item name="android:textSize">@dimen/search_size</item>
+
+    <item name="android:textColor">@color/grey_900</item>
+
+    <item name="android:background">@color/yellow_500</item>
+
+    <item name="android:padding">@dimen/se_input_padding</item>
+
+    <item name="android:layout_width">fill_parent</item>
+
+    <item name="android:layout_height">wrap_content</item>
+
+    <item name="android:layout_marginBottom">@dimen/activity_margin</item>
+
+    <item name="android:drawablePadding">@dimen/activity_margin</item>
+
+    <item name="android:fontFamily">@font/karla</item>
+
+    <item name="android:textAppearanceAutoCorrectionSuggestion">@dimen/activity_margin</item>
+
+    <item name="android:errorMessageBackground">@dimen/activity_margin</item>
+
+</style>
+
+
+    <style parent="@style/large_bold" name="overnight_title">
+
+    <item name="android:textSize">@dimen/overnight_title</item>
+
+    <item name="android:layout_marginBottom">@dimen/activity_margin</item>
+
+</style>
+
+
+    <style parent="@style/wrapped" name="paragraph">
+
+    <item name="android:textColor">@color/default_text_color</item>
+
+</style>
+
+
+    <style parent="@style/paragraph" name="paragraph_white">
+
+    <item name="android:textColor">@color/white</item>
+
+</style>
+
+
+    <style name="profile_pictures">
+
+    <item name="android:layout_width">@dimen/profile_picture_size</item>
+
+    <item name="android:layout_height">@dimen/profile_picture_size</item>
+
+</style>
+
+
+    <style parent="@style/overnight_title" name="return_time">
+
+    <item name="android:textSize">@dimen/return_time_text_size</item>
+
+    <item name="android:textColor">@color/white</item>
+
+    <item name="android:layout_gravity">center_horizontal</item>
+
+    <item name="android:layout_centerInParent">true</item>
+
+    <item name="android:fontFamily">cursive</item>
+
+</style>
+
+
+    <style parent="@style/paragraph" name="search_text">
+
+    <item name="android:textSize">@dimen/search_size</item>
+
+    <item name="android:fontFamily">@font/karla</item>
+
+</style>
+
+
+    <style parent="@style/paragraph" name="sign_up_text">
+
+    <item name="android:textSize">@dimen/sign_up_text_size</item>
+
+    <item name="android:textUnderlineThickness">@dimen/activity_margin</item>
+
+</style>
+
+
+    <style parent="@style/paragraph" name="status_text">
+
+    <item name="android:textSize">@dimen/status_text_size</item>
+
+</style>
+
+
+    <style parent="@style/wrapped" name="user_fragment_background">
+
+    <item name="android:background">@drawable/status_background</item>
+
+    <item name="android:layout_centerInParent">true</item>
+
+</style>
+
+
+    <style parent="@style/matched" name="user_fragment_bottom_view">
+
+    <item name="android:background">@color/teal_400</item>
+
+    <item name="android:layout_height">@dimen/user_fragment_bottom_view_height</item>
+
+    <item name="android:layout_alignParentBottom">true</item>
+
+</style>
+
+
+    <style name="user_fragment_profile_pic">
+
+    <item name="android:layout_width">@dimen/user_profile_picture_size</item>
+
+    <item name="android:layout_height">@dimen/user_profile_picture_size</item>
+
+    <item name="android:layout_marginTop">@dimen/activity_margin</item>
+
+    <item name="android:layout_centerHorizontal">true</item>
+
+</style>
+
+
+    <style parent="@style/paragraph_white" name="user_location">
+
+    <item name="android:textSize">@dimen/user_location_text_size</item>
+
+    <item name="android:textStyle">italic</item>
+
+    <item name="android:layout_centerHorizontal">true</item>
+
+</style>
+
+
+    <style parent="@style/large_bold" name="user_name">
+
+    <item name="android:textSize">@dimen/user_name_text</item>
+
+    <item name="android:textStyle">normal</item>
+
+    <item name="android:textColor">@color/white</item>
+
+    <item name="android:fontFamily">@font/raleway_bold</item>
+
+</style>
+
+
+    <style name="user_profile_picture">
+
+    <item name="android:layout_width">@dimen/profile_picture_size</item>
+
+    <item name="android:layout_height">@dimen/profile_picture_size</item>
+
+    <item name="android:layout_margin">@dimen/activity_margin</item>
+
+</style>
+
+
+    <style name="users_image">
+
+    <item name="android:layout_width">56.0dp</item>
+
+    <item name="android:layout_height">56.0dp</item>
+
+</style>
+
+
+    <style parent="@style/watcher_text" name="users_out_item_text">
+
+    <item name="android:textSize">@dimen/users_out_item_text_size</item>
+
+    <item name="android:textColor">@color/default_text_color</item>
+
+    <item name="android:fontFamily">@font/karla</item>
+
+</style>
+
+
+    <style parent="@style/users_out_item_text" name="users_out_item_text_date">
+
+    <item name="android:textSize">@dimen/users_out_date_text_size</item>
+
+    <item name="android:textColor">@color/default_text_color</item>
+
+    <item name="android:fontFamily">@font/karla</item>
+
+</style>
+
+
+    <style parent="@style/paragraph" name="watcher_text">
+
+    <item name="android:textSize">@dimen/watcher_text_size</item>
+
+    <item name="android:textColor">@color/grey_900</item>
+
+    <item name="android:fontFamily">@font/karla</item>
+
+</style>
+
+
+    <style parent="@style/users_image" name="watchers_image">
+
+    <item name="android:layout_width">@dimen/watcher_pic_size</item>
+
+    <item name="android:layout_height">@dimen/watcher_pic_size</item>
+
+</style>
+
+
+    <style parent="@style/overnight_input_field" name="weighted_overnight_input_field">
+
+    <item name="android:layout_width">@dimen/zero</item>
+
+    <item name="android:layout_weight">@integer/bottom_nav_item_weight</item>
+
+</style>
+
+
+    <style parent="@style/wrapped" name="weighted_view">
+
+    <item name="android:layout_gravity">center_vertical</item>
+
+    <item name="android:layout_width">@dimen/divider_height</item>
+
+    <item name="android:layout_height">fill_parent</item>
+
+    <item name="android:layout_marginTop">@dimen/weighted_view_margin_top</item>
+
+    <item name="android:layout_weight">@integer/bottom_nav_item_weight</item>
+
+    <item name="android:textUnderlineThickness">@dimen/activity_margin</item>
+
+    <item name="android:errorMessageBackground">@dimen/activity_margin</item>
+
+</style>
+
+
+    <style name="wrapped">
+
+    <item name="android:layout_width">wrap_content</item>
+
+    <item name="android:layout_height">wrap_content</item>
+
+</style>
 
 </resources>

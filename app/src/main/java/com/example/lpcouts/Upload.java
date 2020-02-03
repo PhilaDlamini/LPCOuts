@@ -3,14 +3,9 @@ package com.example.lpcouts;
 import android.content.Context;
 import android.net.Uri;
 import android.os.AsyncTask;
-import android.support.annotation.NonNull;
 import android.util.Log;
 import android.widget.Toast;
-
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.UploadTask;
+import androidx.annotation.NonNull;
 
 public class Upload extends AsyncTask<Uri, Void, Void> {
     Context context;
