@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="250.0dip"
     android:background="@color/gray_300"
     android:padding="@dimen/activity_margin">
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@id/profile_picture"
+        android:id="@+id/profile_picture"
         style="@style/watchers_image"
         android:layout_marginTop="@dimen/activity_margin"
         android:background="@drawable/loader_image" />
@@ -14,7 +15,7 @@
     <TextView
         android:id="@+id/name"
         style="@style/watcher_text"
-        android:layout_below="@id/profile_picture"
+        android:layout_below="@+id/profile_picture"
         android:layout_marginTop="@dimen/activity_margin"
         android:text="@string/sample_name"
         android:textSize="19.0sp" />

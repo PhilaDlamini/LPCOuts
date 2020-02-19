@@ -1,3 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView android:textSize="@dimen/tab_text_size" android:gravity="center" android:id="@android:id/text1" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/extension_full" android:fontFamily="@font/raleway_bold" style="@style/search_text"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@android:id/text1"
+    style="@style/search_text"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fontFamily="@font/raleway_bold"
+    android:gravity="center"
+    android:text="@string/extension_full"
+    android:textSize="@dimen/tab_text_size" />

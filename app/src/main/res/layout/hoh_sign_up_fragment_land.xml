@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@id/root"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="@color/amber_700">
 
     <LinearLayout
         style="@style/matched"
-        android:layout_height="fill_parent"
+        android:layout_height="match_parent"
         android:orientation="horizontal">
 
         <RelativeLayout
             android:id="@+id/pic_root"
             android:layout_width="@dimen/zero"
-            android:layout_height="fill_parent"
+            android:layout_height="match_parent"
             android:layout_weight="1.0"
             android:background="@color/amber_700">
 
@@ -33,7 +33,7 @@
                         android:background="@drawable/question_ic_outer" />
 
                     <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@id/profile_picture"
+                        android:id="@+id/profile_picture"
                         android:layout_width="@dimen/picture_ic_outer"
                         android:layout_height="@dimen/picture_ic_outer" />
 
@@ -42,7 +42,7 @@
                         style="@style/wrapped"
                         android:layout_marginTop="62.0dip"
                         android:background="@drawable/photo_camera_background"
-                        android:textUnderlineThickness="68.0dip">
+                        android:layout_marginStart="68.0dip">
 
                         <ImageView
                             style="@style/wrapped"
@@ -63,7 +63,7 @@
 
         <RelativeLayout
             android:layout_width="@dimen/zero"
-            android:layout_height="fill_parent"
+            android:layout_height="match_parent"
             android:layout_weight="1.0"
             android:background="@drawable/sign_up"
             android:orientation="vertical">

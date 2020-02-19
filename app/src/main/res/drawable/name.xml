@@ -2,9 +2,9 @@
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="@dimen/icon_size"
     android:height="@dimen/icon_size"
-    android:listItemLayout="24.0"
-    android:tabLayout="24.0">
+    android:viewportWidth="24.0"
+    android:viewportHeight="24.0">
     <path
-        android:horizontalProgressLayout="M4,9h16v2L4,11zM4,13h10v2L4,15z"
-        android:progressLayout="@color/white" />
+        android:pathData="M4,9h16v2L4,11zM4,13h10v2L4,15z"
+        android:fillColor="@color/white" />
 </vector>

@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@id/coordinator_layout"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <RelativeLayout
         android:id="@id/root"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:background="@color/white"
         android:orientation="vertical">
 
@@ -20,13 +21,13 @@
 
         <LinearLayout
             android:id="@id/main"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:orientation="horizontal">
 
             <RelativeLayout
                 android:layout_width="@dimen/zero"
-                android:layout_height="fill_parent"
+                android:layout_height="match_parent"
                 android:layout_weight="@integer/bottom_nav_item_weight">
 
                 <RelativeLayout
@@ -86,7 +87,7 @@
             <RelativeLayout
                 android:id="@+id/extension"
                 android:layout_width="@dimen/zero"
-                android:layout_height="fill_parent"
+                android:layout_height="match_parent"
                 android:layout_weight="@integer/bottom_nav_item_weight">
 
                 <LinearLayout
@@ -95,7 +96,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginBottom="@dimen/activity_margin"
                     android:orientation="vertical"
-                    android:textUnderlineThickness="@dimen/activity_margin">
+                    android:layout_marginStart="@dimen/activity_margin">
 
                     <RelativeLayout style="@style/wrapped">
 
@@ -115,10 +116,10 @@
                             android:id="@id/transition_status"
                             style="@style/user_name"
                             android:layout_centerInParent="true"
-                            android:searchResultListItemHeight="@id/icon_back"
+                            android:layout_toEndOf="@id/icon_back"
                             android:text="@string/signed_in"
                             android:textColor="@color/grey_900"
-                            android:textUnderlineThickness="@dimen/activity_margin" />
+                            android:layout_marginStart="@dimen/activity_margin" />
                     </RelativeLayout>
 
                     <TextView
@@ -129,7 +130,7 @@
                         android:drawablePadding="@dimen/activity_margin"
                         android:text="@string/on_extension"
                         android:textColor="@color/grey_900"
-                        android:textUnderlineThickness="@dimen/on_extension_margin_start" />
+                        android:layout_marginStart="@dimen/on_extension_margin_start" />
 
                     <TextView
                         android:id="@id/time_left"
@@ -139,14 +140,14 @@
                         android:drawablePadding="@dimen/activity_margin"
                         android:text="@string/time_of_return"
                         android:textColor="@color/grey_900"
-                        android:textUnderlineThickness="@dimen/on_extension_margin_start" />
+                        android:layout_marginStart="@dimen/on_extension_margin_start" />
                 </LinearLayout>
 
                 <RelativeLayout
                     style="@style/wrapped"
                     android:layout_alignParentBottom="true"
                     android:layout_margin="@dimen/activity_margin"
-                    android:alertDialogCenterButtons="true"
+                    android:layout_alignParentEnd="true"
                     android:visibility="visible">
 
                     <RelativeLayout
@@ -205,7 +206,7 @@
                     android:id="@id/transition_occured"
                     style="@style/wrapped"
                     android:layout_alignParentBottom="true"
-                    android:alertDialogCenterButtons="true"
+                    android:layout_alignParentEnd="true"
                     android:background="@drawable/signed_out_land"
                     android:visibility="invisible">
 
@@ -224,8 +225,7 @@
                             android:id="@id/message_text"
                             style="@style/search_text"
                             android:layout_marginTop="@dimen/buttons_margin_top"
-                            android:text="@string/you_signed_out"
-                            android:textAppearanceEasyCorrectSuggestion="4" />
+                            android:text="@string/you_signed_out" />
                     </LinearLayout>
                 </RelativeLayout>
 
@@ -234,7 +234,7 @@
                     style="@style/wrapped"
                     android:layout_alignParentBottom="true"
                     android:layout_margin="@dimen/activity_margin"
-                    android:alertDialogCenterButtons="true"
+                    android:layout_alignParentEnd="true"
                     android:background="@drawable/outs_background"
                     android:visibility="invisible">
 
@@ -263,9 +263,9 @@
             android:id="@id/space_filler2"
             style="@style/wrapped"
             android:layout_centerInParent="true"
-            android:alertDialogCenterButtons="true"
+            android:layout_alignParentEnd="true"
             android:background="@drawable/other_space_filller"
             android:translationX="@dimen/dimen_neg_50"
             android:translationY="@dimen/dimen_neg_250" />
     </RelativeLayout>
-</android.support.design.widget.CoordinatorLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

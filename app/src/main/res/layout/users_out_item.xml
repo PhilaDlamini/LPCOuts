@@ -8,14 +8,14 @@
         style="@style/users_image"
         android:layout_centerVertical="true"
         android:background="@drawable/loader_image"
-        android:textUnderlineThickness="@dimen/activity_margin" />
+        android:layout_marginStart="@dimen/activity_margin" />
 
     <LinearLayout
         style="@style/wrapped"
         android:layout_centerVertical="true"
         android:orientation="vertical"
-        android:searchResultListItemHeight="@id/profile_picture"
-        android:textUnderlineThickness="@dimen/activity_margin">
+        android:layout_toEndOf="@id/profile_picture"
+        android:layout_marginStart="@dimen/activity_margin">
 
         <TextView
             android:id="@id/name"
@@ -33,8 +33,8 @@
         android:id="@id/on_extension"
         style="@style/wrapped"
         android:layout_centerVertical="true"
-        android:alertDialogCenterButtons="true"
-        android:errorMessageBackground="@dimen/activity_margin"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="@dimen/activity_margin"
         android:src="@drawable/on_extension"
         android:visibility="invisible" />
 </RelativeLayout>

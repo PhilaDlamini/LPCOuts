@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="@color/white">
 
     <FrameLayout
         android:id="@+id/container"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent" />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
     <RelativeLayout
         android:id="@+id/not_connected"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:visibility="invisible">
 
         <RelativeLayout style="@style/matched">
@@ -25,7 +26,7 @@
             <ImageView
                 style="@style/wrapped"
                 android:layout_margin="@dimen/activity_margin"
-                android:alertDialogCenterButtons="true"
+                android:layout_alignParentEnd="true"
                 android:src="@drawable/more_vert" />
         </RelativeLayout>
 
@@ -62,15 +63,14 @@
                 style="@style/search_text"
                 android:layout_below="@id/images"
                 android:layout_centerHorizontal="true"
-                android:text="@string/you_are_offline"
-                android:textAppearanceEasyCorrectSuggestion="4" />
+                android:text="@string/you_are_offline"/>
         </RelativeLayout>
     </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/wrong_wifi"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:visibility="invisible">
 
         <RelativeLayout style="@style/matched">
@@ -83,7 +83,7 @@
             <ImageView
                 style="@style/wrapped"
                 android:layout_margin="@dimen/activity_margin"
-                android:alertDialogCenterButtons="true"
+                android:layout_alignParentEnd="true"
                 android:src="@drawable/more_vert" />
         </RelativeLayout>
 
@@ -119,8 +119,7 @@
                 android:layout_below="@id/icons"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="@dimen/activity_margin"
-                android:text="@string/wrong_wifi"
-                android:textAppearanceEasyCorrectSuggestion="4" />
+                android:text="@string/wrong_wifi" />
         </RelativeLayout>
     </RelativeLayout>
-</android.support.constraint.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

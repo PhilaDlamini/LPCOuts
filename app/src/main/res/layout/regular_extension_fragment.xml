@@ -11,7 +11,7 @@
         <ImageView
             android:id="@+id/back"
             android:src="@drawable/back_black"
-            android:errorMessageBackground="@dimen/activity_margin"
+            android:layout_marginEnd="@dimen/activity_margin"
             style="@style/wrapped" />
 
         <TextView
@@ -19,13 +19,13 @@
             android:layout_margin="@dimen/zero"
             android:text="@string/regular_extension_full"
             android:fontFamily="@font/karla"
-            android:searchResultListItemHeight="@id/back"
+            android:layout_toEndOf="@id/back"
             style="@style/app_name" />
 
         <ImageView
             android:id="@id/more_vert"
             android:src="@drawable/more_vert"
-            android:alertDialogCenterButtons="true"
+            android:layout_alignParentEnd="true"
             style="@style/wrapped" />
     </RelativeLayout>
 
@@ -41,7 +41,7 @@
             style="@style/wrapped">
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@id/profile_picture"
+                android:id="@+id/profile_picture"
                 android:background="@drawable/loader_image"
                 android:layout_width="@dimen/profile_picture_size"
                 android:layout_height="@dimen/profile_picture_size" />
@@ -49,7 +49,7 @@
             <RelativeLayout
                 android:background="@drawable/return_time_background"
                 android:layout_marginTop="40.0dip"
-                android:textUnderlineThickness="60.0dip"
+                android:layout_marginStart="60.0dip"
                 style="@style/wrapped">
 
                 <TextView
@@ -87,8 +87,8 @@
         android:src="@drawable/get"
         android:layout_alignParentBottom="true"
         android:layout_centerVertical="true"
-        android:textUnderlineThickness="@dimen/icon_size"
-        android:alertDialogCenterButtons="true"
+        android:layout_marginEnd="@dimen/icon_size"
+        android:layout_alignParentEnd="true"
         style="@style/wrapped" />
 
     <RelativeLayout
@@ -96,7 +96,7 @@
         android:background="@drawable/extension_approved_view"
         android:visibility="invisible"
         android:layout_alignParentBottom="true"
-        android:alertDialogCenterButtons="true"
+        android:layout_alignParentEnd="true"
         style="@style/wrapped">
 
         <RelativeLayout

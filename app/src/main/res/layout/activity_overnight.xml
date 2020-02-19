@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="@color/amber_700"
     android:orientation="vertical"
     android:padding="@dimen/activity_margin">
@@ -16,7 +16,7 @@
         <ImageView
             android:id="@+id/check"
             style="@style/wrapped"
-            android:alertDialogCenterButtons="true"
+            android:layout_alignParentEnd="true"
             android:src="@drawable/small_check" />
     </RelativeLayout>
 
@@ -37,7 +37,7 @@
                 android:id="@+id/tutor"
                 style="@style/weighted_overnight_input_field"
                 android:drawableStart="@drawable/tutor"
-                android:errorMessageBackground="@dimen/activity_margin"
+                android:layout_marginEnd="@dimen/activity_margin"
                 android:hint="@string/tutor" />
 
             <EditText
@@ -75,7 +75,7 @@
                 android:id="@+id/host_name"
                 style="@style/weighted_overnight_input_field"
                 android:drawableStart="@drawable/name_black"
-                android:errorMessageBackground="@dimen/activity_margin"
+                android:layout_marginEnd="@dimen/activity_margin"
                 android:hint="@string/name" />
 
             <EditText

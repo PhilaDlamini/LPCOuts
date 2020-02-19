@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@id/root"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="@color/amber_700">
 
     <RelativeLayout
@@ -14,17 +14,17 @@
             android:layout_width="@dimen/profile_picture_size"
             android:layout_height="@dimen/profile_picture_size"
             android:layout_marginTop="@dimen/activity_margin"
-            android:textUnderlineThickness="@dimen/pp_root_margin_top">
+            android:layout_marginStart="@dimen/pp_root_margin_top">
 
             <RelativeLayout
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:background="@drawable/question_ic_outer" />
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@id/profile_picture"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent" />
+                android:id="@+id/profile_picture"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -32,7 +32,7 @@
             style="@style/wrapped"
             android:layout_marginTop="@dimen/camera_icon_margin_top"
             android:background="@drawable/photo_camera_background"
-            android:textUnderlineThickness="@dimen/camera_icon_margin_start">
+            android:layout_marginStart="@dimen/camera_icon_margin_start">
 
             <ImageView
                 style="@style/wrapped"
@@ -44,14 +44,14 @@
             android:id="@id/name"
             style="@style/edit_text_sign_up"
             android:paddingTop="@dimen/icon_size"
-            android:searchResultListItemHeight="@id/picture" />
+            android:layout_toEndOf="@id/picture" />
     </RelativeLayout>
 
     <de.hdodenhof.circleimageview.CircleImageView style="@style/user_profile_picture" />
 
     <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_marginTop="@dimen/sign_up_drawable_margin_top"
         android:background="@drawable/sign_up"
         android:orientation="vertical">

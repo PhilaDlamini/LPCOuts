@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector android:height="@dimen/icon_size" android:width="@dimen/icon_size" android:tabLayout="24.0" android:listItemLayout="24.0"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <path android:progressLayout="@color/red_900" android:horizontalProgressLayout="M7.2,14.4m-3.2,0a3.2,3.2 0,1 1,6.4 0a3.2,3.2 0,1 1,-6.4 0" />
+    <path android:progressLayout="@color/red_900" android:horizontalProgressLayout="M14.8,18m-2,0a2,2 0,1 1,4 0a2,2 0,1 1,-4 0" />
+    <path android:progressLayout="@color/red_900" android:horizontalProgressLayout="M15.2,8.8m-4.8,0a4.8,4.8 0,1 1,9.6 0a4.8,4.8 0,1 1,-9.6 0" />
+</vector>

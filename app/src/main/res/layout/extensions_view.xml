@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/white">
 
     <LinearLayout
         android:id="@+id/user_data"
         style="@style/matched"
-        android:paddingTop="@dimen/activity_margin"
-        android:textUnderlineThickness="@dimen/activity_margin">
+        android:paddingTop="@dimen/activity_margin">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@id/user_image"
+            android:id="@+id/user_image"
             style="@style/users_image"
             android:background="@drawable/loader_image"
-            android:errorMessageBackground="@dimen/activity_margin" />
+            android:layout_margin="@dimen/activity_margin" />
 
         <LinearLayout
             style="@style/wrapped"
@@ -38,8 +37,8 @@
         style="@style/matched"
         android:layout_below="@id/user_data"
         android:orientation="vertical"
-        android:padding="8.0dip"
-        android:textUnderlineThickness="32.0dip">
+        android:layout_marginStart="32dp"
+        android:padding="8.0dip">
 
         <LinearLayout
             style="@style/matched"
@@ -55,7 +54,7 @@
                 style="@style/search_text"
                 android:layout_gravity="center_vertical"
                 android:text="@string/sample_address"
-                android:textUnderlineThickness="@dimen/extensions_view_margin" />
+                android:layout_marginStart="@dimen/extensions_view_margin" />
         </LinearLayout>
 
         <LinearLayout
@@ -72,7 +71,7 @@
                 style="@style/search_text"
                 android:layout_gravity="center_vertical"
                 android:text="@string/sample_host"
-                android:textUnderlineThickness="@dimen/extensions_view_margin" />
+                android:layout_marginStart="@dimen/extensions_view_margin" />
         </LinearLayout>
 
         <LinearLayout
@@ -89,7 +88,7 @@
                 style="@style/search_text"
                 android:layout_gravity="center_vertical"
                 android:text="@string/sample_number"
-                android:textUnderlineThickness="@dimen/extensions_view_margin" />
+                android:layout_marginStart="@dimen/extensions_view_margin" />
         </LinearLayout>
 
         <LinearLayout
@@ -107,7 +106,7 @@
                 style="@style/search_text"
                 android:layout_gravity="center_vertical"
                 android:text="@string/sample_companion"
-                android:textUnderlineThickness="@dimen/extensions_view_margin" />
+                android:layout_marginStart="@dimen/extensions_view_margin" />
         </LinearLayout>
     </LinearLayout>
 
@@ -115,22 +114,23 @@
         android:id="@+id/approve"
         style="@style/button_text"
         android:layout_below="@id/extension_data"
-        android:alertDialogCenterButtons="true"
+        android:layout_alignParentEnd="true"
         android:fontFamily="@font/raleway_bold"
+        android:layout_marginEnd="@dimen/activity_margin"
         android:text="@string/approve" />
 
     <TextView
         android:id="@+id/dis_approve"
         style="@style/button_text"
         android:layout_below="@id/extension_data"
-        android:errorMessageAboveBackground="@id/approve"
+        android:layout_toStartOf="@id/approve"
         android:fontFamily="@font/raleway_bold"
+        android:layout_marginEnd="@dimen/activity_margin"
         android:text="@string/dis_approve" />
 
     <View
         style="@style/line"
         android:layout_below="@id/approve"
         android:layout_marginTop="@dimen/activity_margin"
-        android:errorMessageBackground="@dimen/activity_margin"
-        android:textUnderlineThickness="@dimen/activity_margin" />
+        android:layout_margin="@dimen/activity_margin"/>
 </RelativeLayout>

@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="@color/white"
     android:fitsSystemWindows="true">
 
     <LinearLayout
         android:id="@+id/special_extension"
         style="@style/matched"
-        android:layout_height="fill_parent"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
         <LinearLayout
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="@dimen/zero"
             android:layout_weight="1.15"
             android:orientation="vertical">
@@ -24,28 +24,28 @@
                 <ImageView
                     android:id="@+id/back"
                     style="@style/wrapped"
-                    android:errorMessageBackground="@dimen/activity_margin"
+                    android:layout_marginEnd="@dimen/activity_margin"
                     android:src="@drawable/back_black" />
 
                 <TextView
                     style="@style/app_name"
                     android:layout_margin="@dimen/zero"
                     android:fontFamily="@font/karla"
-                    android:searchResultListItemHeight="@id/back"
+                    android:layout_toEndOf="@id/back"
                     android:text="@string/special_extension_full"
                     android:textColor="@color/grey_900" />
 
                 <ImageView
                     android:id="@id/more_vert"
                     style="@style/wrapped"
-                    android:alertDialogCenterButtons="true"
+                    android:layout_alignParentEnd="true"
                     android:src="@drawable/more_vert" />
             </RelativeLayout>
 
             <RelativeLayout
                 style="@style/wrapped"
                 android:layout_marginTop="@dimen/activity_margin"
-                android:textUnderlineThickness="@dimen/activity_margin">
+                android:layout_marginStart="@dimen/activity_margin">
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@id/user_image"
@@ -57,7 +57,7 @@
                     style="@style/wrapped"
                     android:layout_marginTop="40.0dip"
                     android:background="@drawable/return_time_background"
-                    android:textUnderlineThickness="60.0dip">
+                    android:layout_marginStart="60.0dip">
 
                     <TextView
                         style="@style/return_time"
@@ -70,7 +70,7 @@
                 style="@style/search_text"
                 android:layout_marginTop="@dimen/activity_margin"
                 android:text="@string/return_time"
-                android:textUnderlineThickness="@dimen/activity_margin" />
+                android:layout_marginStart="@dimen/activity_margin" />
 
             <TextView
                 style="@style/search_text"
@@ -79,7 +79,7 @@
                 android:drawableStart="@drawable/day"
                 android:drawablePadding="@dimen/activity_margin"
                 android:text="@string/sample_date"
-                android:textUnderlineThickness="@dimen/activity_margin" />
+                android:layout_marginStart="@dimen/activity_margin" />
 
             <TextView
                 style="@style/search_text"
@@ -87,11 +87,11 @@
                 android:drawableStart="@drawable/time"
                 android:drawablePadding="@dimen/activity_margin"
                 android:text="@string/sample_return_time"
-                android:textUnderlineThickness="@dimen/activity_margin" />
+                android:layout_marginStart="@dimen/activity_margin" />
         </LinearLayout>
 
         <RelativeLayout
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="@dimen/zero"
             android:layout_weight="@integer/bottom_nav_item_weight"
             android:background="@color/yellow_500"
@@ -123,7 +123,7 @@
                 android:id="@+id/apply"
                 style="@style/wrapped"
                 android:layout_alignParentBottom="true"
-                android:alertDialogCenterButtons="true"
+                android:layout_alignParentEnd="true"
                 android:padding="@dimen/activity_margin"
                 android:src="@drawable/get" />
 
@@ -131,7 +131,7 @@
                 android:id="@+id/app_sent"
                 style="@style/wrapped"
                 android:layout_alignParentBottom="true"
-                android:alertDialogCenterButtons="true"
+                android:layout_alignParentEnd="true"
                 android:background="@drawable/extension_app_sent"
                 android:visibility="invisible">
 
