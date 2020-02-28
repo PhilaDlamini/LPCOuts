@@ -69,7 +69,7 @@ public class UserMainFragment extends Fragment {
 
     public static void showSnackView(Context paramContext, ViewGroup paramViewGroup, String paramString) {
         Snackbar snackbar = Snackbar.make(paramViewGroup, paramString, Snackbar.LENGTH_LONG);
-        TextView textView = (TextView) snackbar.getView().findViewById(R.id.snackbar_text);
+        TextView textView =  snackbar.getView().findViewById(R.id.snackbar_text);
         textView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.info, 0, 0, 0);
         textView.setTypeface(Typeface.createFromAsset(paramContext.getAssets(), "fonts/Raleway-Light.ttf"));
         textView.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
@@ -249,10 +249,10 @@ public class UserMainFragment extends Fragment {
         final PendingIntent pendingIntent = PendingIntent.getActivity(getContext(), 0, intent, 0);
         final Uri soundUri = RingtoneManager.getDefaultUri(2);
         final NotificationManager nm = (NotificationManager) getContext().getSystemService(Context.NOTIFICATION_SERVICE);
-        final NotificationCompat.Builder builder = new NotificationCompat.Builder(this.context, "LPC Outs channel id");
+        final NotificationCompat.Builder builder = new NotificationCompat.Builder(this.context, CHANNEL_ID_);
         if (Build.VERSION.SDK_INT >= 26)
-            notificationManager.createNotificationChannel(
-                    new NotificationChannel("LPC Outs channel id", "LPC OUts channel name", NotificationManager.IMPORTANCE_DEFAULT));
+            nm.createNotificationChannel(
+                    new NotificationChannel(CHANNEL_ID_, CHANNEL_NAME, NotificationManager.IMPORTANCE_DEFAULT));
         final String extensionDisApprovedMessage = getString(R.string.extension_not_approved_message);
         final String extensionApprovedMessage = getString(R.string.extension_approved_message);
         final String extensionDisApprovedTitle = getString(R.string.extension_not_approved);
@@ -265,7 +265,7 @@ public class UserMainFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot param1DataSnapshot) {
                 Iterator<DataSnapshot> iterator = param1DataSnapshot.getChildren().iterator();
                 while (iterator.hasNext()) {
-                    if ((((DataSnapshot) iterator.next())
+                    if (((iterator.next())
                             .getValue(SpecialExtension.class))
                             .getName().equals(UserData.getData("Name"))) {
 
@@ -278,9 +278,9 @@ public class UserMainFragment extends Fragment {
                                 .setContentText(extensionDisApprovedMessage)
                                 .setSound(soundUri)
                                 .setContentIntent(pendingIntent
-                                ).setStyle(new NotificationCompat.BigTextStyle()).bigText(extensionDisApprovedMessage)
+                                ).setStyle((new NotificationCompat.BigTextStyle()).bigText(extensionDisApprovedMessage))
                                 .setSmallIcon(R.drawable.path);
-                        nm.notify(0, builder.build());
+                        nm.notify(CHANNEL_ID, builder.build());
 
                         return;
                     }
@@ -305,9 +305,9 @@ public class UserMainFragment extends Fragment {
                                 .setContentText(extensionApprovedMessage)
                                 .setSound(soundUri)
                                 .setContentIntent(pendingIntent)
-                                .setStyle(new NotificationCompat.BigTextStyle()).bigText(extensionApprovedMessage)
+                                .setStyle((new NotificationCompat.BigTextStyle()).bigText(extensionApprovedMessage))
                                 .setSmallIcon(R.drawable.path);
-                        nm.notify(0, builder.build());
+                        nm.notify(CHANNEL_ID, builder.build());
                         return;
                     }
                 }
@@ -343,7 +343,7 @@ public class UserMainFragment extends Fragment {
         if (calendar2.before(calendar1))
             calendar2.add(Calendar.DAY_OF_MONTH, 1); //The right 5?
 
-        getContext().getSystemService(Context.ALARM_SERVICE).set(AlarmManager.RTC_WAKEUP, calendar2.getTimeInMillis(), pendingIntent);
+        ((AlarmManager) getContext().getSystemService(Context.ALARM_SERVICE)).set(AlarmManager.RTC_WAKEUP, calendar2.getTimeInMillis(), pendingIntent);
     }
 
     public void showAlertDialog(View paramView) {

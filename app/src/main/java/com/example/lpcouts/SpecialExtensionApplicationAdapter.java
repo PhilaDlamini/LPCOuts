@@ -2,7 +2,6 @@ package com.example.lpcouts;
 
 import android.content.Context;
 import android.net.Uri;
-import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -80,7 +79,7 @@ public class SpecialExtensionApplicationAdapter extends ArrayAdapter {
         picsRoot.child(specialExtension.getName()).getDownloadUrl()
                 .addOnSuccessListener(new OnSuccessListener<Uri>() {
                     public void onSuccess(Uri imageUri) {
-                        Picasso picasso = Picasso.with(SpecialExtensionApplicationAdapter.this.context);
+                        Picasso picasso = Picasso.get();
                         picasso.load("" + imageUri).resize(userImage.getWidth(), userImage.getHeight()).centerCrop().into(userImage);
                     }
                 }).addOnFailureListener(new OnFailureListener() {

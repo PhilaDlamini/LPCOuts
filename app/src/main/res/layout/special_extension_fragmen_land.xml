@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:id="@+id/special_extension"
+        style="@style/matched"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="@dimen/zero"
+            android:layout_height="match_parent"
+            android:layout_weight="@integer/bottom_nav_item_weight"
+            android:orientation="horizontal"
+            android:padding="@dimen/activity_margin">
+
+            <RelativeLayout style="@style/wrapped">
+
+                <ImageView
+                    android:id="@+id/back"
+                    style="@style/wrapped"
+                    android:src="@drawable/back_black" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                style="@style/matched"
+                android:layout_gravity="center">
+
+                <RelativeLayout
+                    android:id="@+id/pic"
+                    style="@style/wrapped"
+                    android:layout_marginTop="@dimen/activity_margin">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/user_image"
+                        android:layout_width="@dimen/profile_picture_size"
+                        android:layout_height="@dimen/profile_picture_size"
+                        android:background="@drawable/loader_image" />
+
+                    <RelativeLayout
+                        style="@style/wrapped"
+                        android:layout_marginTop="40.0dip"
+                        android:background="@drawable/return_time_background"
+                        android:layout_marginStart="60.0dip">
+
+                        <TextView
+                            style="@style/return_time"
+                            android:text="@string/applying_for_e"
+                            android:textColor="@color/white" />
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/title"
+                    style="@style/search_text"
+                    android:layout_below="@id/pic"
+                    android:layout_marginTop="@dimen/activity_margin"
+                    android:layout_marginBottom="@dimen/activity_margin"
+                    android:text="@string/sample_date" />
+
+                <TextView
+                    android:id="@+id/date"
+                    style="@style/search_text"
+                    android:layout_below="@id/title"
+                    android:layout_marginBottom="@dimen/activity_margin"
+                    android:drawableStart="@drawable/day"
+                    android:drawablePadding="@dimen/activity_margin"
+                    android:text="@string/sample_date" />
+
+                <TextView
+                    style="@style/search_text"
+                    android:layout_below="@id/date"
+                    android:layout_marginBottom="@dimen/activity_margin"
+                    android:drawableStart="@drawable/time"
+                    android:drawablePadding="@dimen/activity_margin"
+                    android:text="@string/sample_return_time" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="@dimen/zero"
+            android:layout_height="match_parent"
+            android:layout_weight="@integer/bottom_nav_item_weight"
+            android:background="@color/yellow_500"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                style="@style/wrapped"
+                android:layout_centerVertical="true">
+
+                <EditText
+                    android:id="@+id/reason"
+                    style="@style/overnight_input_field"
+                    android:drawableStart="@drawable/reason"
+                    android:hint="@string/reason" />
+
+                <EditText
+                    android:id="@+id/address"
+                    style="@style/overnight_input_field"
+                    android:layout_below="@id/reason"
+                    android:drawableStart="@drawable/address"
+                    android:hint="@string/address" />
+
+                <EditText
+                    android:id="@+id/companion"
+                    style="@style/overnight_input_field"
+                    android:layout_below="@id/address"
+                    android:drawableStart="@drawable/companion"
+                    android:hint="@string/accompanied_by" />
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/apply"
+                style="@style/button_text"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="@dimen/activity_margin"
+                android:layout_marginEnd = "10dp"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/get" />
+
+            <RelativeLayout
+                android:id="@+id/app_sent"
+                style="@style/wrapped"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:background="@drawable/extension_app_sent"
+                android:visibility="invisible">
+
+                <RelativeLayout
+                    style="@style/wrapped"
+                    android:layout_centerInParent="true">
+
+                    <ImageView
+                        android:id="@+id/ok"
+                        style="@style/wrapped"
+                        android:layout_centerHorizontal="true"
+                        android:src="@drawable/ok" />
+
+                    <TextView
+                        style="@style/search_text"
+                        android:layout_below="@id/ok"
+                        android:layout_marginTop="@dimen/buttons_margin_top"
+                        android:text="@string/applied_for_extension"
+                        android:textColor="@color/white" />
+                </RelativeLayout>
+            </RelativeLayout>
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

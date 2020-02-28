@@ -63,6 +63,7 @@
                     <TextView
                         style="@style/paragraph"
                         android:layout_gravity="center_horizontal"
+                        android:fontFamily="@font/karla"
                         android:text="@string/overnight" />
                 </LinearLayout>
             </RelativeLayout>

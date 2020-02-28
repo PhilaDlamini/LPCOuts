@@ -107,7 +107,7 @@ public class UserSignUpFragment extends Fragment {
     if ((getActivity().getResources().getConfiguration()).orientation == 1) {
       view = this.inflater.inflate(R.layout.user_sign_up_fragment, this.container, false);
     } else {
-      view = this.inflater.inflate(R.layout.user_sign_up_fragment_land, this.container, false);
+      view = this.inflater.inflate(R.layout.user_sign_up_fragment_land, this.container, false); //huh?
     }
 
     cameraIcon = (RelativeLayout)view.findViewById(R.id.pick_photo);

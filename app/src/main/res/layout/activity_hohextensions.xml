@@ -34,20 +34,17 @@
                     app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
                     <RelativeLayout
-                        style="@style/matched"
-                        android:errorMessageBackground="@dimen/activity_margin">
+                        style="@style/matched">
 
                         <ImageView
                             android:id="@+id/hamburger"
                             style="@style/wrapped"
                             android:layout_centerVertical="true"
-                            android:errorMessageBackground="@dimen/activity_margin"
                             android:src="@drawable/hamburger" />
 
                         <TextView
                             style="@style/large_bold"
                             android:fontFamily="@font/karla"
-                            android:searchResultListItemHeight="@id/hamburger"
                             android:text="@string/applications"
                             android:textStyle="normal" />
 

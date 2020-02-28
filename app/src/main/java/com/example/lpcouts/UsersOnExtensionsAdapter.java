@@ -9,6 +9,13 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 public class UsersOnExtensionsAdapter extends BaseAdapter {
@@ -76,9 +83,9 @@ public class UsersOnExtensionsAdapter extends BaseAdapter {
           name.setText(extension.getName());
           returnTime.setText(context.getString(R.string.expires) + " " + extension.getReturnDate() + "\n" + extension.getReturnTime());
           root.setVisibility(View.GONE);
-          picsRoot.child(reason.getName()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+          picsRoot.child(extension.getName()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                 public void onSuccess(Uri param1Uri) {
-                  Picasso picasso = Picasso.with(context);
+                  Picasso picasso = Picasso.get();
                   picasso.load("" + param1Uri).resize(profilePic.getWidth(), profilePic.getHeight()).centerCrop().into(profilePic);
                 }
               }).addOnFailureListener(new OnFailureListener() {
@@ -96,7 +103,7 @@ public class UsersOnExtensionsAdapter extends BaseAdapter {
 
         picsRoot.child(specialExtension.getName()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
               public void onSuccess(Uri param1Uri) {
-                Picasso picasso = Picasso.with(UsersOnExtensionsAdapter.this.context);
+                Picasso picasso = Picasso.get();
                 picasso.load("" + param1Uri).resize(profilePic.getWidth(), profilePic.getHeight()).centerCrop().into(profilePic);
               }
             }).addOnFailureListener(new OnFailureListener() {

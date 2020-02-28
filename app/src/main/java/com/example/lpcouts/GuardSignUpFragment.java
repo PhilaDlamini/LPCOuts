@@ -40,7 +40,6 @@ public class GuardSignUpFragment extends Fragment {
   TextView hohText, guardText, studentText;
   IconClickListener iconClickListener;
   private Uri imageUri = null;
-  private String nameEntered;
   CreationInProgress progress;
 
   private void findViews(View paramView) {
@@ -66,9 +65,9 @@ public class GuardSignUpFragment extends Fragment {
 
   //Hide all the other icons
   public void hideIcons() {
-    this.student.setVisibility(View.GONE);
-    this.hoh.setVisibility(View.GONE);
-    this.createAccount.setVisibility(View.VISIBLE);
+    student.setVisibility(View.GONE);
+    hoh.setVisibility(View.GONE);
+    createAccount.setVisibility(View.VISIBLE);
   }
 
   //HIde all other icons when we are typing
@@ -151,6 +150,7 @@ public class GuardSignUpFragment extends Fragment {
           public void onClick(View param1View) {
             String email = emailAccount.getText().toString();
             String passwordEntered  = password.getText().toString();
+            String nameEntered  = name.getText().toString();
 
             if (!email.isEmpty() && !passwordEntered.isEmpty() && !nameEntered.isEmpty()) {
 

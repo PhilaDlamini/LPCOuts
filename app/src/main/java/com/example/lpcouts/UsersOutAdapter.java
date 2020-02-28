@@ -2,7 +2,6 @@ package com.example.lpcouts;
 
 import android.content.Context;
 import android.net.Uri;
-import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -63,13 +62,13 @@ public class UsersOutAdapter extends BaseAdapter {
 
     switch (viewType) {
       case TYPE_LINE:
-        paramView = this.inflater.inflate(R.layout.users_line, paramViewGroup, false);
+        paramView = inflater.inflate(R.layout.users_line, paramViewGroup, false);
         break;
       case TYPE_ITEM:
-        paramView = this.inflater.inflate(R.layout.users_out_item, paramViewGroup, false);
+        paramView = inflater.inflate(R.layout.users_out_item, paramViewGroup, false);
         break;
       case TYPE_HEADER:
-        paramView = this.inflater.inflate(R.layout.users_out_header, paramViewGroup, false);
+        paramView = inflater.inflate(R.layout.users_out_header, paramViewGroup, false);
         break;
     }
 
@@ -85,7 +84,7 @@ public class UsersOutAdapter extends BaseAdapter {
 
         picsRoot.child(outs.getName()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
               public void onSuccess(Uri param1Uri) {
-                Picasso picasso = Picasso.with(UsersOutAdapter.this.context);
+                Picasso picasso = Picasso.get();
                 picasso.load("" + param1Uri).resize(profilePic.getWidth(), profilePic.getHeight()).centerCrop().into(profilePic);
               }
             }).addOnFailureListener(new OnFailureListener() {

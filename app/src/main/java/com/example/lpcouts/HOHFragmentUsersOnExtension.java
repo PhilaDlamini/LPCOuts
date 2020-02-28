@@ -40,13 +40,13 @@ public class HOHFragmentUsersOnExtension extends Fragment {
     } else {
 
       //It's not the weekend. Check for special extension
-      ArrayList<SpecialExtension> usersOnSpecialExtention = new ArrayList();
+      ArrayList<SpecialExtension> usersOnSpecialExtension = new ArrayList();
       mData.add(getString(R.string.special_extension));
-      usersOnSpecialExtention.addAll(UserData.getUsersOnSpecialExtension());
+      usersOnSpecialExtension.addAll(UserData.getUsersOnSpecialExtension());
 
-      if (usersOnSpecialExtention.size() != 0) {
-        Collections.sort(usersOnSpecialExtention);
-        mData.addAll(usersOnSpecialExtention);
+      if (usersOnSpecialExtension.size() != 0) {
+        Collections.sort(usersOnSpecialExtension);
+        mData.addAll(usersOnSpecialExtension);
       } else {
         mData.remove(getString(R.string.special_extension));
       } 
@@ -55,7 +55,7 @@ public class HOHFragmentUsersOnExtension extends Fragment {
     //Check if there is anybody on extension. If yes, show then, otherwise, show the message that no user is on extension
     if (mData.size() != 0) {
       UsersOnExtensionsAdapter usersOnExtensionsAdapter = new UsersOnExtensionsAdapter(mData, getContext());
-      listView.setAdapter((ListAdapter)usersOnExtensionsAdapter);
+      listView.setAdapter(usersOnExtensionsAdapter);
       return;
     }
 
@@ -64,7 +64,7 @@ public class HOHFragmentUsersOnExtension extends Fragment {
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle) {
-    View view = paramLayoutInflater.inflate(R.layout.no_users_on_extension, paramViewGroup, false);
+    View view = paramLayoutInflater.inflate(R.layout.list_view_layout, paramViewGroup, false);
     noUsersOnExtension = (RelativeLayout)view.findViewById(R.id.no_users_out);
     listView = (ListView)view.findViewById(R.id.list_view);
     noExtensions = (TextView)view.findViewById(R.id.text_displayed);

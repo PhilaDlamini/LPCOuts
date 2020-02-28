@@ -7,9 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import androidx.fragment.app.Fragment;
-
 import java.util.ArrayList;
 
 public class HOHFragmentUsersLate extends Fragment {
@@ -32,13 +30,13 @@ public class HOHFragmentUsersLate extends Fragment {
 
     //Get all late users, together
     lateUsers = UserData.getLateUsers();
-    ArrayList<Object> arrayList = new ArrayList(); //Previous generic type of String. Is that right?
-    arrayList.add(getContext().getString(R.string.late_students));
-    arrayList.addAll(lateUsers);
+    ArrayList<Object> allData = new ArrayList();
+    allData.add(getContext().getString(R.string.late_students));
+    allData.addAll(lateUsers);
 
     //If there are late users, say this and return them
     if (lateUsers.size() != 0) {
-      listView.setAdapter(new UsersOutAdapter(arrayList, getContext()));
+      listView.setAdapter(new UsersOutAdapter(allData, getContext()));
       return view;
     }
 

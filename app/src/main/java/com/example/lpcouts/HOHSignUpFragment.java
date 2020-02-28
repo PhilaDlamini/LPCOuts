@@ -37,8 +37,7 @@ public class HOHSignUpFragment extends Fragment {
   IconClickListener iconClickListener;
   private Uri imageUri = null;
   LayoutInflater inflater;
-  EditText name, password, room;
-  private String nameEntered;
+  EditText name, password;
   CreationInProgress progress;
   RelativeLayout root;
 
@@ -118,12 +117,12 @@ public class HOHSignUpFragment extends Fragment {
   
   public View initializeView() {
     View view;
-    if (this.container != null)
-      this.container.removeAllViewsInLayout(); 
+    if (container != null)
+      container.removeAllViewsInLayout();
     if ((getActivity().getResources().getConfiguration()).orientation == 1) {
-      view = this.inflater.inflate(R.layout.hoh_sign_up_fragment, container, false);
+      view =  inflater.inflate(R.layout.hoh_sign_up_fragment, container, false);
     } else {
-      view = this.inflater.inflate(R.layout.hoh_sign_up_fragment_land, container, false);
+      view = inflater.inflate(R.layout.hoh_sign_up_fragment_land, container, false);
     } 
     findViews(view);
     highlightHOH();
@@ -173,15 +172,16 @@ public class HOHSignUpFragment extends Fragment {
             String emailAccount = HOHSignUpFragment.this.emailAccount.getText().toString();
             String password = HOHSignUpFragment.this.password.getText().toString();
             String block = HOHSignUpFragment.this.block.getText().toString();
+            String nameEntered = HOHSignUpFragment.this.block.getText().toString();
 
-            if (!emailAccount.isEmpty() && !password.isEmpty() && !HOHSignUpFragment.this.nameEntered.isEmpty() && !block.isEmpty()) {
+            if (!emailAccount.isEmpty() && !password.isEmpty() && !nameEntered.isEmpty() && !block.isEmpty()) {
               if (SignUp.isLpcEmail(emailAccount)) {
                 if (imageUri != null) {
                   try {
                     Integer.parseInt(block);
                     progress.onCreationInProgress();
                     SignUp.assignVariables(getContext(), imageUri);
-                    SignUp.createAccount(new HOHAccount(HOHSignUpFragment.this.nameEntered, emailAccount, block), password, "HOH Account", HOHSignUpFragment.this.nameEntered);
+                    SignUp.createAccount(new HOHAccount(nameEntered, emailAccount, block), password, "HOH Account", nameEntered);
                   } catch (NumberFormatException numberFormatException) {
                     Toast.makeText(getContext(), getString(R.string.block_number), Toast.LENGTH_SHORT).show();
                   } 

@@ -64,7 +64,7 @@ public class HOHExtensionsActivity extends AppCompatActivity {
     //Display the right data for the hoh
     hohName.setText(UserData.getData("Name"));
     blockSupervising.setText( getString(R.string.residential_block) + " " + UserData.getData("Block"));
-    getWindow().getDecorView().setSystemUiVisibility(8192);  //?
+    getWindow().getDecorView().setSystemUiVisibility(8192);  //Don't know what this is for
 
     //When a navigation item is clicked
     navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -80,11 +80,11 @@ public class HOHExtensionsActivity extends AppCompatActivity {
 
           case R.id.extensions:
             //Tell them they are here
-            Toast.makeText( HOHExtensionsActivity.this, "You are already here", 0).show();
+            Toast.makeText( HOHExtensionsActivity.this, "You are already here", Toast.LENGTH_SHORT).show();
             break;
 
           case R.id.controls:
-            Toast.makeText(HOHExtensionsActivity.this, "Service not available right now", 0).show();
+            Toast.makeText(HOHExtensionsActivity.this, "Service not available right now", Toast.LENGTH_SHORT).show();
             break;
 
         }
@@ -101,15 +101,11 @@ public class HOHExtensionsActivity extends AppCompatActivity {
     setUpViewPager();
     tabLayout.setupWithViewPager(viewPager);
 
-    //What does this do? //#############
-    int i = 0;
-    while (i < tabLayout.getTabCount()) {
+    //Inflate all the tabs => Because we are using a custom view
+    for(int i = 0; i < tabLayout.getTabCount(); i++) {
       TextView textView = (TextView)LayoutInflater.from(this).inflate(R.layout.custom_tab, null);
       tabLayout.getTabAt(i).setCustomView(textView);
-      i++;
     }
-    //#############
-
 
     //Onclick listeners for the navigation buttons
     hamburger.setOnClickListener(new View.OnClickListener() {

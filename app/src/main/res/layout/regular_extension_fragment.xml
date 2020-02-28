@@ -82,7 +82,7 @@
     </LinearLayout>
 
     <ImageView
-        android:id="@id/get_extension"
+        android:id="@+id/get_extension"
         android:padding="@dimen/activity_margin"
         android:src="@drawable/get"
         android:layout_alignParentBottom="true"

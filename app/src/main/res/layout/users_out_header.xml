@@ -6,6 +6,5 @@
     <TextView xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/header"
         style="@style/headline_text"
-        android:text="@string/app_name"
-        android:textUnderlineThickness="@dimen/activity_margin" />
+        android:text="@string/app_name" />
 </LinearLayout>

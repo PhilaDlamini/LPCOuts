@@ -12,6 +12,12 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 import java.util.Calendar;
 import java.util.Date;
 
@@ -57,27 +63,30 @@ public class MainActivity extends AppCompatActivity {
     public void onStart() {
         super.onStart();
         final FirebaseUser user = this.firebaseAuth.getCurrentUser();
-        if (firebaseUser != null) {
-            firebaseUser.reload().addOnSuccessListener(new OnSuccessListener<Void>() {
+        if (user != null) { //was firegaseUser
+            user.reload().addOnSuccessListener(new OnSuccessListener<Void>() {
                 public void onSuccess(Void param1Void) {
                     if (user.isEmailVerified()) {
                         MainActivity.this.verification.setVisibility(View.GONE);
                         MainActivity.this.loadUserInfo();
                         return;
                     }
-                    if (!UserData.linkSent())
-                        user.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
-                            public void onSuccess(Void param2Void) { UserData.linkSent(true); }
+                    if (!UserData.linkSent()) {
+                         user.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
+                            public void onSuccess(Void param2Void) {
+                                UserData.linkSent(true);
+                            }
                         }).addOnFailureListener(new OnFailureListener() {
                             public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(UserData.context, this.getString(R.string.failed_to_send_link) + e, Toast.LENGTH_SHORT).show();
+                                Toast.makeText(UserData.context, getApplicationContext().getString(R.string.failed_to_send_link) + e, Toast.LENGTH_SHORT).show();
                             }
                         });
+                    }
                     MainActivity.this.verification.setVisibility(View.VISIBLE);
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(this, this.getString(R.string.error) + e, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Error:" + e, Toast.LENGTH_SHORT).show();
                 }
             });
             return;

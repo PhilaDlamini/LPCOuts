@@ -10,6 +10,10 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
 import androidx.core.app.NotificationCompat;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
 
 public class AlarmReceiver extends BroadcastReceiver {
@@ -28,7 +32,7 @@ public class AlarmReceiver extends BroadcastReceiver {
     //Called when a re
     public void onReceive(Context paramContext, Intent paramIntent) {
 
-        //If this is a reminder to sing in, when the notification reminder
+        //If this is a reminder to sign in, when the notification reminder
         if (paramIntent.getBooleanExtra("signInReminder", false)) {
             sendNotification(paramContext, paramContext.getString(R.string.sign_in_reminder), paramContext.getString(R.string.sign_in_reminder_message));
             return;

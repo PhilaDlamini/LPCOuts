@@ -7,7 +7,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import java.util.ArrayList;
 
 public class PagerAdapter extends FragmentPagerAdapter {
-  ArrayList<String> mFragmentTitles = new ArrayList<String>();
+  ArrayList<String> mFragmentTitles = new ArrayList<>();
   ArrayList<Fragment> mFragments = new ArrayList<>();
   
   public PagerAdapter(FragmentManager paramFragmentManager) {
@@ -15,8 +15,8 @@ public class PagerAdapter extends FragmentPagerAdapter {
   }
   
   public void addFragment(Fragment paramFragment, String paramString) {
-    this.mFragments.add(paramFragment);
-    this.mFragmentTitles.add(paramString);
+    mFragments.add(paramFragment);
+    mFragmentTitles.add(paramString);
   }
   
   public int getCount() {

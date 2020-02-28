@@ -41,7 +41,7 @@
         </RelativeLayout>
 
         <EditText
-            android:id="@id/name"
+            android:id="@+id/name"
             style="@style/edit_text_sign_up"
             android:paddingTop="@dimen/icon_size"
             android:layout_toEndOf="@id/picture" />

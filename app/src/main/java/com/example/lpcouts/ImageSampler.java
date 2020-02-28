@@ -5,6 +5,9 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
@@ -72,12 +75,11 @@ public class ImageSampler {
                 .getDownloadUrl()
                 .addOnSuccessListener(new OnSuccessListener<Uri>() {
                     public void onSuccess(Uri param1Uri) {
-                        Picasso picasso = Picasso.with(context);
+                        Picasso picasso = Picasso.get();
                         picasso.load("" + param1Uri).resize(imageView.getWidth(), imageView.getHeight()).centerCrop().into(imageView);
                     }
                 }).addOnFailureListener(new OnFailureListener() {
             public void onFailure(@NonNull Exception e) {
-                StringBuilder stringBuilder = new StringBuilder();
                 Toast.makeText(context, "Failed to load image: " + e.getMessage(), Toast.LENGTH_SHORT).show();
 
             }

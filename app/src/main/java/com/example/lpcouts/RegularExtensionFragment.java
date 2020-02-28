@@ -27,19 +27,19 @@ public class RegularExtensionFragment extends Fragment {
   
   public String getReturnDate() {
     Calendar calendar = Calendar.getInstance();
-    LinkedHashMap<Object, Object> linkedHashMap = new LinkedHashMap<Object, Object>();
-    linkedHashMap.put(Integer.valueOf(0), "Jan");
-    linkedHashMap.put(Integer.valueOf(1), "Feb");
-    linkedHashMap.put(Integer.valueOf(2), "Mar");
-    linkedHashMap.put(Integer.valueOf(3), "Apr");
-    linkedHashMap.put(Integer.valueOf(4), "May");
-    linkedHashMap.put(Integer.valueOf(5), "Jun");
-    linkedHashMap.put(Integer.valueOf(6), "Jul");
-    linkedHashMap.put(Integer.valueOf(7), "Aug");
-    linkedHashMap.put(Integer.valueOf(8), "Sep");
-    linkedHashMap.put(Integer.valueOf(9), "Oct");
-    linkedHashMap.put(Integer.valueOf(10), "Nov");
-    linkedHashMap.put(Integer.valueOf(11), "Dec");
+    LinkedHashMap<Integer, String> linkedHashMap = new LinkedHashMap<>();
+    linkedHashMap.put(0, "Jan");
+    linkedHashMap.put(1, "Feb");
+    linkedHashMap.put(2, "Mar");
+    linkedHashMap.put(3, "Apr");
+    linkedHashMap.put(4, "May");
+    linkedHashMap.put(5, "Jun");
+    linkedHashMap.put(6, "Jul");
+    linkedHashMap.put(7, "Aug");
+    linkedHashMap.put(8, "Sep");
+    linkedHashMap.put(9, "Oct");
+    linkedHashMap.put(10, "Nov");
+    linkedHashMap.put(11, "Dec");
     return linkedHashMap.get(calendar.get(Calendar.MONTH)) + " " + calendar.get(Calendar.DAY_OF_MONTH) + 1 + ", " + calendar.get(Calendar.YEAR);
   }
   
@@ -51,13 +51,13 @@ public class RegularExtensionFragment extends Fragment {
   @Nullable
   public View onCreateView(@NonNull LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, @Nullable Bundle paramBundle) {
     View view = paramLayoutInflater.inflate(R.layout.regular_extension_fragment, paramViewGroup, false);
-    this.back = (ImageView)view.findViewById(R.id.back);
-    this.moreVert = (ImageView)view.findViewById(R.id.more_vert);
-    this.getExtension = (ImageView)view.findViewById(R.id.get_extension);
-    this.returnDate = (TextView)view.findViewById(R.id.date);
-    this.pic = (ImageView)view.findViewById(R.id.profile_picture);
-    this.extensionsApproved = (ViewGroup)view.findViewById(R.id.extension_approved);
-    this.returnDate.setText(getReturnDate());
+    back = (ImageView)view.findViewById(R.id.back);
+    moreVert = (ImageView)view.findViewById(R.id.more_vert);
+    getExtension = (ImageView)view.findViewById(R.id.get_extension);
+    returnDate = (TextView)view.findViewById(R.id.date);
+    pic = (ImageView)view.findViewById(R.id.profile_picture);
+    extensionsApproved = (ViewGroup)view.findViewById(R.id.extension_approved);
+    returnDate.setText(getReturnDate());
 
     ImageSampler.assignVariables(getContext());
     ImageSampler.loadImage(pic);

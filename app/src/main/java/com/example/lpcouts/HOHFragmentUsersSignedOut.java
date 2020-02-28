@@ -21,126 +21,125 @@ import java.util.LinkedHashMap;
 
 public class HOHFragmentUsersSignedOut extends Fragment {
 
-  //All the member variables for the fragment
-  int mLastVisibleItem;
-  TextView noExtensions;
-  RelativeLayout noUsersOnExtension;
-  ViewGroup parent;
-  ListView usersSignedOutList;
-  
-  public ArrayList<Object> getData(ArrayList<Outs> paramArrayList) {
+    //All the member variables for the fragment
+    int mLastVisibleItem;
+    TextView noExtensions;
+    RelativeLayout noUsersOnExtension;
+    ViewGroup parent;
+    ListView usersSignedOutList;
 
-    //The lists
-    ArrayList<Outs> arrayList2 = new ArrayList();
-    ArrayList<String> arrayList = new ArrayList();
-    ArrayList<Outs> arrayList1 = new ArrayList();
+    public ArrayList<Object> getData(ArrayList<Outs> usersSignedOut) {
 
-    int i = 0; //What does all this code below do really?
-    while (!paramArrayList.isEmpty()) {
-      Object object2 = new StringBuilder();
-      object2.append("Size of users signed out ");
-      object2.append(paramArrayList.size());
-      Log.e("HOHFragment", object2.toString());
-      if (!i) {
-        arrayList.add(getString(R.string.today));
-      } else if (i == 1) {
-        arrayList.add(getString(R.string.yesterday));
-      } else {
-        arrayList.add(getDate(i));
-      } 
-      for (Outs outs : paramArrayList) {
-        if (outs.getDate().equals(getDate(i))) {
-          if (i)
-            arrayList2.add(outs); 
-          arrayList1.add(outs);
-        } 
-      } 
-      if (!arrayList1.isEmpty()) {
-        Collections.sort(arrayList1);
-        arrayList.addAll(arrayList1);
-        paramArrayList.removeAll(arrayList1);
-        ArrayList arrayList3 = new ArrayList();
-      } else {
-        arrayList.remove(getDate(i));
-        if (!i)
-          arrayList.remove(getString(R.string.today));
-        object2 = arrayList1;
-        if (i == 1) {
-          arrayList.remove(getString(R.string.yesterday));
-          object2 = arrayList1;
-        } 
-      } 
-      i++;
-      Object object1 = object2;
-    } 
-    UserData.assignSharedPreferences(getContext());
-    UserData.saveLateUsers(arrayList2);
-    return (ArrayList)arrayList;
-  }
-  
-  public String getDate(int paramInt) {
+        ArrayList<Object> sortedUsers = new ArrayList();
 
-    //Don't understand even what paramInt is here (??)
-    long currentTimeMillis = System.currentTimeMillis();
-    long l2 = (86400000 * paramInt);
+        //Sort all users signed out according to date
+        for (int i = 0; i < usersSignedOut.size(); i++) {
 
-    Calendar calendar = Calendar.getInstance();
-    calendar.setTimeInMillis(currentTimeMillis - l2);
+            if (i == 0) {
+                sortedUsers.add(getString(R.string.today));
+            } else if (i == 1) {
+                sortedUsers.add(getString(R.string.yesterday));
+            } else {
+                sortedUsers.add(getDate(i));
+            }
 
-    LinkedHashMap<Integer, String> linkedHashMap = new LinkedHashMap<>();
-    linkedHashMap.put(0, "Jan");
-    linkedHashMap.put(1, "Feb");
-    linkedHashMap.put(2, "Mar");
-    linkedHashMap.put(3, "Apr");
-    linkedHashMap.put(4, "May");
-    linkedHashMap.put(5, "Jun");
-    linkedHashMap.put(6, "Jul");
-    linkedHashMap.put(7, "Aug");
-    linkedHashMap.put(8, "Sep");
-    linkedHashMap.put(9, "Oct");
-    linkedHashMap.put(10, "Nov");
-    linkedHashMap.put(11, "Dec");
+            //Temporary to hold all the outs belonging to this date
+            ArrayList<Outs> tempList = new ArrayList<>();
 
-    paramInt = calendar.get(Calendar.DAY_OF_MONTH);
-    int month = calendar.get(Calendar.MONTH);
-    int year = calendar.get(Calendar.YEAR);
+            for (Outs out : usersSignedOut) {
+                if (out.getDate().equals(getDate(i))) {
+                    tempList.add(out);
+                }
+            }
 
-    return linkedHashMap.get(month) + " " + paramInt + ", " + year;
-  }
-  
+            if (!tempList.isEmpty()) {
 
-  public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle) {
-    View view = paramLayoutInflater.inflate(R.layout.list_view_layout, paramViewGroup, false);
+                //Sort the temp list by name
+                Collections.sort(tempList);
 
-    //Find all views
-    usersSignedOutList = (ListView)view.findViewById(R.id.list_view);
-    parent = (ViewGroup)view.findViewById(R.id.parent);
-    noUsersOnExtension = (RelativeLayout)view.findViewById(R.id.no_users_out);
-    noExtensions = (TextView)view.findViewById(R.id.text_displayed);
+                //Add to sorted list
+                sortedUsers.addAll(tempList);
+            } else {
+                if (i == 0) {
+                    sortedUsers.remove(getString(R.string.today));
+                } else if (i == 1) {
+                    sortedUsers.remove(getString(R.string.yesterday));
+                } else {
+                    sortedUsers.remove(getDate(i));
+                }
+            }
+        }
 
-    //So we know the scroll position
-    usersSignedOutList.setOnScrollListener(new AbsListView.OnScrollListener() {
-          public void onScroll(AbsListView param1AbsListView, int param1Int1, int param1Int2, int param1Int3) {}
-          
-          public void onScrollStateChanged(AbsListView absListView, int param1Int) { //What is paramInt??
-            param1Int = absListView.getFirstVisiblePosition();
-            if (param1Int < mLastVisibleItem) {
-              Toast.makeText(getContext(), "Scrolling downards", Toast.LENGTH_SHORT).show();
-            } else if (param1Int > mLastVisibleItem) {
-              Toast.makeText(getContext(), "Scrolling upwards", Toast.LENGTH_SHORT).show();
-            } 
-            mLastVisibleItem = param1Int;
-          }
+
+//    UserData.assignSharedPreferences(getContext());
+//    UserData.saveLateUsers(arrayList2); didn't get what it did
+        return sortedUsers;
+    }
+
+    public String getDate(int numOfDaysBack) {
+
+        //Don't understand even what paramInt is here (??)
+        long currentTimeMillis = System.currentTimeMillis();
+        long numOfDayInMillis = (86400000 * numOfDaysBack);
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(currentTimeMillis - numOfDayInMillis);
+
+        LinkedHashMap<Integer, String> monthMap = new LinkedHashMap<>();
+        monthMap.put(0, "Jan");
+        monthMap.put(1, "Feb");
+        monthMap.put(2, "Mar");
+        monthMap.put(3, "Apr");
+        monthMap.put(4, "May");
+        monthMap.put(5, "Jun");
+        monthMap.put(6, "Jul");
+        monthMap.put(7, "Aug");
+        monthMap.put(8, "Sep");
+        monthMap.put(9, "Oct");
+        monthMap.put(10, "Nov");
+        monthMap.put(11, "Dec");
+
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+        int month = calendar.get(Calendar.MONTH);
+        int year = calendar.get(Calendar.YEAR);
+
+        return monthMap.get(month) + " " + day + ", " + year;
+    }
+
+
+    public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle) {
+        View view = paramLayoutInflater.inflate(R.layout.list_view_layout, paramViewGroup, false);
+
+        //Find all views
+        usersSignedOutList = (ListView) view.findViewById(R.id.list_view);
+        parent = (ViewGroup) view.findViewById(R.id.parent);
+        noUsersOnExtension = (RelativeLayout) view.findViewById(R.id.no_users_out);
+        noExtensions = (TextView) view.findViewById(R.id.text_displayed);
+
+        //So we know the scroll position
+        usersSignedOutList.setOnScrollListener(new AbsListView.OnScrollListener() {
+            public void onScroll(AbsListView param1AbsListView, int param1Int1, int param1Int2, int param1Int3) {
+            }
+
+            public void onScrollStateChanged(AbsListView absListView, int param1Int) { //What is paramInt??
+                param1Int = absListView.getFirstVisiblePosition();
+                if (param1Int < mLastVisibleItem) {
+                    Toast.makeText(getContext(), "Scrolling downwards", Toast.LENGTH_SHORT).show();
+                } else if (param1Int > mLastVisibleItem) {
+                    Toast.makeText(getContext(), "Scrolling upwards", Toast.LENGTH_SHORT).show();
+                }
+                mLastVisibleItem = param1Int;
+            }
         });
 
-    ArrayList<Object> arrayList = getData(UserData.getUsersSignedOut());
-    if (arrayList.size() != 0) {
-      usersSignedOutList.setAdapter(new UsersOutAdapter(arrayList, getContext()));
-      return view;
-    } 
+        ArrayList<Object> arrayList = getData(UserData.getUsersSignedOut());
+        if (arrayList.size() != 0) {
+            usersSignedOutList.setAdapter(new UsersOutAdapter(arrayList, getContext()));
+            return view;
+        }
 
-    noUsersOnExtension.setVisibility(View.VISIBLE);
-    noExtensions.setText(getString(R.string.no_users_out));
-    return view;
-  }
+        noUsersOnExtension.setVisibility(View.VISIBLE);
+        noExtensions.setText(getString(R.string.no_users_out));
+        return view;
+    }
 }

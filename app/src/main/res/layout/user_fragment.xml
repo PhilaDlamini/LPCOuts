@@ -125,8 +125,7 @@
                         android:drawableStart="@drawable/on_extension"
                         android:drawablePadding="@dimen/activity_margin"
                         android:text="@string/on_extension"
-                        android:textColor="@color/grey_900"
-                        android:textUnderlineThickness="@dimen/on_extension_margin_start" />
+                        android:textColor="@color/grey_900" />
 
                     <TextView
                         android:id="@+id/time_left"
@@ -135,8 +134,7 @@
                         android:drawableStart="@drawable/on_extension"
                         android:drawablePadding="@dimen/activity_margin"
                         android:text="@string/time_of_return"
-                        android:textColor="@color/grey_900"
-                        android:textUnderlineThickness="@dimen/on_extension_margin_start" />
+                        android:textColor="@color/grey_900" />
                 </LinearLayout>
 
                 <RelativeLayout

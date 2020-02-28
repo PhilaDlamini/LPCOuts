@@ -1,6 +1,8 @@
 package com.example.lpcouts;
 
 import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,11 +16,12 @@ public class UserMainActivity extends AppCompatActivity {
   ViewGroup wrongWifi;
   
   public boolean isConnected() {
-    return (getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE)).getNetworkInfo(1).isConnected();
+    return ((ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE)).getNetworkInfo(1).isConnected();
   }
   
   public boolean isOnStudentWifi() {
-    String str = (getApplicationContext().getSystemService(Context.WIFI_SERVICE)).getConnectionInfo().getSSID();
+    WifiManager manager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+    String str = manager.getConnectionInfo().getSSID();
     return studentWifiName.matches(str);
   }
   

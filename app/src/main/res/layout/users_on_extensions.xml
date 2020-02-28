@@ -7,7 +7,7 @@
     android:layout_marginStart="@dimen/activity_margin">
 
     <RelativeLayout
-        android:id="@id/user_info"
+        android:id="@+id/user_info"
         style="@style/matched">
 
         <de.hdodenhof.circleimageview.CircleImageView
